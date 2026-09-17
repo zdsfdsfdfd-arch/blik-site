@@ -29,6 +29,7 @@ export function Hero() {
             alt="Бирюзовое горное озеро Брайес в Доломитовых Альпах на рассвете"
             className="h-full w-full"
             sizes="100vw"
+            fallbackKeywords="alps,lake"
             priority
           />
         </motion.div>

@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ImageOff } from 'lucide-react'
-import { unsplashSrcSet, unsplashUrl } from '../../lib/images'
+import { buildImageSources } from '../../lib/images'
 
 interface SmartImageProps {
   /** Unsplash photo id in the form "photo-<timestamp>-<hash>". */
   photo: string
   alt: string
+  /** English keywords used to source a topical photo if the primary CDN fails. */
+  fallbackKeywords?: string
   /** Classes for the wrapper — must define the box (aspect ratio or explicit height). */
   className?: string
   /** Extra classes for the <img> element (e.g. hover transforms). */
@@ -13,17 +15,19 @@ interface SmartImageProps {
   sizes?: string
   /** Eager-load and prioritise: use for above-the-fold imagery only. */
   priority?: boolean
-  /** Label rendered inside the fallback box when the image cannot be loaded. */
+  /** Label rendered inside the placeholder when no source could be loaded. */
   fallbackLabel?: string
 }
 
 /**
- * Responsive image with a shimmer skeleton while loading and a styled
- * fallback if the network request fails, so the layout never shifts or breaks.
+ * Responsive image with a shimmer skeleton while loading. If a source fails it moves on
+ * to the next one (local file → Unsplash → keyword lookup) and finally renders a styled
+ * placeholder, so the layout never shifts or shows a broken image.
  */
 export function SmartImage({
   photo,
   alt,
+  fallbackKeywords,
   className = '',
   imgClassName = '',
   sizes = '100vw',
@@ -31,19 +35,35 @@ export function SmartImage({
   fallbackLabel,
 }: SmartImageProps) {
   const ref = useRef<HTMLImageElement>(null)
-  const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading')
+  const sources = useMemo(() => buildImageSources(photo, fallbackKeywords), [photo, fallbackKeywords])
+  const [state, setState] = useState({ photo, index: 0, loaded: false, failed: false })
+
+  // Reset the source chain if the photo prop changes on a reused element.
+  if (state.photo !== photo) setState({ photo, index: 0, loaded: false, failed: false })
 
   // Cached images may finish before React attaches the onLoad handler.
   useEffect(() => {
     const img = ref.current
-    if (img && img.complete && img.naturalWidth > 0) setStatus('loaded')
+    if (img && img.complete && img.naturalWidth > 0) {
+      setState((prev) => (prev.loaded ? prev : { ...prev, loaded: true }))
+    }
   }, [])
+
+  const handleError = () => {
+    setState((prev) =>
+      prev.index < sources.length - 1
+        ? { ...prev, index: prev.index + 1, loaded: false }
+        : { ...prev, failed: true },
+    )
+  }
+
+  const source = sources[state.index]
 
   return (
     <div className={`relative overflow-hidden bg-paper-2 ${className}`}>
-      {status === 'loading' && <div aria-hidden="true" className="skeleton absolute inset-0" />}
+      {!state.loaded && !state.failed && <div aria-hidden="true" className="skeleton absolute inset-0" />}
 
-      {status === 'error' ? (
+      {state.failed ? (
         <div
           role="img"
           aria-label={alt}
@@ -54,18 +74,19 @@ export function SmartImage({
         </div>
       ) : (
         <img
+          key={source.src}
           ref={ref}
-          src={unsplashUrl(photo)}
-          srcSet={unsplashSrcSet(photo)}
-          sizes={sizes}
+          src={source.src}
+          srcSet={source.srcSet}
+          sizes={source.srcSet ? sizes : undefined}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding={priority ? 'sync' : 'async'}
           fetchPriority={priority ? 'high' : 'auto'}
-          onLoad={() => setStatus('loaded')}
-          onError={() => setStatus('error')}
+          onLoad={() => setState((prev) => ({ ...prev, loaded: true }))}
+          onError={handleError}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${
-            status === 'loaded' ? 'opacity-100' : 'opacity-0'
+            state.loaded ? 'opacity-100' : 'opacity-0'
           } ${imgClassName}`}
         />
       )}

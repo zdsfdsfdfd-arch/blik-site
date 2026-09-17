@@ -4,6 +4,7 @@ export const americaTours: Tour[] = [
   {
     id: 't-nyc',
     slug: 'new-york-city',
+    keyword: 'manhattan',
     popularity: 7,
     title: 'New York City',
     country: 'США',
@@ -70,6 +71,7 @@ export const americaTours: Tour[] = [
   {
     id: 't-cancun',
     slug: 'cancun-riviera-maya',
+    keyword: 'cancun',
     popularity: 10,
     title: 'Cancún & Riviera Maya',
     country: 'Мексика',

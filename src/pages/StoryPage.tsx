@@ -28,7 +28,7 @@ export function StoryPage() {
       <article>
         <div ref={heroRef} className="grain relative min-h-[70svh] overflow-hidden bg-ink text-paper">
           <motion.div className="absolute inset-0" style={{ y: imageY }}>
-            <SmartImage photo={story.photo} alt={story.alt} className="h-full w-full" sizes="100vw" priority />
+            <SmartImage photo={story.photo} alt={story.alt} className="h-full w-full" sizes="100vw" fallbackKeywords={story.keyword} priority />
           </motion.div>
           <div aria-hidden="true" className="image-overlay absolute inset-0" />
           <div className="container-x relative flex min-h-[70svh] flex-col justify-end pb-14 pt-32">

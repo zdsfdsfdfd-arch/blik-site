@@ -4,6 +4,7 @@ export const asiaTours: Tour[] = [
   {
     id: 't-bali',
     slug: 'bali-experience',
+    keyword: 'bali',
     popularity: 2,
     title: 'Bali Experience',
     country: 'Индонезия',
@@ -80,6 +81,7 @@ export const asiaTours: Tour[] = [
   {
     id: 't-tokyo',
     slug: 'tokyo-discovery',
+    keyword: 'tokyo',
     popularity: 3,
     title: 'Tokyo Discovery',
     country: 'Япония',
@@ -147,6 +149,7 @@ export const asiaTours: Tour[] = [
   {
     id: 't-kyoto',
     slug: 'kyoto-traditions',
+    keyword: 'kyoto',
     popularity: 14,
     title: 'Kyoto Traditions',
     country: 'Япония',
@@ -208,6 +211,7 @@ export const asiaTours: Tour[] = [
   {
     id: 't-maldives',
     slug: 'maldives-escape',
+    keyword: 'maldives',
     popularity: 6,
     title: 'Maldives Escape',
     country: 'Мальдивы',
@@ -268,6 +272,7 @@ export const asiaTours: Tour[] = [
   {
     id: 't-thailand',
     slug: 'bangkok-and-phuket',
+    keyword: 'thailand',
     popularity: 9,
     title: 'Bangkok & Phuket',
     country: 'Таиланд',

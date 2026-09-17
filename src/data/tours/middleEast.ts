@@ -4,6 +4,7 @@ export const middleEastTours: Tour[] = [
   {
     id: 't-dubai',
     slug: 'dubai-premium',
+    keyword: 'dubai',
     popularity: 4,
     title: 'Dubai Premium',
     country: 'ОАЭ',

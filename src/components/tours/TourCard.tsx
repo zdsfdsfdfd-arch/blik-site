@@ -35,6 +35,7 @@ export function TourCard({ tour, index = 0 }: TourCardProps) {
             className="aspect-[4/5]"
             imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
             sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw"
+            fallbackKeywords={tour.keyword}
             fallbackLabel={tour.city}
           />
           <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">

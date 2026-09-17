@@ -4,6 +4,7 @@ export const oceaniaTours: Tour[] = [
   {
     id: 't-sydney',
     slug: 'sydney-and-beyond',
+    keyword: 'sydney',
     popularity: 16,
     title: 'Sydney & Beyond',
     country: 'Австралия',
@@ -67,6 +68,7 @@ export const oceaniaTours: Tour[] = [
   {
     id: 't-queenstown',
     slug: 'queenstown-adventure',
+    keyword: 'queenstown',
     popularity: 17,
     title: 'Queenstown Adventure',
     country: 'Новая Зеландия',

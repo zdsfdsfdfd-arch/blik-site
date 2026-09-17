@@ -44,6 +44,7 @@ export function AboutPage() {
               alt="Команда обсуждает маршрут за столом с ноутбуками"
               className="aspect-[4/5] lg:aspect-[4/4.6]"
               sizes="(min-width: 1024px) 40vw, 100vw"
+              fallbackKeywords="office,team"
               fallbackLabel="Команда PLAN"
             />
           </Reveal>
@@ -80,6 +81,7 @@ export function AboutPage() {
                   className="aspect-[4/5]"
                   imgClassName="grayscale-[35%] transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
                   sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                  fallbackKeywords="portrait"
                   fallbackLabel={member.name}
                 />
                 <h3 className="text-display-sm mt-5">{member.name}</h3>

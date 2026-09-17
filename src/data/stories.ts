@@ -4,6 +4,7 @@ export const stories: Story[] = [
   {
     id: 's-tokyo',
     slug: '7-days-in-tokyo',
+    keyword: 'tokyo',
     title: '7 дней в Токио: что увидеть впервые',
     category: 'Гид по городу',
     date: '2026-08-12',
@@ -24,6 +25,7 @@ export const stories: Story[] = [
   {
     id: 's-bali',
     slug: 'why-bali-once',
+    keyword: 'bali',
     title: 'Почему Бали стоит увидеть хотя бы раз',
     category: 'Направления',
     date: '2026-07-03',
@@ -43,6 +45,7 @@ export const stories: Story[] = [
   {
     id: 's-weekend',
     slug: 'european-weekend-guide',
+    keyword: 'prague',
     title: 'Гид по европейскому weekend',
     category: 'City break',
     date: '2026-05-21',
@@ -63,6 +66,7 @@ export const stories: Story[] = [
   {
     id: 's-places',
     slug: '10-places-to-stay',
+    keyword: 'mountains',
     title: '10 мест, где хочется остаться',
     category: 'Вдохновение',
     date: '2026-04-09',

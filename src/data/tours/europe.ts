@@ -4,6 +4,7 @@ export const europeTours: Tour[] = [
   {
     id: 't-santorini',
     slug: 'santorini-escape',
+    keyword: 'santorini',
     popularity: 1,
     title: 'Santorini Escape',
     country: 'Греция',
@@ -70,6 +71,7 @@ export const europeTours: Tour[] = [
   {
     id: 't-paris',
     slug: 'paris-weekend',
+    keyword: 'paris',
     popularity: 5,
     title: 'Paris Weekend',
     country: 'Франция',
@@ -133,6 +135,7 @@ export const europeTours: Tour[] = [
   {
     id: 't-swiss',
     slug: 'swiss-alps',
+    keyword: 'alps,switzerland',
     popularity: 8,
     title: 'Swiss Alps',
     country: 'Швейцария',
@@ -192,6 +195,7 @@ export const europeTours: Tour[] = [
   {
     id: 't-amalfi',
     slug: 'amalfi-coast',
+    keyword: 'positano',
     popularity: 12,
     title: 'Amalfi Coast',
     country: 'Италия',
@@ -250,6 +254,7 @@ export const europeTours: Tour[] = [
   {
     id: 't-iceland',
     slug: 'iceland-ring-road',
+    keyword: 'iceland',
     popularity: 13,
     title: 'Iceland Ring Road',
     country: 'Исландия',

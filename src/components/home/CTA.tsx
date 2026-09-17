@@ -18,6 +18,7 @@ export function CTA() {
           alt="Крыло самолёта над облаками на закате"
           className="h-full w-full"
           sizes="100vw"
+          fallbackKeywords="airplane,sky"
         />
       </motion.div>
       <div aria-hidden="true" className="absolute inset-0 bg-ink/55" />

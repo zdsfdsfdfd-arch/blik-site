@@ -4,6 +4,7 @@ export const africaTours: Tour[] = [
   {
     id: 't-marrakech',
     slug: 'marrakech-and-sahara',
+    keyword: 'marrakech',
     popularity: 11,
     title: 'Marrakech & Sahara',
     country: 'Марокко',
@@ -63,6 +64,7 @@ export const africaTours: Tour[] = [
   {
     id: 't-capetown',
     slug: 'cape-town-and-safari',
+    keyword: 'capetown',
     popularity: 15,
     title: 'Cape Town & Safari',
     country: 'ЮАР',

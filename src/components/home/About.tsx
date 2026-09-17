@@ -61,6 +61,7 @@ export function About() {
                   alt="Путешественница в шляпе смотрит на море с побережья"
                   className="aspect-[4/5]"
                   sizes="(min-width: 1024px) 40vw, 66vw"
+                  fallbackKeywords="coast,travel"
                   fallbackLabel="Побережье"
                 />
               </Reveal>
@@ -72,6 +73,7 @@ export function About() {
                   alt="Карта, фотоаппарат и блокнот — планирование маршрута"
                   className="aspect-square shadow-soft"
                   sizes="(min-width: 1024px) 28vw, 50vw"
+                  fallbackKeywords="map,travel"
                   fallbackLabel="Планирование"
                 />
               </Reveal>

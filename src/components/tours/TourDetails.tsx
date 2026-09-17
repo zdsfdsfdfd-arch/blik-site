@@ -61,7 +61,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
       {/* Hero */}
       <div ref={heroRef} className="grain relative min-h-[80svh] overflow-hidden bg-ink text-paper">
         <motion.div className="absolute inset-0" style={{ y: imageY }}>
-          <SmartImage photo={tour.photo} alt={tour.alt} className="h-full w-full" sizes="100vw" priority />
+          <SmartImage photo={tour.photo} alt={tour.alt} className="h-full w-full" sizes="100vw" fallbackKeywords={tour.keyword} priority />
         </motion.div>
         <div aria-hidden="true" className="image-overlay absolute inset-0" />
 
@@ -157,6 +157,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
                       className="aspect-[4/3]"
                       imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                       sizes="(min-width: 768px) 25vw, 50vw"
+                      fallbackKeywords={tour.keyword}
                       fallbackLabel={tour.city}
                     />
                   </li>

@@ -43,6 +43,8 @@ export interface Tour {
   id: string
   slug: string
   title: string
+  /** English search keyword used when a photo has to be sourced by topic. */
+  keyword: string
   country: string
   city: string
   region: RegionId
@@ -78,6 +80,7 @@ export interface Story {
   id: string
   slug: string
   title: string
+  keyword: string
   category: string
   date: string
   readingTime: number
@@ -108,6 +111,7 @@ export interface GalleryItem {
   id: string
   photo: string
   alt: string
+  keyword: string
   place: string
   country: string
   span: GallerySpan

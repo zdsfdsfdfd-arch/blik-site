@@ -34,7 +34,8 @@ export function StoryCard({ story, variant = 'grid' }: StoryCardProps) {
             className="aspect-[4/3]"
             imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
             sizes="(min-width: 1024px) 58vw, 100vw"
-            fallbackLabel={story.category}
+            fallbackKeywords={story.keyword}
+          fallbackLabel={story.category}
           />
         </Link>
         <Meta story={story} className="mt-6" />
@@ -61,7 +62,8 @@ export function StoryCard({ story, variant = 'grid' }: StoryCardProps) {
             className="aspect-square"
             imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
             sizes="8rem"
-            fallbackLabel={story.category}
+            fallbackKeywords={story.keyword}
+          fallbackLabel={story.category}
           />
         </Link>
         <div className="flex flex-col">
@@ -89,6 +91,7 @@ export function StoryCard({ story, variant = 'grid' }: StoryCardProps) {
           className="aspect-[4/3]"
           imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
           sizes="(min-width: 1024px) 45vw, 100vw"
+          fallbackKeywords={story.keyword}
           fallbackLabel={story.category}
         />
       </Link>

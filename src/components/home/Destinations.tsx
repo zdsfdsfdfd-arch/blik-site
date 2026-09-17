@@ -36,6 +36,7 @@ function DestinationCard({ region, index }: { region: Region; index: number }) {
           className="absolute inset-0 h-full w-full"
           imgClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
           sizes={sizes}
+          fallbackKeywords={region.cities[0]}
         />
         <div
           aria-hidden="true"
