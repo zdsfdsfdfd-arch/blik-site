@@ -1,0 +1,68 @@
+import type { GalleryItem } from '../types'
+
+export const gallery: GalleryItem[] = [
+  {
+    id: 'g-1',
+    photo: 'photo-1505142468610-359e7d316be0',
+    alt: 'Бирюзовое море и волны с высоты птичьего полёта',
+    place: 'Индийский океан',
+    country: 'Мальдивы',
+    span: 'large',
+  },
+  {
+    id: 'g-2',
+    photo: 'photo-1464822759023-fed622ff2c3b',
+    alt: 'Горные вершины и озеро на рассвете',
+    place: 'Скалистые горы',
+    country: 'Канада',
+    span: 'tall',
+  },
+  {
+    id: 'g-3',
+    photo: 'photo-1513635269975-59663e0ac1ad',
+    alt: 'Биг-Бен и Вестминстерский мост в Лондоне',
+    place: 'Лондон',
+    country: 'Великобритания',
+    span: 'square',
+  },
+  {
+    id: 'g-4',
+    photo: 'photo-1502920917128-1aa500764cbd',
+    alt: 'Самолёт на взлётной полосе на закате',
+    place: 'Взлёт',
+    country: 'Где-то между',
+    span: 'square',
+  },
+  {
+    id: 'g-5',
+    photo: 'photo-1571896349842-33c89424de2d',
+    alt: 'Бассейн отеля с видом на океан',
+    place: 'Отель у океана',
+    country: 'Индонезия',
+    span: 'wide',
+  },
+  {
+    id: 'g-6',
+    photo: 'photo-1441974231531-c6227db76b6e',
+    alt: 'Тропинка в зелёном лесу',
+    place: 'Чёрный лес',
+    country: 'Германия',
+    span: 'square',
+  },
+  {
+    id: 'g-7',
+    photo: 'photo-1526392060635-9d6019884377',
+    alt: 'Мачу-Пикчу в утреннем тумане',
+    place: 'Мачу-Пикчу',
+    country: 'Перу',
+    span: 'tall',
+  },
+  {
+    id: 'g-8',
+    photo: 'photo-1525625293386-3f8f99389edd',
+    alt: 'Небоскрёбы Сингапура и сады у залива ночью',
+    place: 'Сингапур',
+    country: 'Сингапур',
+    span: 'wide',
+  },
+]
