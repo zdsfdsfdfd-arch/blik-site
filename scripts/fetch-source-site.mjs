@@ -252,8 +252,10 @@ async function downloadImages() {
         const type = res.headers.get('content-type') ?? ''
         if (!/^image\//.test(type) || body.length > MAX_IMAGE_BYTES) throw new Error(`skip ${type} ${body.length}`)
         const ext = extname(new URL(candidate).pathname) || `.${type.split('/')[1].split('+')[0]}`
-        const id = (candidate.match(/(tild[0-9a-f-]+)/) ?? [])[1] ?? createHash('md5').update(candidate).digest('hex').slice(0, 12)
-        const name = `${id}-${(new URL(candidate).pathname.split('/').pop() || 'file').replace(/[^a-z0-9._-]+/gi, '_')}`.slice(0, 120)
+        // Tilda keeps every upload in its own /tildXXXX-…/ folder; that id makes file names unique.
+        const pathname = new URL(candidate).pathname
+        const id = (pathname.match(/\/(tild[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\//) ?? [])[1] ?? createHash('md5').update(candidate).digest('hex').slice(0, 12)
+        const name = `${id}-${(pathname.split('/').pop() || 'file').replace(/[^a-z0-9._-]+/gi, '_')}`.slice(0, 140)
         const file = name.toLowerCase().endsWith(ext.toLowerCase()) ? name : `${name}${ext}`
         const target = join(MEDIA, file)
         if (!existsSync(target)) writeFileSync(target, body)
