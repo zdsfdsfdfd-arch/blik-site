@@ -7,7 +7,7 @@ interface RevealProps {
   delay?: number
   y?: number
   className?: string
-  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'p' | 'figure'
+  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'p' | 'figure' | 'blockquote'
 }
 
 /** Fades and lifts its children into view the first time they scroll on screen. */

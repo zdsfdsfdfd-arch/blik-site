@@ -2,21 +2,22 @@
 
 export type ProjectCategory =
   | 'advertising'
-  | 'image'
   | 'presentation'
+  | 'image'
+  | 'film'
   | 'event'
   | 'social'
-  | 'interview'
-  | 'aerial'
   | 'graphics'
-  | 'corporate'
+  | 'review'
+  | 'music'
   | 'education'
+  | 'corporate'
   | 'marketplace'
 
 export interface VideoRef {
   /** Platform that hosts the video. Local files live under /media/videos. */
-  platform: 'youtube' | 'rutube' | 'vk' | 'vimeo' | 'local'
-  /** Platform video id (YouTube 11-char id) or a local path. */
+  platform: 'youtube' | 'rutube' | 'vk' | 'vimeo' | 'kinescope' | 'local'
+  /** Platform video id: YouTube 11-char id, VK «-ownerId_videoId», Kinescope id, or a local path. */
   id: string
   /** Canonical watch URL. */
   url: string
@@ -63,6 +64,12 @@ export interface Project {
   quote?: { text: string; author: string; role?: string }
 }
 
+export interface ServicePackage {
+  name: string
+  price: string
+  details: string[]
+}
+
 export interface ServiceStep {
   title: string
   body: string
@@ -81,6 +88,12 @@ export interface Service {
   formats?: string[]
   /** Reference tariff the studio names for this format, when it does. */
   tariff?: string
+  /** Price tiers published on the original service page («от 150 000 ₽»). */
+  packages?: ServicePackage[]
+  /** Who the format is for, as listed on the original page. */
+  audience?: string[]
+  /** Questions and answers published on the original service page. */
+  faq?: FaqItem[]
   relatedProjects: string[]
   seoTitle: string
   seoDescription: string
@@ -110,6 +123,15 @@ export interface Review {
   sourceUrl?: string
   /** True when the text is a summary of a published review rather than a verbatim quote. */
   paraphrased?: boolean
+  /** Video testimonial, when the client recorded one. */
+  video?: VideoRef
+  poster?: ImageRef
+}
+
+export interface ThankYouLetter {
+  from: string
+  quote: string
+  image: ImageRef
 }
 
 export interface FaqItem {

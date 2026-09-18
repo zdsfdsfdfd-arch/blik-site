@@ -25,9 +25,10 @@ export const footerColumns: { title: string; links: NavItem[] }[] = [
     links: [
       { label: 'Все проекты', to: '/work' },
       { label: 'Рекламные ролики', to: '/work?type=advertising' },
-      { label: 'Имиджевые видео', to: '/work?type=image' },
       { label: 'Презентационные', to: '/work?type=presentation' },
       { label: 'Мероприятия', to: '/work?type=event' },
+      { label: 'Графика и анимация', to: '/work?type=graphics' },
+      { label: 'YouTube и соцсети', to: '/work?type=social' },
     ],
   },
 ]

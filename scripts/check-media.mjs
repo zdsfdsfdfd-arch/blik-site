@@ -9,7 +9,7 @@ const ROOT = new URL('..', import.meta.url).pathname
 const manifest = JSON.parse(readFileSync(join(ROOT, 'public/media/media-manifest.json'), 'utf8'))
 const data = readFileSync(join(ROOT, 'src/data/projects.ts'), 'utf8')
 
-const ids = [...data.matchAll(/yt\('([A-Za-z0-9_-]{11})'/g)].map((m) => m[1])
+const ids = [...data.matchAll(/video\('(?:vk|youtube|kinescope)', '([^']+)'\)/g)].map((m) => m[1])
 const listed = new Set(manifest.videos.map((v) => v.videoId).filter(Boolean))
 let missing = 0
 for (const id of ids) {

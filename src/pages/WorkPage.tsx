@@ -1,19 +1,22 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { AnimatePresence, motion } from 'motion/react'
 import { Page } from '../components/layout/Page'
 import { ProjectCard } from '../components/work/ProjectCard'
 import { WorkFilters } from '../components/work/WorkFilters'
+import { Button } from '../components/ui/Button'
 import { SplitLines } from '../components/ui/SplitLines'
 import { categoriesInUse, categoryLabels, projects } from '../data/projects'
-import type { ProjectCategory } from '../types'
+import type { ProjectCategory } from '../types/index.ts'
 
-const spans = ['lg:col-span-7', 'lg:col-span-5 lg:mt-24', 'lg:col-span-5', 'lg:col-span-7 lg:mt-16']
+const PAGE = 18
+const spans = ['lg:col-span-7', 'lg:col-span-5 lg:mt-24', 'lg:col-span-5', 'lg:col-span-7 lg:mt-16', 'lg:col-span-4', 'lg:col-span-4 lg:mt-12', 'lg:col-span-4']
 
 export function WorkPage() {
   const [params, setParams] = useSearchParams()
   const type = params.get('type') as ProjectCategory | null
   const active: ProjectCategory | 'all' = type && type in categoryLabels ? type : 'all'
+  const [limits, setLimits] = useState<Record<string, number>>({})
+  const limit = limits[active] ?? PAGE
   const visible = useMemo(() => (active === 'all' ? projects : projects.filter((p) => p.category === active)), [active])
   const counts = useMemo(() => {
     const result: Record<string, number> = { all: projects.length }
@@ -22,9 +25,10 @@ export function WorkPage() {
   }, [])
 
   const title = active === 'all' ? 'Работы' : `${categoryLabels[active]} — работы`
+  const shown = visible.slice(0, limit)
 
   return (
-    <Page title={title} description="Портфолио студии Видеопродакшн.РФ: рекламные, имиджевые и презентационные ролики для бизнеса — заводы, логистика, университеты, агрокомпании." path="/work">
+    <Page title={title} description="Портфолио студии Видеопродакшн.РФ: более 140 роликов для бизнеса — рекламные, презентационные и имиджевые видео, мероприятия, графика, обзоры для маркетплейсов." path="/work">
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
@@ -32,7 +36,7 @@ export function WorkPage() {
             <SplitLines as="h1" lines={['Работы', 'для бизнеса']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">
-            Более 2500 роликов с 2015 года: видеопрезентации компаний, видео о продукции, имиджевые и продающие ролики. Здесь — кейсы, о которых можно рассказать.
+            {projects.length} роликов из портфолио студии: заводы и логистика, банки и IT, университеты и рестораны, мероприятия и маркетплейсы. Каждый — с видео.
           </p>
         </div>
         <div className="mt-12 border-t border-line pt-5">
@@ -41,16 +45,24 @@ export function WorkPage() {
       </section>
 
       <section className="container-x pb-24 pt-12 md:pt-16" aria-live="polite">
-        <AnimatePresence mode="popLayout">
-          <motion.div key={active} className="grid-12 gap-y-12 md:gap-y-16" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-            {visible.map((project, i) => (
-              <div key={project.slug} className={`col-span-12 ${spans[i % spans.length]}`}>
-                <ProjectCard project={project} index={i} headingLevel="h2" aspect={i % 4 === 0 || i % 4 === 3 ? 'aspect-[16/9]' : 'aspect-[4/3]'} />
-              </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+        <div key={active} className="grid-12 gap-y-12 md:gap-y-16">
+          {shown.map((project, i) => (
+            <div key={project.slug} className={`col-span-12 md:col-span-6 ${spans[i % spans.length]}`}>
+              <ProjectCard project={project} index={i} headingLevel="h2" aspect="aspect-video" />
+            </div>
+          ))}
+        </div>
         {visible.length === 0 && <p className="prose-body">В этой категории пока нет опубликованных кейсов.</p>}
+        {shown.length < visible.length && (
+          <div className="mt-16 flex flex-col items-center gap-4 border-t border-line pt-8">
+            <p className="label-mono text-fg-3">
+              Показано {shown.length} из {visible.length}
+            </p>
+            <Button variant="outline" size="lg" onClick={() => setLimits((prev) => ({ ...prev, [active]: limit + PAGE }))}>
+              Показать ещё
+            </Button>
+          </div>
+        )}
       </section>
     </Page>
   )

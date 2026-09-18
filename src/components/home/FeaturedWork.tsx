@@ -14,7 +14,7 @@ export function FeaturedWork() {
   const wide = useMediaQuery('(min-width: 1024px)')
   const reduceMotion = useReducedMotion()
   const horizontal = wide && !reduceMotion
-  const items = featuredProjects.slice(0, 5)
+  const items = featuredProjects.slice(0, 6)
 
   return (
     <section className="section-y">
@@ -22,13 +22,13 @@ export function FeaturedWork() {
         <SectionHeader
           index="01"
           label="Работы"
-          meta={`${items.length} из ${featuredProjects.length} избранных`}
+          meta={`${items.length} из ${featuredProjects.length} кейсов с главной`}
           title={
             <>
               Каждый проект — <span className="text-fg-3">история,</span> а не карточка в каталоге
             </>
           }
-          lead="Презентационные, имиджевые и рекламные ролики для бизнеса: заводы, логистика, банки, IT, рестораны, галереи — более 2500 работ с 2015 года."
+          lead="Каждый ролик — кейс: ЖК «Art City», Apple для кинотеатров, ICL, «Технодор СК», НИИ «Турбокомпрессор», государственный университет. Более 2500 работ с 2015 года."
           action={<ArrowLink to="/work">Все работы</ArrowLink>}
         />
       </div>

@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 # Raw crawl of the original site lives on the research/source-fetch branch
-public/media/source
 research/source

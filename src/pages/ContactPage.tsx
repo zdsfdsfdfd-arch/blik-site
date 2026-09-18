@@ -39,6 +39,10 @@ export function ContactPage() {
                   {company.phone}
                 </a>
                 <p className="label-mono mt-2 text-fg-3">{company.hours}</p>
+                <a href={company.whatsapp} target="_blank" rel="noreferrer" className="group mt-3 inline-flex items-center gap-1 text-sm text-fg-2 hover:text-fg">
+                  <span className="link-underline">Написать в WhatsApp</span>
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+                </a>
               </Reveal>
               <Reveal delay={0.05}>
                 <p className="label-mono text-fg-3">Почта</p>
