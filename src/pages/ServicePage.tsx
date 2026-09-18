@@ -9,7 +9,6 @@ import { Reveal } from '../components/ui/Reveal'
 import { Slate } from '../components/ui/Slate'
 import { getProjectsBySlugs } from '../data/projects'
 import { getServiceBySlug, services } from '../data/services'
-import { tariffs } from '../data/tariffs'
 import { site } from '../data/company'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -46,11 +45,11 @@ export function ServicePage() {
             </div>
           </Reveal>
           <Reveal delay={0.1} className="col-span-12 lg:col-span-4 lg:col-start-9">
-            <p className="label-mono text-fg-3">Что входит</p>
+            <h2 className="label-mono text-fg-3">Что входит</h2>
             <ul className="mt-4 border-t border-line">
               {service.includes.map((item, i) => (
                 <li key={item} className="flex items-baseline gap-4 border-b border-line py-3 text-sm">
-                  <span className="label-mono text-signal">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="label-mono text-signal-text">{String(i + 1).padStart(2, '0')}</span>
                   {item}
                 </li>
               ))}
@@ -61,9 +60,9 @@ export function ServicePage() {
 
       <section className="container-x mt-20 md:mt-28">
         <div className="flex items-center justify-between border-t border-line pt-3">
-          <p className="label-mono text-fg-3">
-            <span className="text-signal">→</span> Как проходит работа
-          </p>
+          <h2 className="label-mono text-fg-3">
+            <span className="text-signal-text">→</span> Как проходит работа
+          </h2>
           <ArrowLink to="/process" size="sm">
             Весь процесс
           </ArrowLink>
@@ -71,7 +70,7 @@ export function ServicePage() {
         <ol className={`mt-10 grid gap-px border border-line bg-line ${service.steps.length === 4 ? 'md:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-3'}`}>
           {service.steps.map((step, i) => (
             <Reveal key={step.title} as="li" delay={i * 0.08} className="bg-bg p-6 md:p-8">
-              <p className="label-mono text-signal">{String(i + 1).padStart(2, '0')}</p>
+              <p className="label-mono text-signal-text">{String(i + 1).padStart(2, '0')}</p>
               <h3 className="text-display-sm mt-6">{step.title}</h3>
               <p className="prose-body mt-3">{step.body}</p>
             </Reveal>
@@ -82,7 +81,7 @@ export function ServicePage() {
       <section className="container-x mt-20 md:mt-28">
         <div className="grid-12 gap-y-10">
           <Reveal className="col-span-12 lg:col-span-5">
-            <p className="label-mono text-fg-3">Почему это работает</p>
+            <h2 className="label-mono text-fg-3">Почему это работает</h2>
             <ul className="mt-5 space-y-4">
               {service.benefits.map((benefit) => (
                 <li key={benefit} className="text-display-sm flex gap-4">
@@ -99,7 +98,7 @@ export function ServicePage() {
                 service.formats
                   ? service.formats.map((format, i) => ({ label: `Формат ${String(i + 1).padStart(2, '0')}`, value: format }))
                   : [
-                      { label: 'Тариф', value: tariffs.find((t) => t.bestFor.toLowerCase().includes(service.name.split(' ')[0].toLowerCase().slice(0, 5)))?.name ?? 'Стандарт' },
+                      { label: 'Тариф', value: service.tariff ?? 'Подберём по брифу' },
                       { label: 'Расчёт', value: 'По брифу, бесплатно' },
                     ]
               }
@@ -112,9 +111,9 @@ export function ServicePage() {
         <section data-theme="dark" className="mt-24 bg-bg py-16 text-fg md:mt-32 md:py-24">
           <div className="container-x">
             <div className="flex items-center justify-between border-t border-line pt-3">
-              <p className="label-mono text-fg-3">
-                <span className="text-signal">→</span> Связанные работы
-              </p>
+              <h2 className="label-mono text-fg-3">
+                <span className="text-signal-text">→</span> Связанные работы
+              </h2>
               <ArrowLink to="/work" size="sm">
                 Все работы
               </ArrowLink>
@@ -131,7 +130,7 @@ export function ServicePage() {
       <section className="container-x py-16 md:py-24">
         <div className="grid-12 items-center gap-y-8 border border-line p-6 md:p-10">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">Заявка</p>
+            <p className="label-mono text-signal-text">Заявка</p>
             <h2 className="text-display-md mt-3">Заполнив бриф, вы получите индивидуальный расчёт коммерческого предложения</h2>
             <p className="prose-body mt-3 max-w-xl">Бесплатная консультация, концепция ролика и точный расчёт стоимости и сроков. Перезвоним в течение часа.</p>
           </div>
@@ -145,7 +144,7 @@ export function ServicePage() {
 
       <Link to={`/services/${next.slug}`} data-cursor="next" className="group container-x block border-t border-line py-14 md:py-20">
         <p className="label-mono text-fg-3">Следующая услуга · {next.index}</p>
-        <p className="text-display-xl mt-4 flex items-center gap-4 transition-colors duration-500 group-hover:text-signal">
+        <p className="text-display-xl mt-4 flex flex-wrap items-center gap-4 transition-colors duration-500 group-hover:text-signal-text">
           {next.name}
           <ArrowUpRight className="h-8 w-8 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:h-12 md:w-12" strokeWidth={1} aria-hidden="true" />
         </p>

@@ -1,17 +1,17 @@
 import { company } from '../../data/company'
-import { reviews } from '../../data/reviews'
+import { namedReviews } from '../../data/reviews'
 import { ArrowLink } from '../ui/ArrowLink'
 import { Reveal } from '../ui/Reveal'
 
 /** One large voice from a client plus the rating sources — restrained, no testimonial cards. */
 export function Voices() {
-  const lead = reviews[0]
+  const lead = namedReviews[0]
   return (
     <section data-theme="light" className="section-y bg-bg text-fg">
       <div className="container-x">
         <div className="flex items-center justify-between border-t border-line pt-3">
           <p className="label-mono flex items-center gap-3 text-fg-3">
-            <span className="text-signal">06</span> Отзывы
+            <span className="text-signal-text">06</span> Отзывы
           </p>
           <p className="label-mono text-fg-3">{company.ratings.map((r) => `${r.source} ${r.value}`).join(' · ')}</p>
         </div>
@@ -21,7 +21,12 @@ export function Voices() {
               <p className="text-display-md">«{lead.text}»</p>
               <footer className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
                 <span className="label-mono-lg">{lead.author}</span>
-                {lead.company && <span className="label-mono text-fg-3">{lead.company}</span>}
+                {lead.company && (
+                  <span className="label-mono text-fg-3">
+                    {lead.role ? `${lead.role}, ` : ''}
+                    {lead.company}
+                  </span>
+                )}
                 {lead.source && <span className="label-mono text-fg-3">{lead.paraphrased ? 'по отзыву на ' : ''}{lead.source}</span>}
               </footer>
             </blockquote>

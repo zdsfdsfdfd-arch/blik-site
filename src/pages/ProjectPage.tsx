@@ -42,7 +42,7 @@ export function ProjectPage() {
                 {usedServices.map((service) => (
                   <li key={service.slug}>
                     <Link to={`/services/${service.slug}`} className="link-underline text-sm text-fg-2 hover:text-fg">
-                      <span className="label-mono mr-2 text-signal">{service.index}</span>
+                      <span className="label-mono mr-2 text-signal-text">{service.index}</span>
                       {service.name}
                     </Link>
                   </li>
@@ -62,9 +62,9 @@ export function ProjectPage() {
             {project.sections.map((section, i) => (
               <Reveal key={section.heading} as="section" className="border-t border-line py-10 first:border-t-0 first:pt-0 md:py-12">
                 <div className="grid gap-4 md:grid-cols-[8rem_1fr] md:gap-8">
-                  <p className="label-mono text-signal">
+                  <h2 className="label-mono text-signal-text">
                     {String(i + 1).padStart(2, '0')} · {section.heading}
-                  </p>
+                  </h2>
                   <div className="space-y-4">
                     {section.body.map((paragraph, j) => (
                       <p key={j} className={j === 0 ? 'text-display-sm leading-[1.4]' : 'prose-body'}>
@@ -84,9 +84,9 @@ export function ProjectPage() {
       <section data-theme="light" className="mt-24 bg-bg py-16 text-fg md:mt-32 md:py-24">
         <div className="container-x">
           <div className="flex items-center justify-between border-t border-line pt-3">
-            <p className="label-mono text-fg-3">
-              <span className="text-signal">→</span> Похожие работы
-            </p>
+            <h2 className="label-mono text-fg-3">
+              <span className="text-signal-text">→</span> Похожие работы
+            </h2>
             <ArrowLink to="/work" size="sm">
               Все работы
             </ArrowLink>
@@ -107,7 +107,7 @@ export function ProjectPage() {
 
       <Link to={`/work/${next.slug}`} data-cursor="next" className="group container-x block border-t border-line py-14 md:py-20">
         <p className="label-mono text-fg-3">Следующий проект</p>
-        <p className="text-display-xl mt-4 flex items-center gap-4 transition-colors duration-500 group-hover:text-signal">
+        <p className="text-display-xl mt-4 flex flex-wrap items-center gap-4 transition-colors duration-500 group-hover:text-signal-text">
           {next.title}
           <ArrowUpRight className="h-8 w-8 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:h-12 md:w-12" strokeWidth={1} aria-hidden="true" />
         </p>

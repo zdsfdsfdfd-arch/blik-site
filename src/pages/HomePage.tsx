@@ -1,4 +1,5 @@
 import { Page } from '../components/layout/Page'
+import { Clients } from '../components/home/Clients'
 import { FeaturedWork } from '../components/home/FeaturedWork'
 import { Hero } from '../components/home/Hero'
 import { Numbers } from '../components/home/Numbers'
@@ -30,6 +31,7 @@ export function HomePage() {
       <Ticker />
       <FeaturedWork />
       <ServicesIndex />
+      <Clients />
       <ProcessTimeline />
       <Numbers />
       <TariffsTeaser />

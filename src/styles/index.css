@@ -34,6 +34,7 @@
 
 /* Semantic colours resolved from the active section theme. */
 @theme inline {
+  --color-signal-text: var(--signal-text);
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
   --color-bg-3: var(--bg-3);
@@ -52,12 +53,13 @@
   --bg-2: #121214;
   --bg-3: #1b1b1e;
   --fg: #f1eee8;
-  --fg-2: #b7b3ab;
-  --fg-3: #77746e;
+  --fg-2: #c4c0b8;
+  --fg-3: #9a968f;
   --line: rgba(241, 238, 232, 0.16);
   --line-2: rgba(241, 238, 232, 0.08);
   --inverse: #ebe8e1;
   --inverse-fg: #0a0a0b;
+  --signal-text: #ff6a42;
   color-scheme: dark;
 }
 
@@ -66,12 +68,13 @@
   --bg-2: #e1ded6;
   --bg-3: #d6d2c9;
   --fg: #0a0a0b;
-  --fg-2: #46443f;
-  --fg-3: #7d7a73;
+  --fg-2: #3f3d38;
+  --fg-3: #66635c;
   --line: rgba(10, 10, 11, 0.18);
   --line-2: rgba(10, 10, 11, 0.09);
   --inverse: #0a0a0b;
   --inverse-fg: #f1eee8;
+  --signal-text: #b3330b;
   color-scheme: light;
 }
 

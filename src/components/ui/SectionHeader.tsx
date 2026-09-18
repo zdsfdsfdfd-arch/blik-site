@@ -22,7 +22,7 @@ export function SectionHeader({ index, label, title, lead, action, meta, size = 
     <div className={className}>
       <div className="flex items-center justify-between gap-4 border-t border-line pt-3">
         <p className="label-mono flex items-center gap-3 text-fg-3">
-          <span className="text-signal">{index}</span>
+          <span className="text-signal-text">{index}</span>
           <span>{label}</span>
         </p>
         {meta && <p className="label-mono text-fg-3">{meta}</p>}

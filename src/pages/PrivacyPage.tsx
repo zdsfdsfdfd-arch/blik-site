@@ -49,7 +49,7 @@ export function PrivacyPage() {
       <section className="container-x pb-24 pt-32 md:pt-40">
         <div className="grid-12 gap-y-10">
           <div className="col-span-12 lg:col-span-4">
-            <p className="label-mono text-signal">Документ</p>
+            <p className="label-mono text-signal-text">Документ</p>
             <h1 className="text-display-lg mt-5">Политика конфиденциальности</h1>
             <p className="label-mono mt-6 text-fg-3">Редакция от 18.09.2026</p>
           </div>

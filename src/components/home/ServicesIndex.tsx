@@ -32,11 +32,11 @@ export function ServicesIndex() {
                 data-cursor="view"
                 className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-x-4 py-5 transition-colors duration-300 hover:bg-bg-2 md:grid-cols-[4rem_1fr_1fr_3rem] md:gap-x-8 md:py-6"
               >
-                <span className="label-mono text-signal">{service.index}</span>
+                <span className="label-mono text-signal-text">{service.index}</span>
                 <span className="text-display-md transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2">{service.name}</span>
                 <span className="col-span-3 mt-2 max-w-md text-[0.9375rem] text-fg-2 md:col-span-1 md:mt-0">{service.short}</span>
                 <ArrowUpRight
-                  className="hidden h-6 w-6 justify-self-end text-fg-3 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal md:block"
+                  className="hidden h-6 w-6 justify-self-end text-fg-3 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal-text md:block"
                   strokeWidth={1.25}
                   aria-hidden="true"
                 />

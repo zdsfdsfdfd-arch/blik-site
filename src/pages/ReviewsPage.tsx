@@ -12,7 +12,7 @@ export function ReviewsPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-7">
-            <p className="label-mono text-signal">06 · Отзывы</p>
+            <p className="label-mono text-signal-text">06 · Отзывы</p>
             <SplitLines as="h1" lines={['Что говорят', 'клиенты']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <ul className="col-span-12 grid grid-cols-2 gap-px border border-line bg-line lg:col-span-5">
@@ -31,7 +31,7 @@ export function ReviewsPage() {
         <ol className="border-t border-line">
           {reviews.map((review, i) => (
             <Reveal key={review.id} as="li" className="grid-12 gap-y-4 border-b border-line py-10 md:py-12">
-              <p className="label-mono col-span-12 text-signal md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
+              <p className="label-mono col-span-12 text-signal-text md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
               <blockquote className="col-span-12 md:col-span-8">
                 <p className="text-display-sm leading-[1.4]">{review.paraphrased ? review.text : `«${review.text}»`}</p>
               </blockquote>

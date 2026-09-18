@@ -7,7 +7,7 @@ import { Button } from '../ui/Button'
 import { SplitLines } from '../ui/SplitLines'
 import { VideoFrame } from '../ui/VideoFrame'
 
-const showreel = featuredProjects[0]
+const showreel = featuredProjects.find((project) => project.video) ?? featuredProjects[0]
 
 /**
  * Opening frame: oversized statement typography over a viewfinder grid, with the
@@ -52,7 +52,7 @@ export function Hero() {
             as="h1"
             lines={['Профессиональная', 'видеосъёмка', 'для бизнеса']}
             className="text-display-2xl"
-            lineClassName="[&:nth-child(2)]:text-signal"
+            lineClassName="[&:nth-child(2)]:text-signal-text"
             delay={0.25}
           />
         </motion.div>

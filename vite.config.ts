@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
-import { sitemapPlugin } from './scripts/sitemap'
+import { sitemapPlugin } from './scripts/sitemap.ts'
 
 // https://vite.dev/config/
 export default defineConfig({

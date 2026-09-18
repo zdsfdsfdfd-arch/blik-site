@@ -25,8 +25,9 @@
 | `/video_dlya_marketpleysov` | Эффективные видео для маркетплейсов, Ozon, WB, Яндекс |
 | `/hr_video` | HR-видео для бизнеса — привлечение талантов |
 | `/dokumentalnye_filmy` | Документальный фильм о компании под ключ — история, ценности, команда |
+| `/ubiley` | Создание фильма на юбилей компании от профессионалов |
 
-Пункты меню услуг без найденных отдельных страниц: информационные ролики, монтаж видео, видеообращение руководителя, имиджевые ролики, корпоративные ролики, видеосъёмка недвижимости, предметная фотосъёмка, обучающие видео и видеокурсы, видеосъёмка мероприятий, 2D-анимация, видео для соцсетей.
+Пункты меню услуг без найденных отдельных страниц: информационные ролики, монтаж видео, видеообращение руководителя, имиджевые ролики, корпоративные ролики, видеосъёмка недвижимости, предметная фотосъёмка, обучающие видео и видеокурсы, видеосъёмка мероприятий (конференции, форумы, корпоративы, концерты), 2D-анимация, видео для соцсетей, производственные и отчётные видео, бизнес-видеоинструкции, запись вебинаров. В новой структуре из них сделаны страницы: имиджевые ролики, корпоративное видео, съёмка мероприятий, 2D/3D-графика и анимация, видео для соцсетей и YouTube, обучающие видео и курсы.
 
 ### Блог (найденные статьи)
 
@@ -51,19 +52,21 @@
 
 ### Внешние ресурсы студии
 
-- YouTube: https://www.youtube.com/@video_rf (также @videokzn, канал UCqOli5K_iqBE7LdPH7WMHCA)
+- YouTube: https://www.youtube.com/@videokzn (также @video_rf, канал UCqOli5K_iqBE7LdPH7WMHCA) — 4 подтверждённых ролика: BMjzx3HrnKU, 5toS7s4O2Q0, ZXcvDnLDfF4, limPmMen0-s
+- VK: https://vk.com/videokzn
 - 2ГИС: https://2gis.ru/kazan/firm/70000001042632679
-- Яндекс Карты: org 129741361072
+- Яндекс Карты: https://yandex.ru/maps/org/videokzn/129741361072/
+- Каталоги: marketing-tech.ru, alladvertising.ru, kazan.spravka.city, ru.wadline.com, kazanuslugi.com
 
 ## 2. Новая архитектура (многостраничная)
 
 ```
 /                         Главная — hero c showreel, лента услуг, избранные работы (плёнка),
                           индекс услуг, процесс с плейхедом, цифры студии, тарифы, отзывы
-/work/                    Все проекты, фильтр по формату (?type=…)
+/work/                    Все проекты (19 кейсов), фильтр по формату (?type=…)
 /work/[slug]/             Кейс: hero-видео, слейт с метаданными, главы (клиент/задача/подход/результат),
                           галерея, услуги в проекте, похожие работы, следующий проект
-/services/                Все услуги (14), индекс на сетке
+/services/                Все услуги (15), индекс на сетке
 /services/[slug]/         Страница услуги: интро, описание, что входит, этапы, преимущества,
                           форматы/тариф, связанные работы, бриф, следующая услуга
 /pricing/                 Тарифы Старт / Стандарт / Комбо, таблица сравнения, вопросы о деньгах
@@ -76,13 +79,13 @@
 *                         404 «Нет сигнала»
 ```
 
-Соответствие исходным страницам: `/o-kompanii` → `/about`; `/vse-videoroliki/N` → `/work`; `/reklamnye_videoroliki` → `/services/reklamnye-videoroliki`; `/prezentacionnye_video` → `/services/prezentacionnye-video`; `/videoroliki_dlya_vystavok` → `/services/videoroliki-dlya-vystavok`; `/aerosyemka` → `/services/aerosyemka`; `/intervyu` → `/services/intervyu-i-podkasty`; `/video_dlya_marketpleysov` → `/services/video-dlya-marketpleysov`; `/hr_video` → `/services/hr-video`; `/dokumentalnye_filmy` → `/services/dokumentalnye-filmy`. Блок тарифов с главной вынесен в `/pricing`, блок процесса — в `/process`.
+Соответствие исходным страницам: `/o-kompanii` → `/about`; `/vse-videoroliki/N` → `/work`; `/reklamnye_videoroliki` → `/services/reklamnye-videoroliki`; `/prezentacionnye_video` → `/services/prezentacionnye-video`; `/videoroliki_dlya_vystavok` → `/services/videoroliki-dlya-vystavok`; `/aerosyemka` → `/services/aerosyemka`; `/intervyu` → `/services/intervyu-i-podkasty`; `/video_dlya_marketpleysov` → `/services/video-dlya-marketpleysov`; `/hr_video` → `/services/hr-video`; `/dokumentalnye_filmy` → `/services/dokumentalnye-filmy`; `/ubiley` → `/services/film-na-yubiley`. Блок тарифов с главной вынесен в `/pricing`, блок процесса — в `/process`.
 
 ## 3. Навигация
 
 - Основная: 01 Работы · 02 Услуги · 03 Тарифы · 04 Студия · 05 Контакты (+ «Обсудить проект»).
 - Мобильное меню: полноэкранное, те же пункты + телефон и почта.
-- Футер: услуги (все 14), Студия (О студии, Процесс, Отзывы, FAQ, Контакты), Работы (по форматам), политика.
+- Футер: услуги (все 15), Студия (О студии, Процесс, Отзывы, FAQ, Контакты), Работы (по форматам), политика.
 - Внутренние переходы: кейс → услуги в проекте → связанные работы → следующий проект; услуга → связанные работы → следующая услуга; тарифы ↔ услуги ↔ контакты.
 
 ## 4. Темы страниц

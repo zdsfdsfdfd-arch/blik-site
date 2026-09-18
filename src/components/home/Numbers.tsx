@@ -10,7 +10,7 @@ export function Numbers() {
       <div className="container-x">
         <div className="grid-12 items-end gap-y-10">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">04 · Студия</p>
+            <p className="label-mono text-signal-text">04 · Студия</p>
             <SplitLines
               as="h2"
               inView

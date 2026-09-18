@@ -1,0 +1,164 @@
+{
+  "site": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+  "generatedAt": "2026-09-18",
+  "notes": [
+    "The original site, Tilda CDN (static/thb/optim.tildacdn.com), archive.org and YouTube were unreachable from the build environment (egress proxy 403). No Tilda image URL attributed to the studio surfaced in ~470 search queries, so the studio's own site images could not be listed or downloaded.",
+    "Posters are YouTube thumbnails of the studio's own videos; run `npm run media:download` on a machine with internet access to store local copies. Items that fail to download keep their URLs.",
+    "Videos are hosted on the studio's YouTube channel and embedded on demand (youtube-nocookie) — they are not downloaded."
+  ],
+  "channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@videokzn"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@video_rf"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/channel/UCqOli5K_iqBE7LdPH7WMHCA"
+    },
+    {
+      "platform": "vk",
+      "url": "https://vk.com/videokzn"
+    }
+  ],
+  "images": [
+    {
+      "originalUrl": "https://i.ytimg.com/vi/BMjzx3HrnKU/maxresdefault.jpg",
+      "fallbackUrls": [
+        "https://i.ytimg.com/vi/BMjzx3HrnKU/sddefault.jpg",
+        "https://i.ytimg.com/vi/BMjzx3HrnKU/hqdefault.jpg"
+      ],
+      "localPath": "/media/images/portfolio/ya-parkuyus.jpg",
+      "page": "/work/ya-parkuyus",
+      "project": "ya-parkuyus",
+      "type": "video-poster",
+      "downloaded": false,
+      "variant": "original",
+      "source": "YouTube thumbnail of the studio's own video",
+      "title": "Презентационный ролик приложения «Я Паркуюсь»"
+    },
+    {
+      "originalUrl": "https://i.ytimg.com/vi/5toS7s4O2Q0/maxresdefault.jpg",
+      "fallbackUrls": [
+        "https://i.ytimg.com/vi/5toS7s4O2Q0/sddefault.jpg",
+        "https://i.ytimg.com/vi/5toS7s4O2Q0/hqdefault.jpg"
+      ],
+      "localPath": "/media/images/portfolio/stiralnyj-poroshok.jpg",
+      "page": "/work/stiralnyj-poroshok",
+      "project": "stiralnyj-poroshok",
+      "type": "video-poster",
+      "downloaded": false,
+      "variant": "original",
+      "source": "YouTube thumbnail of the studio's own video",
+      "title": "Презентационный ролик для завода по производству стиральных порошков"
+    },
+    {
+      "originalUrl": "https://i.ytimg.com/vi/ZXcvDnLDfF4/maxresdefault.jpg",
+      "fallbackUrls": [
+        "https://i.ytimg.com/vi/ZXcvDnLDfF4/sddefault.jpg",
+        "https://i.ytimg.com/vi/ZXcvDnLDfF4/hqdefault.jpg"
+      ],
+      "localPath": "/media/images/portfolio/cv-home.jpg",
+      "page": "/work/cv-home",
+      "project": "cv-home",
+      "type": "video-poster",
+      "downloaded": false,
+      "variant": "original",
+      "source": "YouTube thumbnail of the studio's own video",
+      "title": "CV Home — отзыв о сотрудничестве"
+    },
+    {
+      "originalUrl": "https://i.ytimg.com/vi/limPmMen0-s/maxresdefault.jpg",
+      "fallbackUrls": [
+        "https://i.ytimg.com/vi/limPmMen0-s/sddefault.jpg",
+        "https://i.ytimg.com/vi/limPmMen0-s/hqdefault.jpg"
+      ],
+      "localPath": "/media/images/portfolio/rubas-asic-repair.jpg",
+      "page": "/work/rubas-asic-repair",
+      "project": "rubas-asic-repair",
+      "type": "video-poster",
+      "downloaded": false,
+      "variant": "original",
+      "source": "YouTube thumbnail of the studio's own video",
+      "title": "Rubas Asic Repair — отзыв о сотрудничестве"
+    }
+  ],
+  "videos": [
+    {
+      "originalUrl": "https://www.youtube.com/watch?v=BMjzx3HrnKU",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/BMjzx3HrnKU",
+      "localPath": null,
+      "page": "/work/ya-parkuyus",
+      "project": "ya-parkuyus",
+      "type": "youtube",
+      "platform": "youtube",
+      "videoId": "BMjzx3HrnKU",
+      "downloaded": false,
+      "external": true,
+      "title": "Презентационный ролик приложения «Я Паркуюсь»",
+      "publishedAt": "2024-01-13",
+      "channel": "Видеопродакшн.РФ - продакшн-студия полного цикла (@videokzn / @video_rf, UCqOli5K_iqBE7LdPH7WMHCA)"
+    },
+    {
+      "originalUrl": "https://www.youtube.com/watch?v=5toS7s4O2Q0",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/5toS7s4O2Q0",
+      "localPath": null,
+      "page": "/work/stiralnyj-poroshok",
+      "project": "stiralnyj-poroshok",
+      "type": "youtube",
+      "platform": "youtube",
+      "videoId": "5toS7s4O2Q0",
+      "downloaded": false,
+      "external": true,
+      "title": "Презентационный ролик для завода по производству стиральных порошков",
+      "publishedAt": "2023-01-20",
+      "channel": "Видеопродакшн.РФ - продакшн-студия полного цикла (@videokzn / @video_rf, UCqOli5K_iqBE7LdPH7WMHCA)"
+    },
+    {
+      "originalUrl": "https://www.youtube.com/watch?v=ZXcvDnLDfF4",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/ZXcvDnLDfF4",
+      "localPath": null,
+      "page": "/work/cv-home",
+      "project": "cv-home",
+      "type": "youtube",
+      "platform": "youtube",
+      "videoId": "ZXcvDnLDfF4",
+      "downloaded": false,
+      "external": true,
+      "title": "CV Home — отзыв о сотрудничестве",
+      "publishedAt": "2022-05-31",
+      "channel": "Видеопродакшн.РФ - продакшн-студия полного цикла (@videokzn / @video_rf, UCqOli5K_iqBE7LdPH7WMHCA)"
+    },
+    {
+      "originalUrl": "https://www.youtube.com/watch?v=limPmMen0-s",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/limPmMen0-s",
+      "localPath": null,
+      "page": "/work/rubas-asic-repair",
+      "project": "rubas-asic-repair",
+      "type": "youtube",
+      "platform": "youtube",
+      "videoId": "limPmMen0-s",
+      "downloaded": false,
+      "external": true,
+      "title": "Rubas Asic Repair — отзыв о сотрудничестве",
+      "publishedAt": "2022-05-31",
+      "channel": "Видеопродакшн.РФ - продакшн-студия полного цикла (@videokzn / @video_rf, UCqOli5K_iqBE7LdPH7WMHCA)"
+    },
+    {
+      "originalUrl": "https://www.youtube.com/shorts/tGpObePWyWw",
+      "localPath": null,
+      "page": null,
+      "project": null,
+      "type": "youtube-short",
+      "platform": "youtube",
+      "videoId": "tGpObePWyWw",
+      "downloaded": false,
+      "external": true,
+      "title": "Видеопродакшн для перфекционистов. Мы не ограничиваем количество правок!",
+      "note": "attribution to the studio unconfirmed — not used on the site"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ export function FaqPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">FAQ</p>
+            <p className="label-mono text-signal-text">FAQ</p>
             <SplitLines as="h1" lines={['Вопросы', 'и ответы']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">Сроки, стоимость, правки и география — то, о чём спрашивают перед первым проектом.</p>
@@ -30,8 +30,8 @@ export function FaqPage() {
             <Reveal key={item.question} as="div">
               <details className="group border-b border-line" name="faq">
                 <summary className="flex cursor-pointer list-none items-baseline gap-4 py-6 md:gap-8 [&::-webkit-details-marker]:hidden">
-                  <span className="label-mono w-8 shrink-0 text-signal">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="text-display-sm flex-1 transition-colors group-hover:text-signal">{item.question}</span>
+                  <span className="label-mono w-8 shrink-0 text-signal-text">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-display-sm flex-1 transition-colors group-hover:text-signal-text">{item.question}</span>
                   <span aria-hidden="true" className="label-mono shrink-0 text-fg-3 transition-transform duration-300 group-open:rotate-45">
                     +
                   </span>

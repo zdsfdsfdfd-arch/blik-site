@@ -1,4 +1,4 @@
-import type { NavItem } from '../types/index'
+import type { NavItem } from '../types/index.ts'
 
 /** Primary navigation — compact technical labels with indices. */
 export const mainNav: NavItem[] = [

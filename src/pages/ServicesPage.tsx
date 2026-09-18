@@ -14,7 +14,7 @@ export function ServicesPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">02 · Услуги</p>
+            <p className="label-mono text-signal-text">02 · Услуги</p>
             <SplitLines as="h1" lines={['Что мы', 'снимаем']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <div className="col-span-12 lg:col-span-4">
@@ -36,8 +36,8 @@ export function ServicesPage() {
             <motion.li key={service.slug} variants={staggerItem} className="border-b border-r border-line">
               <Link to={`/services/${service.slug}`} data-cursor="view" className="group flex h-full flex-col justify-between gap-10 p-5 transition-colors duration-300 hover:bg-bg-2 md:p-7">
                 <div className="flex items-start justify-between gap-4">
-                  <span className="label-mono text-signal">{service.index}</span>
-                  <ArrowUpRight className="h-5 w-5 text-fg-3 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal" strokeWidth={1.25} aria-hidden="true" />
+                  <span className="label-mono text-signal-text">{service.index}</span>
+                  <ArrowUpRight className="h-5 w-5 text-fg-3 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal-text" strokeWidth={1.25} aria-hidden="true" />
                 </div>
                 <div>
                   <h2 className="text-display-md">{service.name}</h2>

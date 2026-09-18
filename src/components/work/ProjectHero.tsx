@@ -30,7 +30,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <span className="text-signal">Кейс</span> {project.format}
+        <span className="text-signal-text">Кейс</span> {project.format}
       </motion.p>
       <SplitLines as="h1" lines={project.title.split(' — ')} className="text-display-xl mt-5 max-w-5xl" delay={0.3} />
       <motion.p

@@ -35,7 +35,7 @@ export function ProcessTimeline() {
               <ul className="mt-4 flex flex-wrap gap-2">
                 {fullCycle.map((step, i) => (
                   <li key={step} className="label-mono-lg border border-line px-3 py-2 text-fg-2">
-                    <span className="mr-2 text-signal">{(i + 1).toString().padStart(2, '0')}</span>
+                    <span className="mr-2 text-signal-text">{(i + 1).toString().padStart(2, '0')}</span>
                     {step}
                   </li>
                 ))}
@@ -57,7 +57,7 @@ export function ProcessTimeline() {
                   <span className="absolute left-[0.9rem] top-1.5 h-2 w-2 bg-bg ring-1 ring-fg md:left-[2.15rem]" />
                 </div>
                 <Reveal>
-                  <p className="label-mono text-signal">{stage.index}</p>
+                  <p className="label-mono text-signal-text">{stage.index}</p>
                   <h3 className="text-display-md mt-2">{stage.title}</h3>
                   <p className="prose-body mt-3 max-w-lg">{stage.summary}</p>
                   <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">

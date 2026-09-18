@@ -16,12 +16,12 @@ function FieldShell({ id, label, index, error, hint, children, className = '' }:
   return (
     <div className={`flex flex-col ${className}`}>
       <label htmlFor={id} className="label-mono flex items-center gap-2 text-fg-3">
-        {index && <span className="text-signal">{index}</span>}
+        {index && <span className="text-signal-text">{index}</span>}
         {label}
       </label>
       <div className="relative mt-1">{children}</div>
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-2 text-sm text-signal">
+        <p id={`${id}-error`} role="alert" className="mt-2 text-sm text-signal-text">
           {error}
         </p>
       ) : hint ? (

@@ -1,4 +1,4 @@
-import type { Address, SocialLink, TeamMember } from '../types/index'
+import type { Address, SocialLink, TeamMember } from '../types/index.ts'
 
 /** Site-level metadata used by the SEO hook and the static index.html. */
 export const site = {
@@ -30,9 +30,19 @@ export const company = {
     { city: 'Казань', address: 'ул. Спартаковская, 88Б, 420049', note: 'м. Аметьево', mapUrl: 'https://yandex.ru/maps/org/videoprodakshn_rf/129741361072/' },
   ] as Address[],
   socials: [
-    { network: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@video_rf' },
+    { network: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@videokzn' },
+    { network: 'vk', label: 'ВКонтакте', href: 'https://vk.com/videokzn' },
   ] as SocialLink[],
-  team: [] as TeamMember[],
+  /** Where clients leave public reviews. */
+  listings: [
+    { label: '2ГИС', href: 'https://2gis.ru/kazan/firm/70000001042632679' },
+    { label: 'Яндекс Карты', href: 'https://yandex.ru/maps/org/videokzn/129741361072/' },
+  ],
+  /** People clients thank by name in published reviews. */
+  team: [
+    { name: 'Роман', role: 'оператор и режиссёр' },
+    { name: 'Алина', role: 'менеджер проектов' },
+  ] as TeamMember[],
   /** Key numbers as published on the current site and directory profiles. */
   numbers: [
     { value: 2500, suffix: '+', label: 'работ', note: 'видеопроектов с 2015 года' },
@@ -44,6 +54,6 @@ export const company = {
   ],
   ratings: [
     { source: '2ГИС', value: '5,0', note: '52 отзыва', href: 'https://2gis.ru/kazan/firm/70000001042632679/tab/reviews' },
-    { source: 'Рейтинг на сайте', value: '9,7', note: '40 отзывов', href: '' },
+    { source: 'Рейтинг на сайте', value: '9,7', note: '40 отзывов', href: 'https://xn--80adgaeqsyfakm2i.xn--p1ai/' },
   ],
 }

@@ -140,7 +140,7 @@ export function BriefForm({ defaultFormat = '', id = 'brief' }: BriefFormProps) 
                     политикой обработки персональных данных
                   </a>
                   {touched.consent && errors.consent && (
-                    <span role="alert" className="mt-1 block text-signal">
+                    <span role="alert" className="mt-1 block text-signal-text">
                       {errors.consent}
                     </span>
                   )}

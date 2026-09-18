@@ -8,7 +8,7 @@ export function NotFoundPage() {
       <section className="container-x flex min-h-[100svh] flex-col justify-end pb-16 pt-32">
         <div className="grid-12 items-end gap-y-10">
           <div className="col-span-12 lg:col-span-7">
-            <p className="label-mono text-signal">Ошибка 404 · нет сигнала</p>
+            <p className="label-mono text-signal-text">Ошибка 404 · нет сигнала</p>
             <h1 className="text-display-2xl mt-6">
               Кадр
               <br />

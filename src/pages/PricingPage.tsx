@@ -14,7 +14,7 @@ export function PricingPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">03 · Тарифы</p>
+            <p className="label-mono text-signal-text">03 · Тарифы</p>
             <SplitLines as="h1" lines={['Прозрачный', 'расчёт']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">{tariffIntro}</p>
@@ -29,7 +29,7 @@ export function PricingPage() {
                 <p className="label-mono text-fg-3">Тариф {String(i + 1).padStart(2, '0')}</p>
                 <h2 className="text-display-lg mt-4">{tariff.name}</h2>
                 <p className="prose-body mt-4 min-h-[3.2em]">{tariff.tagline}</p>
-                <p className="label-mono mt-8 text-signal">{tariff.priceNote}</p>
+                <p className="label-mono mt-8 text-signal-text">{tariff.priceNote}</p>
                 <p className="label-mono mt-8 text-fg-3">Для чего</p>
                 <p className="mt-2 text-sm text-fg-2">{tariff.bestFor}</p>
                 <p className="label-mono mt-8 text-fg-3">Что входит</p>
@@ -74,7 +74,17 @@ export function PricingPage() {
                     const extended = tariff.slug === 'start' && item.startsWith('Расширенный')
                     return (
                       <td key={tariff.slug} className="py-3 pr-4">
-                        {included ? <span className={`inline-block h-2.5 w-2.5 ${extended ? 'bg-fg-3' : 'bg-signal'}`} aria-label="входит" /> : <span className="text-fg-3">—</span>}
+                        {included ? (
+                          <>
+                            <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 ${extended ? 'bg-fg-3' : 'bg-signal'}`} />
+                            <span className="sr-only">{extended ? 'в расширенном варианте' : 'входит'}</span>
+                          </>
+                        ) : (
+                          <span className="text-fg-3">
+                            <span aria-hidden="true">—</span>
+                            <span className="sr-only">не входит</span>
+                          </span>
+                        )}
                       </td>
                     )
                   })}
@@ -106,7 +116,7 @@ export function PricingPage() {
       <section className="container-x py-20 md:py-28">
         <div className="flex flex-col gap-6 border border-line p-6 md:flex-row md:items-center md:justify-between md:p-10">
           <div>
-            <p className="label-mono text-signal">Бриф</p>
+            <p className="label-mono text-signal-text">Бриф</p>
             <p className="text-display-md mt-3 max-w-2xl">{tariffPromise}</p>
           </div>
           <Button to="/contact" variant="solid" size="lg" arrow="right">

@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
-import { projects } from '../src/data/projects'
-import { services } from '../src/data/services'
-import { site } from '../src/data/company'
+import { projects } from '../src/data/projects.ts'
+import { services } from '../src/data/services.ts'
+import { site } from '../src/data/company.ts'
 
 const staticRoutes = ['/', '/work', '/services', '/pricing', '/process', '/about', '/contact', '/reviews', '/faq']
 

@@ -64,13 +64,13 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                   onClick={onClose}
                   className={({ isActive }) =>
                     `group flex items-baseline gap-4 py-4 font-display text-3xl font-medium tracking-[-0.03em] xs:text-4xl sm:text-5xl ${
-                      isActive ? 'text-signal' : 'text-fg'
+                      isActive ? 'text-signal-text' : 'text-fg'
                     }`
                   }
                 >
                   <span className="label-mono w-8 shrink-0 text-fg-3">{item.index}</span>
                   <span>{item.label}</span>
-                  <ArrowUpRight className="ml-auto h-6 w-6 self-center text-signal opacity-0 transition-all duration-300 group-hover:opacity-100" strokeWidth={1.5} aria-hidden="true" />
+                  <ArrowUpRight className="ml-auto h-6 w-6 self-center text-signal-text opacity-0 transition-all duration-300 group-hover:opacity-100" strokeWidth={1.5} aria-hidden="true" />
                 </NavLink>
               </motion.div>
             </li>

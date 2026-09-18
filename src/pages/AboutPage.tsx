@@ -5,12 +5,13 @@ import { Marquee } from '../components/ui/Marquee'
 import { Reveal } from '../components/ui/Reveal'
 import { Slate } from '../components/ui/Slate'
 import { SplitLines } from '../components/ui/SplitLines'
+import { clients } from '../data/clients'
 import { company, site } from '../data/company'
 import { fullCycle } from '../data/process'
 
 const principles = [
   { title: 'Индивидуальный подход', body: 'К каждой задаче — свой подход: это позволяет добиваться высоких результатов в создании видеороликов в оптимальные сроки за разумные деньги.' },
-  { title: 'Только штатные специалисты', body: 'Сценаристы, операторы, монтажёры и другие мастера своего дела — 15 человек в штате. Без сторонних подрядчиков, с контролем качества на каждом этапе.' },
+  { title: 'Только штатные специалисты', body: 'Сценаристы, операторы, монтажёры и другие мастера своего дела — 15 человек в штате. Без сторонних подрядчиков, с контролем качества на каждом этапе. В отзывах клиенты благодарят лично оператора Романа и менеджера Алину.' },
   { title: 'Собственная база', body: 'Съёмочная база с оборудованием стоимостью 5 млн рублей: снимаем, монтируем, делаем графику и озвучку внутри студии.' },
   { title: 'Прозрачная стоимость', body: 'Вместо смет с десятками скрытых пунктов — несколько тарифов «всё включено», где цена зависит от ключевых параметров.' },
 ]
@@ -35,7 +36,7 @@ export function AboutPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">04 · Студия</p>
+            <p className="label-mono text-signal-text">04 · Студия</p>
             <SplitLines as="h1" lines={['Видеопроизводство', 'полного цикла']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">
@@ -89,19 +90,36 @@ export function AboutPage() {
       <section className="container-x mt-20 md:mt-28">
         <div className="flex items-center justify-between border-t border-line pt-3">
           <p className="label-mono text-fg-3">
-            <span className="text-signal">→</span> Принципы
+            <span className="text-signal-text">→</span> Принципы
           </p>
           <p className="label-mono text-fg-3">04</p>
         </div>
         <ol className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2">
           {principles.map((principle, i) => (
             <Reveal key={principle.title} as="li" delay={i * 0.06} className="bg-bg p-6 md:p-8">
-              <p className="label-mono text-signal">{String(i + 1).padStart(2, '0')}</p>
+              <p className="label-mono text-signal-text">{String(i + 1).padStart(2, '0')}</p>
               <h2 className="text-display-md mt-6">{principle.title}</h2>
               <p className="prose-body mt-3 max-w-md">{principle.body}</p>
             </Reveal>
           ))}
         </ol>
+      </section>
+
+      <section className="container-x mt-20 md:mt-28">
+        <div className="grid-12 gap-y-10">
+          <Reveal className="col-span-12 lg:col-span-4">
+            <p className="label-mono text-fg-3">Нам доверяют</p>
+            <h2 className="text-display-md mt-4">Клиенты, которых можно назвать</h2>
+            <p className="prose-body mt-4 max-w-sm">Крупные бренды и государственные структуры, банки, IT-компании, заводы и галереи. Часть проектов — под NDA, поэтому здесь только те, кто рассказал о работе публично.</p>
+          </Reveal>
+          <ul className="col-span-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:col-span-8 lg:grid-cols-4">
+            {clients.map((name) => (
+              <li key={name} className="bg-bg p-4 text-sm md:p-5">
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className="container-x mt-20 md:mt-28">
@@ -113,7 +131,7 @@ export function AboutPage() {
           <ol className="col-span-12 border-t border-line lg:col-span-8">
             {timeline.map((item) => (
               <li key={item.year} className="grid gap-2 border-b border-line py-6 md:grid-cols-[8rem_1fr] md:gap-8">
-                <p className="text-display-sm text-signal">{item.year}</p>
+                <p className="text-display-sm text-signal-text">{item.year}</p>
                 <p className="prose-body">{item.text}</p>
               </li>
             ))}

@@ -28,7 +28,7 @@ export function WorkPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">01 · Портфолио</p>
+            <p className="label-mono text-signal-text">01 · Портфолио</p>
             <SplitLines as="h1" lines={['Работы', 'для бизнеса']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">
@@ -45,7 +45,7 @@ export function WorkPage() {
           <motion.div key={active} className="grid-12 gap-y-12 md:gap-y-16" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
             {visible.map((project, i) => (
               <div key={project.slug} className={`col-span-12 ${spans[i % spans.length]}`}>
-                <ProjectCard project={project} index={i} aspect={i % 4 === 0 || i % 4 === 3 ? 'aspect-[16/9]' : 'aspect-[4/3]'} />
+                <ProjectCard project={project} index={i} headingLevel="h2" aspect={i % 4 === 0 || i % 4 === 3 ? 'aspect-[16/9]' : 'aspect-[4/3]'} />
               </div>
             ))}
           </motion.div>

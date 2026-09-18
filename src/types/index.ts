@@ -11,6 +11,7 @@ export type ProjectCategory =
   | 'graphics'
   | 'corporate'
   | 'education'
+  | 'marketplace'
 
 export interface VideoRef {
   /** Platform that hosts the video. Local files live under /media/videos. */
@@ -58,6 +59,8 @@ export interface Project {
   /** Source page or listing where the project was found. */
   sourceUrl?: string
   seoDescription?: string
+  /** A quote from the client about this project, when one was published. */
+  quote?: { text: string; author: string; role?: string }
 }
 
 export interface ServiceStep {
@@ -76,6 +79,8 @@ export interface Service {
   steps: ServiceStep[]
   benefits: string[]
   formats?: string[]
+  /** Reference tariff the studio names for this format, when it does. */
+  tariff?: string
   relatedProjects: string[]
   seoTitle: string
   seoDescription: string

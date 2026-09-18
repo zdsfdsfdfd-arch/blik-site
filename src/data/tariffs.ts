@@ -1,4 +1,4 @@
-import type { Tariff } from '../types/index'
+import type { Tariff } from '../types/index.ts'
 
 /**
  * The studio's three reference tariffs, as described on the original homepage.

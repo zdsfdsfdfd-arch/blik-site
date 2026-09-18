@@ -10,10 +10,13 @@ interface ProjectCardProps {
   index: number
   className?: string
   aspect?: string
+  /** Heading level to keep document outline valid in the hosting section. */
+  headingLevel?: 'h2' | 'h3'
 }
 
 /** A frame from the strip: poster with brackets, slate line underneath. Whole card is the link. */
-export function ProjectCard({ project, index, className = '', aspect = 'aspect-[16/10]' }: ProjectCardProps) {
+export function ProjectCard({ project, index, className = '', aspect = 'aspect-[16/10]', headingLevel = 'h3' }: ProjectCardProps) {
+  const Heading = headingLevel
   return (
     <Reveal as="article" className={className}>
       <Link to={`/work/${project.slug}`} data-cursor="view" className="group block">
@@ -32,7 +35,7 @@ export function ProjectCard({ project, index, className = '', aspect = 'aspect-[
           </span>
         </div>
         <div className="mt-4 flex items-baseline justify-between gap-4 border-t border-line pt-3">
-          <h3 className="text-display-sm transition-colors duration-300 group-hover:text-signal">{project.title}</h3>
+          <Heading className="text-display-sm transition-colors duration-300 group-hover:text-signal-text">{project.title}</Heading>
           <p className="label-mono max-w-[45%] text-right text-fg-3">{[project.city, project.year].filter(Boolean).join(' · ') || project.client}</p>
         </div>
         <p className="mt-2 max-w-md text-sm text-fg-2">{project.summary}</p>

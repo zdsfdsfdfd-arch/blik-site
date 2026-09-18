@@ -19,7 +19,7 @@ export function Footer() {
         >
           <div>
             <p className="label-mono text-fg-3">Следующий кадр</p>
-            <p className="text-display-xl mt-4 text-fg transition-colors duration-500 group-hover:text-signal">
+            <p className="text-display-xl mt-4 text-fg transition-colors duration-500 group-hover:text-signal-text">
               Обсудить
               <br />
               ваш проект
@@ -62,7 +62,7 @@ export function Footer() {
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-8">
             <div>
-              <h3 className="label-mono text-fg-3">Услуги</h3>
+              <h2 className="label-mono text-fg-3">Услуги</h2>
               <ul className="mt-5 space-y-2.5">
                 {services.map((service) => (
                   <li key={service.slug}>
@@ -75,7 +75,7 @@ export function Footer() {
             </div>
             {footerColumns.map((column) => (
               <div key={column.title}>
-                <h3 className="label-mono text-fg-3">{column.title}</h3>
+                <h2 className="label-mono text-fg-3">{column.title}</h2>
                 <ul className="mt-5 space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.label}>
@@ -89,7 +89,7 @@ export function Footer() {
             ))}
             {company.socials.length > 0 && (
               <div>
-                <h3 className="label-mono text-fg-3">Соцсети</h3>
+                <h2 className="label-mono text-fg-3">Соцсети</h2>
                 <ul className="mt-5 space-y-2.5">
                   {company.socials.map((social) => (
                     <li key={social.network}>

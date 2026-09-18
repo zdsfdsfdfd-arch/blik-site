@@ -20,7 +20,7 @@ export function ContactPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-7">
-            <p className="label-mono text-signal">05 · Контакты</p>
+            <p className="label-mono text-signal-text">05 · Контакты</p>
             <SplitLines as="h1" lines={['Начнём', 'с брифа']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <div className="col-span-12 lg:col-span-5">
@@ -35,14 +35,14 @@ export function ContactPage() {
             <div className="space-y-8 lg:sticky lg:top-28">
               <Reveal>
                 <p className="label-mono text-fg-3">Телефон</p>
-                <a href={phoneHref(company.phone)} className="text-display-md mt-2 block transition-colors hover:text-signal">
+                <a href={phoneHref(company.phone)} className="text-display-md mt-2 block transition-colors hover:text-signal-text">
                   {company.phone}
                 </a>
                 <p className="label-mono mt-2 text-fg-3">{company.hours}</p>
               </Reveal>
               <Reveal delay={0.05}>
                 <p className="label-mono text-fg-3">Почта</p>
-                <a href={`mailto:${company.email}`} className="text-display-sm mt-2 block break-all transition-colors hover:text-signal">
+                <a href={`mailto:${company.email}`} className="text-display-sm mt-2 block break-all transition-colors hover:text-signal-text">
                   {company.email}
                 </a>
               </Reveal>
@@ -65,20 +65,18 @@ export function ContactPage() {
                   {company.cities.join(', ')} — и вся Россия. Съёмки более чем в 25 городах, включая {company.extraCities.join(' и ')}.
                 </p>
               </Reveal>
-              {company.socials.length > 0 && (
-                <Reveal delay={0.2}>
-                  <p className="label-mono text-fg-3">Соцсети</p>
-                  <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-                    {company.socials.map((social) => (
-                      <li key={social.network}>
-                        <a href={social.href} target="_blank" rel="noreferrer" className="link-underline text-sm text-fg">
-                          {social.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              )}
+              <Reveal delay={0.2}>
+                <p className="label-mono text-fg-3">Соцсети и отзывы</p>
+                <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+                  {[...company.socials.map((s) => ({ label: s.label, href: s.href })), ...company.listings].map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href} target="_blank" rel="noreferrer" className="link-underline text-sm text-fg">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
           </div>
           <div className="col-span-12 lg:col-span-8">
@@ -95,7 +93,7 @@ export function ContactPage() {
             { label: 'Шаг 03', title: 'Производство', body: 'Препродакшн, съёмка, постпродакшн и сдача с тремя циклами правок.' },
           ].map((step) => (
             <div key={step.label} className="bg-bg p-6 md:p-8">
-              <p className="label-mono text-signal">{step.label}</p>
+              <p className="label-mono text-signal-text">{step.label}</p>
               <h2 className="text-display-sm mt-5">{step.title}</h2>
               <p className="prose-body mt-2">{step.body}</p>
             </div>

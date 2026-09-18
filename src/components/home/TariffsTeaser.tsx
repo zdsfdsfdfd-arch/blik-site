@@ -26,7 +26,7 @@ export function TariffsTeaser() {
             <Reveal key={tariff.slug} delay={i * 0.08} className={`border-b border-line py-8 md:border-b-0 md:py-10 ${i > 0 ? 'md:border-l md:pl-8' : ''} ${i < 2 ? 'md:pr-8' : ''}`}>
               <Link to={`/pricing#${tariff.slug}`} className="group block">
                 <p className="label-mono text-fg-3">Тариф {(i + 1).toString().padStart(2, '0')}</p>
-                <h3 className="text-display-lg mt-4 transition-colors group-hover:text-signal">{tariff.name}</h3>
+                <h3 className="text-display-lg mt-4 transition-colors group-hover:text-signal-text">{tariff.name}</h3>
                 <p className="prose-body mt-4 min-h-[3.2em]">{tariff.tagline}</p>
                 <p className="label-mono mt-8 text-fg-3">Для чего</p>
                 <p className="mt-2 text-sm text-fg-2">{tariff.bestFor}</p>

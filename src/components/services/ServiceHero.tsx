@@ -16,7 +16,7 @@ export function ServiceHero({ service, position }: ServiceHeroProps) {
     <header className="container-x pt-28 md:pt-36">
       <div className="flex items-center justify-between border-t border-line pt-3">
         <p className="label-mono flex items-center gap-3 text-fg-3">
-          <span className="text-signal">{service.index}</span> Услуга
+          <span className="text-signal-text">{service.index}</span> Услуга
         </p>
         <p className="label-mono text-fg-3">{position}</p>
       </div>

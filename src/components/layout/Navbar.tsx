@@ -58,7 +58,7 @@ export function Navbar() {
                   >
                     {({ isActive }) => (
                       <>
-                        <span className={`label-mono transition-colors ${isActive ? 'text-signal' : 'text-fg-3 group-hover/nav:text-signal'}`}>{item.index}</span>
+                        <span className={`label-mono transition-colors ${isActive ? 'text-signal-text' : 'text-fg-3 group-hover/nav:text-signal-text'}`}>{item.index}</span>
                         <span className="link-underline">{item.label}</span>
                       </>
                     )}
@@ -70,9 +70,11 @@ export function Navbar() {
 
           <div className="flex items-center gap-5">
             <Timecode />
-            <Button to="/contact" size="sm" variant="outline" className="hidden sm:inline-flex">
-              Обсудить проект
-            </Button>
+            <div className="hidden sm:block">
+              <Button to="/contact" size="sm" variant="outline">
+                Обсудить проект
+              </Button>
+            </div>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

@@ -1,0 +1,1464 @@
+{
+  "company": "Видеопродакшн.РФ (ранее VIDEOKZN / videokzn.ru), Казань",
+  "collected_on": "2026-09-18",
+  "method": "только WebSearch (сниппеты); прямой доступ к сайтам заблокирован",
+  "contacts": {
+    "phones": [
+      {
+        "value": "+7 (905) 377-12-78",
+        "note": "полный номер; в сниппетах также как 89053771278 и +7 (905) 377 1278",
+        "sources": [
+          "https://2gis.ru/kazan/firm/70000001042632679",
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+          "https://videokzn.ru/",
+          "https://xn--80adgaeqsyfakm2i.xn--p1ai"
+        ],
+        "confidence": "high"
+      },
+      {
+        "value": "+7 (951) 067-29-..",
+        "note": "второй номер найден только в усечённом виде (последние две цифры не раскрыты ни в одном сниппете)",
+        "sources": [
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+          "https://2gis.ru/kazan/firm/70000001042632679"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "emails": [
+      {
+        "value": "post@videokzn.ru",
+        "sources": [
+          "https://videokzn.ru/",
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn"
+        ],
+        "confidence": "high"
+      },
+      {
+        "value": "mail@видеопродакшн.рф",
+        "sources": [
+          "https://www.alladvertising.ru/info/videoproductionrf.html",
+          "https://xn--80adgaeqsyfakm2i.xn--p1ai",
+          "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii"
+        ],
+        "confidence": "high"
+      }
+    ],
+    "addresses": [
+      {
+        "city": "Казань",
+        "value": "Спартаковская улица, 88Б, Казань, 420049",
+        "note": "ЖК «Сокольники», Приволжский район; дом 2015 г. постройки, 11 этажей; в Яндекс Картах организация подписана «на Аметьеве». Номер офиса/этаж студии не найдены (у соседних организаций офисы 10xx на 1 этаже)",
+        "sources": [
+          "https://2gis.ru/kazan/firm/70000001042632679",
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+          "https://2gis.ru/kazan/geo/2956122910785525",
+          "https://kazan.zoon.ru/street/spartakovskaya_ulitsa/bld/88b/",
+          "https://yandex.com/maps/org/videoprodakshn_rf/129741361072/related/"
+        ],
+        "confidence": "high"
+      },
+      {
+        "city": "Москва",
+        "value": "адрес не найден (сайт заявляет работу в Москве, лендинг videokzn.ru/msk)",
+        "sources": [
+          "https://videokzn.ru/msk"
+        ],
+        "confidence": "low"
+      },
+      {
+        "city": "Санкт-Петербург",
+        "value": "адрес не найден (сайт заявляет работу в Санкт-Петербурге, лендинг videokzn.ru/spb)",
+        "sources": [
+          "https://videokzn.ru/spb"
+        ],
+        "confidence": "low"
+      }
+    ],
+    "hours": "Пн–Вс (ежедневно) 09:00–20:00",
+    "hours_sources": [
+      "https://2gis.ru/kazan/firm/70000001042632679",
+      "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn"
+    ],
+    "socials": [
+      {
+        "network": "VK",
+        "url": "https://vk.com/videokzn",
+        "sources": [
+          "https://ru.wadline.com/VIDEOKZN.RU",
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "network": "YouTube",
+        "url": "https://www.youtube.com/@videokzn",
+        "note": "название канала «Видеопродакшн.РФ - продакшн-студия полного цикла»; channel id UCqOli5K_iqBE7LdPH7WMHCA",
+        "sources": [
+          "https://www.youtube.com/@videokzn",
+          "https://www.youtube.com/channel/UCqOli5K_iqBE7LdPH7WMHCA"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "YouTube (второй хендл)",
+        "url": "https://www.youtube.com/@video_rf",
+        "sources": [
+          "https://www.youtube.com/@video_rf"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "WhatsApp",
+        "url": "не найден (сайт упоминает связь через WhatsApp)",
+        "sources": [
+          "https://xn--80adgaeqsyfakm2i.xn--p1ai"
+        ],
+        "confidence": "low"
+      },
+      {
+        "network": "Telegram",
+        "url": "не найден (сайт упоминает связь через Telegram)",
+        "sources": [
+          "https://xn--80adgaeqsyfakm2i.xn--p1ai"
+        ],
+        "confidence": "low"
+      },
+      {
+        "network": "2ГИС",
+        "url": "https://2gis.ru/kazan/firm/70000001042632679",
+        "sources": [
+          "https://2gis.ru/kazan/firm/70000001042632679"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "Яндекс Карты",
+        "url": "https://yandex.ru/maps/org/videokzn/129741361072/",
+        "sources": [
+          "https://yandex.ru/maps/org/videokzn/129741361072/reviews/"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "Wadline",
+        "url": "https://ru.wadline.com/VIDEOKZN.RU",
+        "sources": [
+          "https://ru.wadline.com/VIDEOKZN.RU"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "Marketing-Tech",
+        "url": "https://marketing-tech.ru/companies/videoprodakshn-rf/",
+        "sources": [
+          "https://marketing-tech.ru/companies/videoprodakshn-rf/"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "AllAdvertising",
+        "url": "https://www.alladvertising.ru/info/videoproductionrf.html",
+        "note": "старая карточка VIDEOKZN: https://www.alladvertising.ru/info/videokzn.html",
+        "sources": [
+          "https://www.alladvertising.ru/info/videoproductionrf.html",
+          "https://www.alladvertising.ru/info/videokzn.html"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "Spravka.City",
+        "url": "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+        "sources": [
+          "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn"
+        ],
+        "confidence": "high"
+      },
+      {
+        "network": "KazanUslugi",
+        "url": "https://kazanuslugi.com/agentstva/reklamnye-agentstva/",
+        "sources": [
+          "https://kazanuslugi.com/agentstva/reklamnye-agentstva/"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "legal": {
+      "entity": "ИП Журавлева Ирина Александровна",
+      "entity_note": "указана как юрлицо студии по адресу Спартаковская, 88б в сниппете справочника (запрос «videokzn ИП Казань видеосъемка ОГРНИП», выдача spravka.city/2ГИС). ИНН/ОГРНИП не найдены ни на rusprofile, checko, list-org, zachestnyibiznes, ни в РБК Компании",
+      "entity_sources": [
+        "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+        "https://2gis.ru/kazan/firm/70000001042632679"
+      ],
+      "entity_confidence": "medium",
+      "inn": null,
+      "ogrnip": null,
+      "marketing_tech": {
+        "revenue": "16 млн ₽ (оборот по каталогу MARKETING-TECH)",
+        "founded": "2016 (по каталогу MARKETING-TECH)",
+        "staff": "5 человек (по каталогу MARKETING-TECH)",
+        "services_tags": "digital design, creative, video production",
+        "source": "https://marketing-tech.ru/company_tags/video-production/kazan/",
+        "confidence": "medium"
+      },
+      "site_claims": {
+        "since": "2015",
+        "staff": "15 специалистов",
+        "equipment": "5 млн ₽",
+        "source": "https://xn--80adgaeqsyfakm2i.xn--p1ai",
+        "confidence": "high"
+      },
+      "wadline": {
+        "pricing": "$3,000–$10,000 за проект",
+        "stats": "1500+ работ, 300+ клиентов, 20 000+ часов (устаревшие цифры на карточке)",
+        "source": "https://ru.wadline.com/VIDEOKZN.RU",
+        "confidence": "medium"
+      },
+      "yandex_org_ids": {
+        "129741361072": "подтверждён (Видеопродакшн.рф, Спартаковская 88Б, slug videokzn / videoprodakshn_rf)",
+        "242957269641": "не найден ни в одном сниппете — принадлежность студии не подтверждена"
+      },
+      "ratings": [
+        {
+          "platform": "2ГИС",
+          "value": "5.0",
+          "count": "48 отзывов / 49 фото (более поздний сниппет: 50 отзывов, 51 оценка)",
+          "source": "https://2gis.ru/kazan/firm/70000001042632679",
+          "confidence": "high"
+        },
+        {
+          "platform": "KazanUslugi",
+          "value": "9.7 из 10",
+          "count": "40 отзывов",
+          "source": "https://kazanuslugi.com/agentstva/reklamnye-agentstva/",
+          "confidence": "medium"
+        },
+        {
+          "platform": "Яндекс Карты",
+          "value": "не раскрыт в сниппетах",
+          "count": "",
+          "source": "https://yandex.ru/maps/org/videokzn/129741361072/reviews/",
+          "confidence": "low"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "author": "RAKUS (Санкт-Петербург)",
+      "company": "RAKUS",
+      "text": "Благодарим команду Видеопродакшн и лично Романа за профессионализм и первоклассную работу. Ребята знают своё дело, придерживаются установленных сроков, готовы подстраиваться под необходимый график съёмок и локации по всей России. Уже несколько лет работаем исключительно с ними по заказам рекламных роликов различных форматов и хронометража — результат из года в год соответствует ожиданиям.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "восстановлено из англоязычного пересказа сниппета; дословна только фраза «лично Романа за профессионализм и первоклассную работу»"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Очень адекватное ценообразование, отличная клиентоориентированность и профессионализм, качество на высоте.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "high",
+      "note": "дословно из сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Сотрудничаем с командой с 2018 года, они подтверждают свою надежность: всегда качественный результат и оперативная работа.",
+      "rating": "5",
+      "source_url": "https://yandex.ru/maps/org/videokzn/129741361072/reviews/",
+      "confidence": "medium",
+      "note": "сниппет Яндекс Карт/2ГИС, близко к дословному"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Отмечаем профессионализм, инициативность и внимательное отношение к задачам — команда умеет слышать клиента и предлагать удачные решения.",
+      "rating": "5",
+      "source_url": "https://yandex.ru/maps/org/videokzn/129741361072/reviews/",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Прежний опыт (подрядчик, срывавший сроки; дорогой подрядчик; самостоятельная съёмка) потерял актуальность после работы с Видеопродакшн.РФ — в дальнейшем планируем работать только с ними. Рекламный ролик — отличный пример качественной работы.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Первый проект рекламного ролика выполнен в срок; после уточнения потребностей предложили несколько разных вариантов, были постоянно на связи и держали в курсе процесса — от сценария до кастинга и дат съёмок. Рекомендую, обращусь ещё.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Команда вежливая, обходительная, пунктуальная, отличное оборудование — настоящие профессионалы, спасибо!",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679",
+      "confidence": "medium",
+      "note": "дословны фрагменты «вежливые, обходительные, пунктуальные», «настоящие профессионалы»"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Видео получилось четким и понятным, каждый момент хорошо снят, операторы отработали отлично, свет, картинка, звук — всё на высшем уровне.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "сниппет 2ГИС, близко к дословному"
+    },
+    {
+      "author": "не указан (рекламное агентство)",
+      "company": "рекламное агентство (клиенты — известные бренды и крупные топливные ритейлеры)",
+      "text": "Благодарим VIDEOKZN.RU за продуктивное сотрудничество в создании серии видеороликов для клиентов агентства — известных брендов и крупных топливных ритейлеров.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Сроки очень быстрые: от запроса на сотрудничество до сдачи финальной версии 5-минутного клипа — одна неделя.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Спасибо студии VIDEOKZN за работу — профессионалы своего дела, творческий подход, гибкое отношение к клиенту, пунктуальность. Быстро, качественно, красиво. Рекомендуем работать дальше.",
+      "rating": "5",
+      "source_url": "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+      "confidence": "medium",
+      "note": "дословны «творческий подход, гибкое отношение к клиенту, пунктуальность»; сниппет spravka.city / 2ГИС"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Профессиональный подход на всех этапах – от разработки концепции до финального монтажа – впечатляет. Команда демонстрирует гибкость и внимательность к запросам клиента, оперативно реагируя на любые корректировки.",
+      "rating": "9.7 (KazanUslugi)",
+      "source_url": "https://kazanuslugi.com/agentstva/reklamnye-agentstva/",
+      "confidence": "high",
+      "note": "дословно из сниппета (kazanuslugi.com; тот же текст цитируется на /o-kompanii)"
+    },
+    {
+      "author": "Андрей Сутугин",
+      "company": "банк «Русский Стандарт», руководитель Казанского регионального центра",
+      "text": "«Наш регион занял лидирующие позиции в конкурсе». «Было хорошо работать!»",
+      "rating": "",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "confidence": "medium",
+      "note": "отзыв на сайте студии (страницы /, /intervyu, /ubiley и др.); фразы переведены из англоязычного пересказа сниппета"
+    },
+    {
+      "author": "Ильфар Идрисов",
+      "company": "рекламное агентство «Жми5.РФ», руководитель",
+      "text": "Видео заказывали для рекламы своих услуг и запускали по рекламе на YouTube для привлечения клиентов. Видео получилось достаточно конверсионным и окупилось в 5–6 раз. Понравилось работать, потому что команда много взяла на себя: заранее подготовила подробную раскадровку, поэтому процесс съёмок прошёл быстро.",
+      "rating": "",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka",
+      "confidence": "medium",
+      "note": "отзыв на сайте студии; пересказ сниппета, дословно «окупилось в 5-6 раз»"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Повторный опыт создания рекламных роликов — всё прошло гладко, в срок и продуктивно.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан (постоянный клиент)",
+      "company": "",
+      "text": "Обращаемся в студию VideoKzn.ru регулярно — всегда на высшем уровне. В последний раз проводили мероприятие с известным футболистом, чемпионом России: команда прочувствовала настроение встречи, отработала очень профессионально и быстро прислала готовое видео.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан (продавец на маркетплейсе)",
+      "company": "",
+      "text": "Рекламные ролики для товаров качественные и профессионально выполнены, эффективно передают преимущества и уникальность продуктов; после создания ролика выросли продажи.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "завод мебели-трансформера для малогабаритных квартир и отель",
+      "text": "Крупный коммерческий проект — большой имиджевый презентационный ролик о заводе мебели-трансформера и отеле. Профессиональный подход и тщательное выполнение каждого этапа позволили создать впечатляющий и эффективный рекламный материал; сценарий прекрасно структурирован и целенаправлен.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "За месяц создали отличный видеоролик для презентационного видео нашей компании.",
+      "rating": "5 (2ГИС)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Оператор Роман — профессионал своего дела с профессиональным оборудованием, поразил качеством и скоростью монтажа. Видео дало хороший результат: привлекло интерес покупателей.",
+      "rating": "",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka",
+      "confidence": "medium",
+      "note": "отзыв на странице аэросъёмки; пересказ сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Ребята работают официально, быстро и качественно. Рекомендуем Videokzn.ru как надёжного и талантливого партнёра для создания видеоматериалов.",
+      "rating": "",
+      "source_url": "https://ru.wadline.com/VIDEOKZN.RU",
+      "confidence": "medium",
+      "note": "сниппет Wadline; первая фраза близка к дословной"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Спасибо за работу; особые условия для быстрого и качественного выполнения; рекомендуем работать дальше.",
+      "rating": "5",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "low",
+      "note": "пересказ англоязычного сниппета"
+    },
+    {
+      "author": "не указан",
+      "company": "",
+      "text": "Отзывы на videokzn.ru/svadby: сотрудничаем с 2019 года, сделано 10+ видео; на videokzn.ru/videosemka: с 2020 года проведено 10+ съёмок.",
+      "rating": "",
+      "source_url": "https://videokzn.ru/svadby",
+      "confidence": "low",
+      "note": "пересказ сниппета, авторы не раскрыты"
+    }
+  ],
+  "team": [
+    {
+      "name": "Роман",
+      "role": "оператор / участник команды (клиенты благодарят «лично Романа»; на странице аэросъёмки назван оператором)",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679/tab/reviews",
+      "confidence": "medium",
+      "note": "фамилия не найдена; ссылка на казанского фотографа Романа Журавлёва (zhuravlevroman.ru) НЕ подтверждена и исключена"
+    },
+    {
+      "name": "Журавлева Ирина Александровна",
+      "role": "индивидуальный предприниматель, на которого оформлена студия (юрлицо), роль в команде не раскрыта",
+      "source_url": "https://kazan.spravka.city/company/videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+      "confidence": "medium",
+      "note": "ИНН/ОГРНИП не найдены"
+    },
+    {
+      "name": "Андрей Сутугин",
+      "role": "НЕ сотрудник — клиент (банк «Русский Стандарт»), приведён для исключения путаницы",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "name": "Ильфар Идрисов",
+      "role": "НЕ сотрудник — клиент (РА «Жми5.РФ»)",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka",
+      "confidence": "high",
+      "note": ""
+    }
+  ],
+  "team_facts": [
+    {
+      "text": "Штат — 15 специалистов; съёмочная база на 5 млн ₽ оборудования позволяет работать без привлечения сторонних подрядчиков и сохранять контроль над качеством",
+      "source_url": "https://marketing-tech.ru/companies/videoprodakshn-rf/",
+      "confidence": "high"
+    },
+    {
+      "text": "По каталогу MARKETING-TECH: 5 человек, основана в 2016, оборот 16 млн ₽",
+      "source_url": "https://marketing-tech.ru/company_tags/video-production/kazan/",
+      "confidence": "medium"
+    },
+    {
+      "text": "«Мы работаем только с высококвалифицированными специалистами: сценаристами, видеооператорами, монтажерами и другими мастерами своего дела»",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "confidence": "high"
+    },
+    {
+      "text": "Команда включает продюсеров, режиссёров, операторов, монтажёров и других специалистов; техника: квадрокоптеры, FPV-квадрокоптеры, видеокамеры и фотокамеры",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/komanda-specialistov-dlya-polnocennoj-videoprodakshn-studii-kto-vam-ponadobitsya",
+      "confidence": "medium"
+    },
+    {
+      "text": "Из статьи о команде: «роль продюсера в студии часто берёт на себя режиссёр»",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/komanda-specialistov-dlya-polnocennoj-videoprodakshn-studii-kto-vam-ponadobitsya",
+      "confidence": "medium"
+    },
+    {
+      "text": "Основатель/директор по имени не найден; интервью, hh.ru-вакансии, LinkedIn/vc.ru/TenChat-профили, награды и место в ТОП-20 AllAdvertising — не найдены",
+      "source_url": "",
+      "confidence": "n/a"
+    }
+  ],
+  "texts": [
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "title",
+      "text": "Профессиональная видеосъемка для вашего бизнеса | Видеопродакшн.РФ",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "description/intро",
+      "text": "Видеопродакшн.РФ предоставляет профессиональную видеосъемку под ключ по лучшим ценам: создание видеороликов, продающих и корпоративных видео, съемка мероприятий и видеопродакшн полного цикла.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "цифры",
+      "text": "2500+ выполненных работ, 600+ довольных клиентов, 45 000+ часов опыта; наши видео для бизнеса смотрят по всему миру. Видеоагентство работает в городах Москва, Казань и Санкт-Петербург.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "услуги",
+      "text": "Видеореклама, презентационные, имиджевые, обучающие видео и видеокурсы; реклама товаров для маркетплейсов, видеокурсы, видео-интервью и подкасты, видео для YouTube и соцсетей, видео/фото-сопровождение мероприятий.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "о студии",
+      "text": "Видеопродакшн-студия полного цикла видеопродакшн.рф работает в Москве, Казани, Санкт-Петербурге и по всей России, гарантирует каждому заказчику индивидуальный подход и работает в сфере проведения видеосъемок для бизнеса с 2015 года. Создаём ознакомительные ролики — видеопрезентации компаний, видео о продукции заказчиков, имиджевые ролики и продающие видео.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "ребрендинг",
+      "text": "VIDEOKZN.RU — это предыдущее название нашего сайта. Мы постоянно улучшаемся: теперь нас легче найти и узнать больше о нашем опыте создания видео для сотен компаний.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "тарифы",
+      "text": "Продакшн-студия разработала несколько тарифов на основе многолетнего опыта работы с разными клиентами; итоговая стоимость индивидуальна, тарифы не фиксированы и служат удобным ориентиром. «Старт»: базовый сценарий, видеосъемка, монтаж — подходит для рекламы товаров для маркетплейсов, видеокурсов, видео-интервью, видео для YouTube и соцсетей, видео/фото-сопровождения мероприятий. «Стандарт»: сценарий, раскадровка, видеосъемка, монтаж, цветокоррекция, саунд-дизайн, графика — оптимален для большинства задач: корпоративные ролики и презентации компаний, реклама, HR-видео. «Комбо» — третий тариф.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "CTA",
+      "text": "Заполнив бриф, вы получите индивидуальный расчет коммерческого предложения. Бесплатная консультация. Оставьте заявку — расчёт в течение 24 часов. Связь через VK, WhatsApp, Telegram; есть форма «присоединиться к команде».",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "Главная",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "kind": "отзывы на сайте",
+      "text": "Андрей Сутугин (руководитель Казанского регионального центра банка «Русский Стандарт»), Ильфар Идрисов (руководитель РА «Жми5.РФ») — см. раздел Отзывы.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/"
+    },
+    {
+      "page": "О компании",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii",
+      "kind": "title",
+      "text": "ВИДЕОПРОДАКШН.РФ - видеопроизводство полного цикла",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii"
+    },
+    {
+      "page": "О компании",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii",
+      "kind": "текст",
+      "text": "Студия Видеопродакшн.РФ предоставляет полноценные услуги видеопродакшна в Казани; находит индивидуальный подход к каждой задаче, что позволяет добиваться высоких результатов в создании видеороликов в оптимальные сроки за разумные деньги. Команда высококвалифицированных специалистов — сценаристы, видеооператоры, монтажёры — гарантирует качественный результат для различных задач: от анимированных логотипов до имиджевых и презентационных роликов. Некоторые проекты созданы одновременно в двух городах: Казани и Москве.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii"
+    },
+    {
+      "page": "О компании",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii",
+      "kind": "меню услуг",
+      "text": "Корпоративные ролики, документальные фильмы, видеосъемка недвижимости, предметная фотосъемка, обучающие видео, съемка мероприятий, аэросъемка, 2D-анимация, HR-видео, видео для соцсетей, производственные видео, отчетные видео, съемка форумов, видео для YouTube, бизнес-видеоинструкции, запись вебинаров, фильм на юбилей компании.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii"
+    },
+    {
+      "page": "О компании",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii",
+      "kind": "цитата отзыва",
+      "text": "Профессиональный подход на всех этапах – от разработки концепции до финального монтажа – впечатляет. Команда демонстрирует гибкость и внимательность к запросам клиента, оперативно реагируя на любые корректировки.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii"
+    },
+    {
+      "page": "Профиль Marketing-Tech",
+      "url": "https://marketing-tech.ru/companies/videoprodakshn-rf/",
+      "kind": "описание",
+      "text": "Агентство Видеопродакшн.РФ — продакшн-студия полного цикла, работающая с 2015 года по всей России. За это время команда реализовала свыше 2500 видеопроектов для 600+ клиентов в более чем 25 городах, включая Москву, Санкт-Петербург, Казань, Екатеринбург и другие ключевые регионы. Клиентский портфель включает крупные бренды и государственные структуры. Видеопродакшн.РФ берёт на себя полный цикл производства: разработку концепции, написание сценария, подбор локаций, съёмку, монтаж, графику и озвучку. В штате — 15 специалистов, а съёмочная база на 5 млн ₽ оборудования позволяет работать без привлечения сторонних подрядчиков и сохранять контроль над качеством. Отличительная особенность агентства — прозрачная система расчёта стоимости. Основные продукты студии — рекламные, имиджевые и презентационные видеоролики. Для постоянных корпоративных клиентов команда также берёт на себя задачи по съёмке мероприятий, деловой фотосъёмке и созданию контента для маркетплейсов, YouTube, соцсетей и онлайн-курсов.",
+      "confidence": "high",
+      "source_url": "https://marketing-tech.ru/companies/videoprodakshn-rf/"
+    },
+    {
+      "page": "Профиль 2ГИС",
+      "url": "https://2gis.ru/kazan/firm/70000001042632679",
+      "kind": "описание",
+      "text": "Видеопродакшн.РФ — студия полного цикла, специализирующаяся на создании видеоконтента для бизнеса, включая рекламные и имиджевые ролики, а также анимацию. Услуги: имиджевые ролики о компании, презентации продуктов/услуг, рекламные ролики, HR-видео, видео- и фотосъёмка мероприятий, внутрикорпоративные видео, съёмка онлайн-курсов и видеоуроков, интервью, подкасты, контент для соцсетей. Съёмка мероприятий: конференции, форумы, корпоративные праздники, концерты. Создано 2500+ видеороликов, 600+ довольных клиентов, 15 специалистов, съёмки в 25 городах, оборудование на 5 000 000 ₽.",
+      "confidence": "high",
+      "source_url": "https://2gis.ru/kazan/firm/70000001042632679"
+    },
+    {
+      "page": "Профиль AllAdvertising / Spravka.City",
+      "url": "https://www.alladvertising.ru/info/videoproductionrf.html",
+      "kind": "описание",
+      "text": "Видеопродакшн.рф (ранее VIDEOKZN) — студия, которая занимается производством фото- и видео роликов для компаний, создаёт 2D/3D графику и анимацию, оказывает услуги по репортажной съемке мероприятий и по аэросъемке любых объектов. Команда начала деятельность в 2015 году и оказывает услуги по всей России, включая съёмки в Москве, Санкт-Петербурге, Екатеринбурге, Нижнем Новгороде и Казани.",
+      "confidence": "high",
+      "source_url": "https://www.alladvertising.ru/info/videoproductionrf.html"
+    },
+    {
+      "page": "YouTube-описание",
+      "url": "https://www.youtube.com/@video_rf",
+      "kind": "описание канала",
+      "text": "VIDEOKZN RU — видеопродакшн-студия полного цикла. Наши видео смотрят по всему миру: 1500+ работ, 300+ довольных клиентов, 20 000+ часов опыта. Мы влюбляем в вашу компанию и повышаем узнаваемость. Бесплатная разработка концепции и красивая презентация будущего ролика в течение 3 дней. Услуги для бизнеса, предприятий и госорганизаций: реклама, презентационные видео, имиджевые ролики, фото/видео съёмка официальных и неофициальных мероприятий, видео для соцсетей, интервью, аэросъёмка, 2D/3D графика, озвучка; рассмотрим любой запрос — команда специалистов с современным оборудованием.",
+      "confidence": "medium",
+      "source_url": "https://www.youtube.com/@video_rf"
+    },
+    {
+      "page": "videokzn.ru (главная)",
+      "url": "https://videokzn.ru/",
+      "kind": "title",
+      "text": "Заказать видео для компании Казань Москва: Видеопродакшн VIDEOKZN - съемка рекламы под ключ",
+      "confidence": "high",
+      "source_url": "https://videokzn.ru/"
+    },
+    {
+      "page": "videokzn.ru (главная)",
+      "url": "https://videokzn.ru/",
+      "kind": "текст",
+      "text": "VIDEOKZN.ru — видеопродакшн-студия полного цикла, работающая в Москве, Казани, Санкт-Петербурге и по всей России. С 2015 года компания VIDEOKZN создаёт тысячи вдохновляющих видео, которые привлекают внимание и укрепляют связь с аудиторией. Контакты: post@videokzn.ru, +7 (905) 377-12-78.",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/"
+    },
+    {
+      "page": "videokzn.ru/msk",
+      "url": "https://videokzn.ru/msk",
+      "kind": "title",
+      "text": "Заказать видео для компании под ключ в Москве: Видеопродакшн - видеостудия Москва VIDEOKZN",
+      "confidence": "high",
+      "source_url": "https://videokzn.ru/msk"
+    },
+    {
+      "page": "videokzn.ru/msk",
+      "url": "https://videokzn.ru/msk",
+      "kind": "текст",
+      "text": "Видеостудия VIDEOKZN в Москве: более 1500 работ и более 300 довольных клиентов; создание видеороликов для бизнеса под ключ. Специалисты студии изучают особенности деятельности компании заказчика и разрабатывают креативные идеи видеосъёмок. Готовы разработать сценарий и концепцию видеоролика всего за 7 дней. Тариф «Старт» подходит для рекламы товаров для маркетплейсов, видеокурсов, видео-интервью, видео для YouTube и соцсетей, видео/фото-сопровождения мероприятий.",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/msk"
+    },
+    {
+      "page": "videokzn.ru/spb",
+      "url": "https://videokzn.ru/spb",
+      "kind": "title",
+      "text": "Профессиональная видеосъемка для вашего бизнеса | Видеопродакшн.РФ",
+      "confidence": "high",
+      "source_url": "https://videokzn.ru/spb"
+    },
+    {
+      "page": "videokzn.ru/spb",
+      "url": "https://videokzn.ru/spb",
+      "kind": "текст",
+      "text": "Видеостудия VIDEOKZN работает в Москве, Казани, Санкт-Петербурге и по всей России и гарантирует качественный результат для различных задач — от создания анимированных логотипов до видеосъёмки имиджевых и презентационных роликов, съёмки мастер-классов, лекций, мероприятий и многого другого. В команде только высококвалифицированные специалисты: сценаристы, видеооператоры, монтажёры. VIDEOKZN гарантирует каждому заказчику индивидуальный подход. VIDEOKZN.RU — предыдущее название сайта; ребрендинг проведён, чтобы студию было легче найти.",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/spb"
+    },
+    {
+      "page": "videokzn.ru/videosemka",
+      "url": "https://videokzn.ru/videosemka",
+      "kind": "текст",
+      "text": "Видеосъемка для бизнеса — визитная карточка компании; преимущество студии — уникальный стиль для каждого видео и творческий подход к созданию, что положительно влияет на продажи. По данным исследований Google и Яндекс, видеореклама значительно эффективнее текстовой и графической.",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/videosemka"
+    },
+    {
+      "page": "videokzn.ru/meropriyatiya",
+      "url": "https://videokzn.ru/meropriyatiya",
+      "kind": "текст",
+      "text": "Фото-видео съемка мероприятий: VIDEOKZN показывает мероприятие с лучшего ракурса; профессиональная съёмка позволяет использовать красочные фото-видео материалы для продвижения бизнеса и распространения в интернете; видео для IT-мероприятий должно привлекать необычным началом. Съёмка на выставках, в т.ч. в Москве.",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/meropriyatiya"
+    },
+    {
+      "page": "videokzn.ru/svadby",
+      "url": "https://videokzn.ru/svadby",
+      "kind": "текст",
+      "text": "Фото-видеосъемка свадебных мероприятий любой сложности: трёхкамерная съёмка церемонии, съёмка в 4K, профессиональная запись звука (услуга под старым брендом VIDEOKZN).",
+      "confidence": "medium",
+      "source_url": "https://videokzn.ru/svadby"
+    },
+    {
+      "page": "Рекламные ролики",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/reklamnye_videoroliki",
+      "kind": "title/текст",
+      "text": "Профессиональный рекламный ролик под ключ | Видеопродакшн.РФ. Рекламный ролик станет визитной карточкой бизнеса; эффективный инструмент продаж с учётом специфики бизнеса, целевой аудитории и маркетинговых задач; работает на всех этапах воронки продаж — от узнаваемости до роста конверсии. Стандартные сроки производства 10–20 дней. Оборудование: свет, звук, фото и видео. Факторы цены: масштаб съёмки (локации, актёры, операторы, оборудование), объём постпродакшна (эффекты, цветокоррекция, графика, саунд-дизайн). Оставьте заявку — расчёт в течение 24 часов.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/reklamnye_videoroliki"
+    },
+    {
+      "page": "Презентационные видео",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/prezentacionnye_video",
+      "kind": "title/текст",
+      "text": "Презентационное видео для компании: от идеи до монтажа | Видеопродакшн.РФ. Разработка сценария, подбор локаций, съёмка, постпродакшн: монтаж, цветокоррекция, графика, написание текста и профессиональная озвучка, варианты с анимацией; озвучка носителями языка с сохранением маркетинговых акцентов, субтитры на нескольких языках.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/prezentacionnye_video"
+    },
+    {
+      "page": "Интервью и подкасты",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/intervyu",
+      "kind": "title/текст",
+      "text": "Профессиональная съемка интервью и подкастов | Видеопродакшн.РФ. Для соцсетей (Reels/YouTube Shorts) — 1–3 минуты; полное интервью — 15–30 минут; подкаст — 40–90 минут. Студия вмещает до 4 человек (ведущий + 3 гостя), каждому отдельный микрофон (петличный или напольный). Базовый монтаж интервью — до 1 недели (склейка дублей, цветокоррекция, простые титры); подкаст с графикой — до 1 месяца (инфографика, анимация, заставки). Первые 30 секунд решают. Бесплатная консультация и расчёт стоимости за час.",
+      "confidence": "high",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/intervyu"
+    },
+    {
+      "page": "HR-видео",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/hr_video",
+      "kind": "title/текст",
+      "text": "HR-видео для бизнеса — привлечение талантов | Видеопродакшн.РФ. Помогаем создать HR-видео: разрабатываем концепцию и сценарий, снимаем качественное видео, выполняем профессиональный монтаж, цветокоррекцию и звук, помогаем с размещением и продвижением. HR-видео работает на эмоциональном уровне: кандидат видит реальных сотрудников и атмосферу офиса. Поколение Z и миллениалы на 70% чаще откликаются на вакансии с видео. Форматы: короткие видео о корпкультуре, интервью с сотрудниками, видеовакансии.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/hr_video"
+    },
+    {
+      "page": "Аэросъёмка",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka",
+      "kind": "title/текст",
+      "text": "Профессиональная аэросъемка с дроном — панорамы, реклама, картография | Видеопродакшн.РФ. Все виды воздушной съёмки на современных дронах: промышленная аэросъёмка предприятий и стройплощадок, мониторинг полей, съёмка недвижимости и коммерческая реклама. На странице — отзывы Ильфара Идрисова («Жми5.РФ») и клиента об операторе Романе.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka"
+    },
+    {
+      "page": "Видео для маркетплейсов",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/video_dlya_marketpleysov",
+      "kind": "title/текст",
+      "text": "Эффективные видео для маркетплейсов, Ozon, WB, Яндекс | Видеопродакшн.РФ. Профессиональное оборудование, студийная съёмка и монтаж; преимущества — качественный свет, стабилизация, гарантия соответствия требованиям маркетплейсов; студийный свет, фоны и оборудование для предметной фото- и видеосъёмки.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/video_dlya_marketpleysov"
+    },
+    {
+      "page": "Видеоролики для выставок",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/videoroliki_dlya_vystavok",
+      "kind": "title/текст",
+      "text": "Видеоролик для выставок — эффективно для привлечения клиентов | Видеопродакшн.РФ. После выставки ролик используется на корпоративном сайте, в соцсетях, презентациях для партнёров и инвесторов, на деловых переговорах и в рекламных кампаниях.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/videoroliki_dlya_vystavok"
+    },
+    {
+      "page": "Документальные фильмы",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/dokumentalnye_filmy",
+      "kind": "title/текст",
+      "text": "Документальный фильм о компании под ключ — история, ценности, команда | Видеопродакшн.РФ. Рассказываем историю бренда запоминающимся образом, показываем ценности и команду.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/dokumentalnye_filmy"
+    },
+    {
+      "page": "Фильм на юбилей",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ubiley",
+      "kind": "title/текст",
+      "text": "Создание фильма на юбилей компании от профессионалов | Видеопродакшн.РФ. Укрепляет имидж бренда и сохраняет важные моменты; стандартная версия 7–10 минут.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ubiley"
+    },
+    {
+      "page": "Портфолио",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/vse-videoroliki/1",
+      "kind": "title/текст",
+      "text": "Портфолио Видеопродакшн.РФ - Примеры видеороликов - Страница 01. Пример: презентационное видео для «Волжского пароходства» — цель: привлечение новых молодых сотрудников; студия создала универсальный ролик для выставок, сайта и других площадок.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/vse-videoroliki/1"
+    },
+    {
+      "page": "Статья «Процесс производства рекламного ролика. От А до Я, как это делаем мы!»",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/process-proizvodstva-reklamnogo-rolika-ot-a-do-ya-kak-eto-delaem-my",
+      "kind": "как мы работаем",
+      "text": "Три этапа: препродакшн — изучение бизнеса клиента, подбор оборудования и помещения, смета и график производства, сценарий, кастинг, раскадровка; продакшн — подготовка площадки, свет, реквизит, декорации, актёры, съёмка по раскадровке сцена за сценой; постпродакшн — черновой монтаж и звук, чистовой монтаж, чистка, обработка, цветокоррекция, 2D/3D графика, графика для пэкшота, чистовой звук. Изготовление занимает от 1 недели до нескольких месяцев в зависимости от масштаба. Цель — ролик, который привлекает внимание, запоминается и приносит реальную прибыль.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/process-proizvodstva-reklamnogo-rolika-ot-a-do-ya-kak-eto-delaem-my"
+    },
+    {
+      "page": "Статья «Об этапах создания видеороликов»",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ob-etapah-sozdaniya-videorolikov",
+      "kind": "как мы работаем",
+      "text": "Полное руководство от идеи до публикации и продвижения: подготовка, съёмка, постпродакшн; работа со звуком — чистка от шумов, регулировка громкости, музыка и звуковые эффекты; графика, титры, анимация.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ob-etapah-sozdaniya-videorolikov"
+    },
+    {
+      "page": "Статья «Куда лить трафик?»",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kuda-lit-trafik-top-10-platform-dlya-razmescheniya-video-o-biznese",
+      "kind": "фрагмент",
+      "text": "Лучшие платформы для видеомаркетинга в 2025: YouTube, Vimeo, соцсети, TenChat, Rutube.",
+      "confidence": "medium",
+      "source_url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kuda-lit-trafik-top-10-platform-dlya-razmescheniya-video-o-biznese"
+    }
+  ],
+  "blog": [
+    {
+      "title": "Об этапах создания видеороликов - Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ob-etapah-sozdaniya-videorolikov",
+      "type": "article"
+    },
+    {
+      "title": "Команда специалистов для полноценной видеопродакшн-студии. Кто вам понадобится?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/komanda-specialistov-dlya-polnocennoj-videoprodakshn-studii-kto-vam-ponadobitsya",
+      "type": "article"
+    },
+    {
+      "title": "ТЗ на видеосъемку: Секрет идеального ролика раскрыт!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/tz-na-videosjemku-sekret-idealnogo-rolika-raskryt",
+      "type": "article"
+    },
+    {
+      "title": "Как рассчитать наилучшую продолжительность видеоролика? Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-rasschitat-nailuchshuyu-prodolzhitelnost-videorolika",
+      "type": "article"
+    },
+    {
+      "title": "Кадры решают ВСЁ: Как видео для HR привлекает таланты в вашу компанию",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kadry-reshayut-vse-kak-video-dlya-hr-privlekaet-talanty",
+      "type": "article"
+    },
+    {
+      "title": "Битрейт видео: Как добиться идеального качества ваших роликов",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/bitreyt-video-kak-dobitsya-idealnogo-kachestva-vashih-rolikov",
+      "type": "article"
+    },
+    {
+      "title": "Что такое телесуфлёр и какой из них выбрать для своих целей?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/chto-takoe-telesufler-i-kakoy-iz-nih-vybrat-dlya-svoih-celey",
+      "type": "article"
+    },
+    {
+      "title": "Что такое хромакей и как его правильно использовать? Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/chto-takoe-hromakey-i-kak-ego-pravilno-ispolzovat",
+      "type": "article"
+    },
+    {
+      "title": "Подводный мир на экране: Как снимать захватывающие видео под водой?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/podvodnyy-mir-na-ekrane-kak-snimat-zahvatyvayushchie-video-pod-vodoy",
+      "type": "article"
+    },
+    {
+      "title": "Процесс производства рекламного ролика. От А до Я, как это делаем мы!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/process-proizvodstva-reklamnogo-rolika-ot-a-do-ya-kak-eto-delaem-my",
+      "type": "article"
+    },
+    {
+      "title": "Голографическое будущее: как использовать голограммы в видео для создания невероятных эффектов.",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/golograficheskoe-buduschee-kak-ispolzovat-gologrammy-v-video",
+      "type": "article"
+    },
+    {
+      "title": "Видеооператор на мероприятие: Как запечатлеть важные моменты и создать незабываемый фильм",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/videooperator-na-meropriyatie-kak-zapechatlet-vazhnye-momenty",
+      "type": "article"
+    },
+    {
+      "title": "Полное погружение: как создать иммерсивное видео и перенести зрителя в другой мир.",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/polnoe-pogruzhenie-kak-sozdat-immersivnoe-video",
+      "type": "article"
+    },
+    {
+      "title": "Видео без дрожания: 5 способов стабилизировать видео для идеального результата!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/video-bez-drozhaniya-5-sposobov-stabilizirovat-video-dlya-idealnogo-rezultata",
+      "type": "article"
+    },
+    {
+      "title": "Бесконечные видео-петли – создаем гипнотические зацикленные ролики!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/zakoldovannyj-krug-beskonechnye-video-petli",
+      "type": "article"
+    },
+    {
+      "title": "Куда лить трафик? ТОП-10 платформ для размещения видео о бизнесе, которые приносят клиентов",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kuda-lit-trafik-top-10-platform-dlya-razmescheniya-video-o-biznese",
+      "type": "article"
+    },
+    {
+      "title": "Как сделать так, чтобы видео выглядело лучше за 30 секунд?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-sdelat-tak-chtoby-video-vyglyadelo-luchshe-za-30-sekund",
+      "type": "article"
+    },
+    {
+      "title": "Назад в будущее видео: Магия аналоговых спецэффектов своими руками!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/nazad-v-buduschee-video-magiya-analogovyh-spec-svoimi-rukami",
+      "type": "article"
+    },
+    {
+      "title": "Домашний бизнес на максимум: Как фото и видео контент превращают хобби в прибыль",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/domashniy-biznes-na-maksimum-kak-foto-i-video-kontent",
+      "type": "article"
+    },
+    {
+      "title": "5 убийственных идей для рекламы вашего бизнеса, которые работают даже в кризис",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/5-ubiystvennyh-idey-dlya-reklamy-vashego-biznesa-kotorye-rabotayut",
+      "type": "article"
+    },
+    {
+      "title": "Репортажная съемка: Как живо и интересно рассказать историю вашего мероприятия",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/reportazhnaya-semka-kak-zhivo-i-interesno-rasskazat-istoriyu",
+      "type": "article"
+    },
+    {
+      "title": "Дорого или дешево? Что влияет на стоимость графики?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/dorogo-ili-deshevo-chto-vliyaet-na-stoimost-grafiki",
+      "type": "article"
+    },
+    {
+      "title": "Анимация или съемка? Что выбрать? Рекомендации от Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/animaciya-ili-semka-chto-vybrat",
+      "type": "article"
+    },
+    {
+      "title": "Как создать канал на YouTube с нуля: Полное руководство для начинающих",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-sozdat-kanal-na-youtube-s-nulya-polnoe-rukovodstvo-dlya-nachinayushchih",
+      "type": "article"
+    },
+    {
+      "title": "Съемка видео на улицах города: Закон, этика и отличный кадр!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/semka-video-na-ulicah-goroda-zakon-etika-i-otlichnyy-kadr",
+      "type": "article"
+    },
+    {
+      "title": "Ваше видео – ваша собственность! Как защитить свой контент от кражи и незаконного использования.",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/vashe-video-vasha-sobstvennost-kak-zaschitit-svoy-kontent-ot-krazhi",
+      "type": "article"
+    },
+    {
+      "title": "Магия бинаурального звука в видео – эффект полного погружения!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/v-ushah-u-zritelya-magiya-binauralnogo-zvuka-v-video-effekt-polnogo-pogruzheniya",
+      "type": "article"
+    },
+    {
+      "title": "Процедурная генерация в видео – создаем захватывающие визуальные эффекты!",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/algoritmy-v-dvizhenii-procedurnaya-generaciya-v-video",
+      "type": "article"
+    },
+    {
+      "title": "Иммерсивные звуковые системы для видео: как создать эффект присутствия?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/immersivnye-zvukovye-sistemy-dlya-video-kak-sozdat-effekt-prisutstviya",
+      "type": "article"
+    },
+    {
+      "title": "Как анимация помогает в бизнесе? Разбираемся с Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-animaciya-pomogaet-v-biznese",
+      "type": "article"
+    },
+    {
+      "title": "Как привлечь инвестиции с помощью анимационного ролика? Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-privlech-investicii-s-pomoshyu-animacionnogo-rolika",
+      "type": "article"
+    },
+    {
+      "title": "Как эффективно оптимизировать видео на YouTube?",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/kak-optimizirovat-video-na-youtube",
+      "type": "article"
+    },
+    {
+      "title": "Для чего нужна инфографика в видеороликах? Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/dlya-chego-nuzhna-infografika-v-videorolikah",
+      "type": "article"
+    },
+    {
+      "title": "Профессиональная видеосъемка для вашего бизнеса | Видеопродакшн.РФ (главная)",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "type": "service_page"
+    },
+    {
+      "title": "ВИДЕОПРОДАКШН.РФ - видеопроизводство полного цикла (о компании)",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii",
+      "type": "service_page"
+    },
+    {
+      "title": "Портфолио Видеопродакшн.РФ - Примеры видеороликов - Страница 01",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/vse-videoroliki/1",
+      "type": "service_page"
+    },
+    {
+      "title": "Профессиональный рекламный ролик под ключ | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/reklamnye_videoroliki",
+      "type": "service_page"
+    },
+    {
+      "title": "Презентационное видео для компании: от идеи до монтажа | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/prezentacionnye_video",
+      "type": "service_page"
+    },
+    {
+      "title": "Видеоролик для выставок — эффективно для привлечения клиентов | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/videoroliki_dlya_vystavok",
+      "type": "service_page"
+    },
+    {
+      "title": "Эффективные видео для маркетплейсов, Ozon, WB, Яндекс | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/video_dlya_marketpleysov",
+      "type": "service_page"
+    },
+    {
+      "title": "Документальный фильм о компании под ключ — история, ценности, команда | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/dokumentalnye_filmy",
+      "type": "service_page"
+    },
+    {
+      "title": "Профессиональная аэросъемка с дроном — панорамы, реклама, картография | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/aerosyemka",
+      "type": "service_page"
+    },
+    {
+      "title": "HR-видео для бизнеса — привлечение талантов | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/hr_video",
+      "type": "service_page"
+    },
+    {
+      "title": "Профессиональная съемка интервью и подкастов | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/intervyu",
+      "type": "service_page"
+    },
+    {
+      "title": "Создание фильма на юбилей компании от профессионалов | Видеопродакшн.РФ",
+      "url": "https://xn--80adgaeqsyfakm2i.xn--p1ai/ubiley",
+      "type": "service_page"
+    },
+    {
+      "title": "Для чего нужен имиджевый ролик - VIDEOKZN",
+      "url": "https://videokzn.ru/dla-chego-nugen-imidgevii-videorolik",
+      "type": "article"
+    },
+    {
+      "title": "Правильно снимаем видео для маркетплейсов",
+      "url": "https://videokzn.ru/pravilno-snimaem-video-dlya-marketplejsov",
+      "type": "article"
+    },
+    {
+      "title": "Что такое хромакей и как его правильно использовать? - VIDEOKZN",
+      "url": "https://videokzn.ru/hromakei-kakie-vozmojnosti-daet",
+      "type": "article"
+    },
+    {
+      "title": "Что такое телесуфлёр и какой из них выбрать для своих целей? - VIDEOKZN",
+      "url": "https://videokzn.ru/telesufler-sto-takoe-i-kakie-bivaut",
+      "type": "article"
+    },
+    {
+      "title": "Заставки для видео: зачем они нужны? Встречают по одежке - VIDEOKZN",
+      "url": "https://videokzn.ru/zastavki-dlya-video-zachem-oni-nuzhny-vstrechayut-po-odezhke",
+      "type": "article"
+    },
+    {
+      "title": "Дорого или дешево? Что влияет на стоимость графики? - VIDEOKZN",
+      "url": "https://videokzn.ru/dorogo-ili-dechevo-chto-vliaet-na-kachestvo-grafiki",
+      "type": "article"
+    },
+    {
+      "title": "Как сделать цепляющее интро для YouTube",
+      "url": "https://videokzn.ru/kak-sdelat-ceplyayushchee-intro-dlya-youtube",
+      "type": "article"
+    },
+    {
+      "title": "Аэросъемка объектов недвижимости. Кому и зачем она нужна? - VIDEOKZN",
+      "url": "https://videokzn.ru/aerosyomka-obyektov-nedvizhimosti",
+      "type": "article"
+    },
+    {
+      "title": "Команда специалистов для полноценной видеопродакшн-студии. Кто вам понадобится?",
+      "url": "https://videokzn.ru/komanda-specialistov-dlya-polnocennoj-videoprodakshn-studii-kto-vam-ponadobitsya",
+      "type": "article"
+    },
+    {
+      "title": "10 ошибок редактирования видео, которых следует избегать",
+      "url": "https://videokzn.ru/10-oshibok-redaktirovaniya-video-kotoryh-sleduet-izbegat",
+      "type": "article"
+    },
+    {
+      "title": "Рекламный ролик для социальных сетей и для ТВ - VIDEOKZN",
+      "url": "https://videokzn.ru/reklamnyj-rolik-dlya-socialnyh-setej-i-dlya-tv",
+      "type": "article"
+    },
+    {
+      "title": "Как сделать профессиональное селфи дома: 8 полезных советов, которые пригодятся",
+      "url": "https://videokzn.ru/kak-sdelat-professionalnoe-selfi-doma-8-poleznyh-sovetov-kotorye-prigodyatsya",
+      "type": "article"
+    },
+    {
+      "title": "Как презентовать свою компанию на выставке? 10 шагов для вашего успеха",
+      "url": "https://videokzn.ru/kak-prezentovat-svoyu-kompaniyu-na-vystavke-10-shagov-dlya-vashego-uspekha",
+      "type": "article"
+    },
+    {
+      "title": "Анимация логотипа: где и как ее использовать? - VIDEOKZN",
+      "url": "https://videokzn.ru/nimaciya-logotipa-gde-i-kak-ee-ispolzovat",
+      "type": "article"
+    },
+    {
+      "title": "Съемка видео и закон в 2023: где и кого разрешено снимать на видео (заголовок по URL)",
+      "url": "https://videokzn.ru/semka-video-i-zakon-v-2023-gde-i-kogo-razresheno-snimat-na-video",
+      "type": "article"
+    },
+    {
+      "title": "Контент-маркетинг B2B: 7 советов для идеальной стратегии",
+      "url": "https://videokzn.ru/kontent-marketing-b2b-7-sovetov-dlya-idealnoj-trategii",
+      "type": "article"
+    },
+    {
+      "title": "Как 3D-визуализация поможет привлечь инвесторов и сэкономить огромные суммы? - VIDEOKZN",
+      "url": "https://videokzn.ru/3d-vizualizacia-produkta-zashem-nugna",
+      "type": "article"
+    },
+    {
+      "title": "Битрейт видео: зачем он нужен при работе с роликами (заголовок по URL)",
+      "url": "https://videokzn.ru/bitrejt-video-zachem-on-nuzhen-pri-rabote-s-rolikami",
+      "type": "article"
+    },
+    {
+      "title": "Графика: в чем разница между 2D и 3D (заголовок по URL)",
+      "url": "https://videokzn.ru/grafika-v-chem-raznisa-mechdy-2d-i-3d",
+      "type": "article"
+    },
+    {
+      "title": "Чем команда лучше отдельного свадебного видеографа и фотографа? - VIDEOKZN",
+      "url": "https://videokzn.ru/chem-komanda-lychce-otdelnogo-svadebnogo-fotografa-ili-videografa",
+      "type": "article"
+    },
+    {
+      "title": "10 лучших фотостудий в Москве, часть 1",
+      "url": "https://videokzn.ru/10-luchshih-fotostudij-v-moskve-chast-1",
+      "type": "article"
+    },
+    {
+      "title": "Психология зрителя. Как акцентировать зрительское внимание на том, что вам нужно!",
+      "url": "https://videokzn.ru/psihologiya-zritelya-kak-akcentirovat-zritelskoe-vnimanie-na-tom-chto-vam-nuzhno",
+      "type": "article"
+    },
+    {
+      "title": "Тематические идеи для Love Story - VIDEOKZN",
+      "url": "https://videokzn.ru/tematicheskie-idei-dlya-love-story",
+      "type": "article"
+    },
+    {
+      "title": "Интересные локации для свадебной съемки в Казани - VIDEOKZN",
+      "url": "https://videokzn.ru/interesnie-lokacii-dla-svadebnoi-ciomki-v-kazani",
+      "type": "article"
+    },
+    {
+      "title": "Почему свадебный фотограф и видеограф — это разные люди, а не 2 в 1 (заголовок по URL)",
+      "url": "https://videokzn.ru/pochemy-svadebni-fotograf--i-videograf-eto-raznie-ludi-a-ne-2-v-1",
+      "type": "article"
+    },
+    {
+      "title": "Заказать видео для компании Казань Москва: Видеопродакшн VIDEOKZN - съемка рекламы под ключ (главная)",
+      "url": "https://videokzn.ru/",
+      "type": "service_page"
+    },
+    {
+      "title": "Заказать видео для компании под ключ в Москве: Видеопродакшн - видеостудия Москва VIDEOKZN",
+      "url": "https://videokzn.ru/msk",
+      "type": "service_page"
+    },
+    {
+      "title": "Профессиональная видеосъемка для вашего бизнеса | Видеопродакшн.РФ (лендинг СПб)",
+      "url": "https://videokzn.ru/spb",
+      "type": "service_page"
+    },
+    {
+      "title": "Видеосъемка для бизнеса - VIDEOKZN",
+      "url": "https://videokzn.ru/videosemka",
+      "type": "service_page"
+    },
+    {
+      "title": "Фото-видео съемка мероприятий - VIDEOKZN",
+      "url": "https://videokzn.ru/meropriyatiya",
+      "type": "service_page"
+    },
+    {
+      "title": "Фото-видеосъемка свадебных мероприятий любой сложности - VIDEOKZN",
+      "url": "https://videokzn.ru/svadby",
+      "type": "service_page"
+    },
+    {
+      "title": "Портфолио (videokzn.ru)",
+      "url": "https://videokzn.ru/vse-videoroliki/1",
+      "type": "service_page"
+    }
+  ],
+  "brand": [
+    {
+      "item": "Слоган",
+      "text": "«Влюбляем в вашу компанию, повышаем узнаваемость!» (на сайте); вариант в описании YouTube-канала: «Мы влюбляем в вашу компанию и повышаем узнаваемость»",
+      "source": "https://www.youtube.com/@video_rf",
+      "confidence": "high"
+    },
+    {
+      "item": "Название/домены",
+      "text": "Текущее: Видеопродакшн.РФ (видеопродакшн.рф = xn--80adgaeqsyfakm2i.xn--p1ai). Прежнее: VIDEOKZN / VIDEOKZN.RU (videokzn.ru продолжает работать как зеркало со старым брендом). Текст на сайте: «VIDEOKZN.RU — это предыдущее название нашего сайта. Мы постоянно улучшаемся: теперь нас легче найти и узнать больше о нашем опыте создания видео для сотен компаний».",
+      "source": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "confidence": "high"
+    },
+    {
+      "item": "Год ребрендинга",
+      "text": "Точная дата не найдена. Косвенные признаки: карточка AllAdvertising «VIDEOKZN» датирована каталогом «Весь рекламный рынок России 2022/2023», карточка «Видеопродакшн.рф» — каталогом «2024/2025»; на videokzn.ru есть статья «Съемка видео и закон в 2023». Вывод: переход на бренд Видеопродакшн.РФ произошёл ориентировочно в 2023–2024 гг. YouTube-канал и Wadline до сих пор описывают студию как «VIDEOKZN RU».",
+      "source": "https://www.alladvertising.ru/info/videokzn.html",
+      "confidence": "low"
+    },
+    {
+      "item": "Название YouTube-канала",
+      "text": "«Видеопродакшн.РФ - продакшн-студия полного цикла» (хендлы @videokzn и @video_rf)",
+      "source": "https://www.youtube.com/@videokzn",
+      "confidence": "high"
+    },
+    {
+      "item": "Позиционирование",
+      "text": "«продакшн-студия полного цикла»; «видеопроизводство полного цикла»; «Профессиональная видеосъемка для вашего бизнеса»; ключевые цифры 2500+ / 600+ / 45 000+ часов / 15 специалистов / 25 городов / 5 млн ₽ оборудования; «бесплатная разработка концепции и презентация будущего ролика в течение 3 дней» (YouTube), «сценарий и концепция за 7 дней» (videokzn.ru/msk); «прозрачная система расчёта стоимости» (marketing-tech).",
+      "source": "https://marketing-tech.ru/companies/videoprodakshn-rf/",
+      "confidence": "high"
+    },
+    {
+      "item": "Логотип и цвета",
+      "text": "Описание логотипа и фирменные цвета в поисковых сниппетах не найдены.",
+      "source": "",
+      "confidence": "n/a"
+    }
+  ],
+  "not_found": [
+    "Полный второй телефон (+7 (951) 067-29-..) — последние цифры не раскрыты ни в одном сниппете",
+    "ИНН / ОГРНИП ИП Журавлевой Ирины Александровны; ООО с таким названием не найдено (rusprofile, checko, list-org, zachestnyibiznes, РБК Компании, spark)",
+    "Номер офиса / этаж в доме Спартаковская 88Б",
+    "Адреса и телефоны в Москве и Санкт-Петербурге (только лендинги videokzn.ru/msk и /spb)",
+    "Прямые ссылки на WhatsApp, Telegram, Instagram, Дзен, Rutube, Behance, Vimeo (упоминаются только VK, WhatsApp, Telegram как каналы связи; ссылки есть лишь на VK и YouTube)",
+    "Идентификация организации Яндекс Карт 242957269641 (ни одного сниппета)",
+    "Имя основателя/директора/продюсера; фамилия «Романа»; страница «Команда» с именами",
+    "Интервью с основателем, публикации на vc.ru/TenChat/LinkedIn, вакансии на hh.ru",
+    "Награды, премии, позиция в рейтинге ТОП-20 AllAdvertising (в топ-20 в сниппетах не фигурирует), позиция в рейтинге vc.ru «студии Казани 2026» (студия не упомянута в топ-3)",
+    "Отзывы с Яндекс Карт с именами авторов (сниппеты дают только обобщения), отзывы на Flamp/Otzovik/Zoon/Profi.ru/Yell",
+    "Meta description главной страницы дословно; текст раздела FAQ; раздел «Гарантии»; условия договора/предоплаты (сниппет о 50% предоплате относился к другим студиям и не привязан к Видеопродакшн.РФ)",
+    "Полный список оборудования (бренды камер/дронов); описание студии (площадь, циклорама)",
+    "Описание логотипа и фирменных цветов; точный год ребрендинга",
+    "Полный список из 200+ статей блога (собрано 33 URL на видеопродакшн.рф и 25 на videokzn.ru)"
+  ],
+  "queries": [
+    "\"видеопродакшн.рф\" Казань Спартаковская 88б телефон",
+    "\"VIDEOKZN\" видеопродакшн Казань ИНН ОГРН",
+    "\"videokzn.ru\" видеостудия Казань отзывы",
+    "\"Видеопродакшн.РФ\" отзывы клиентов",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai",
+    "2gis.ru/kazan/firm/70000001042632679 отзывы Видеопродакшн.РФ",
+    "yandex.ru/maps/org/videokzn/129741361072 отзывы",
+    "yandex.ru/maps/org/242957269641",
+    "kazan.spravka.city videosemka-fotosemka-grafika-vizualizaciya-videokzn",
+    "wadline \"VIDEOKZN.RU\" отзывы портфолио",
+    "marketing-tech.ru/companies/videoprodakshn-rf",
+    "alladvertising.ru/info/videoproductionrf.html",
+    "alladvertising.ru/info/videokzn.html VIDEOKZN",
+    "\"+7 (951) 067-29\" Казань видео",
+    "\"89510672\" видеосъемка Казань",
+    "\"post@videokzn.ru\"",
+    "\"mail@видеопродакшн.рф\"",
+    "videokzn.ru/o-kompanii о компании видеопродакшн",
+    "videokzn.ru/msk видеопродакшн Москва",
+    "videokzn.ru/spb видеопродакшн Санкт-Петербург",
+    "\"Видеопродакшн.РФ\" \"RAKUS\" отзыв Роман",
+    "2gis Видеопродакшн.РФ Казань отзыв \"с 2018 года\" видеоролик",
+    "\"Видеопродакшн.рф\" Аметьево отзывы Яндекс Карты",
+    "\"videokzn\" ИП Казань видеосъемка ОГРНИП",
+    "\"Спартаковская, 88б\" Казань ООО ИНН видео",
+    "\"Спартаковская 88б\" Казань офис этаж",
+    "\"Видеопродакшн.РФ\" режим работы Казань пн-пт",
+    "\"видеопродакшн.рф\" telegram whatsapp vk",
+    "vk.com videokzn Казань видеопродакшн",
+    "youtube.com/@videokzn Видеопродакшн.РФ продакшн-студия полного цикла",
+    "youtube \"@video_rf\" видеопродакшн",
+    "xn--80adgaeqsyfakm2i.xn--p1ai/o-kompanii ВИДЕОПРОДАКШН.РФ видеопроизводство полного цикла",
+    "\"Видеопродакшн.РФ\" основатель директор продюсер",
+    "\"VIDEOKZN\" основатель руководитель студии Казань",
+    "\"Видеопродакшн.РФ\" alladvertising рейтинг ТОП-20 видео-продакшн",
+    "marketing-tech ТОП видеопродакшн Казань Видеопродакшн.РФ оборот",
+    "\"Журавлева Ирина Александровна\" Казань ИП видеопродакшн ИНН",
+    "ИП Журавлева Ирина Александровна Казань ОГРНИП rusprofile",
+    "\"Журавлева Ирина Александровна\" ИП Татарстан видеосъемка ОКВЭД 59.11",
+    "\"Видеопродакшн.РФ\" отзыв \"спасибо\" видеоролик Казань 2ГИС компания директор",
+    "\"Видеопродакшн.РФ\" отзыв \"рекомендую\" 2gis Казань",
+    "\"Видеопродакшн.рф\" отзывы Яндекс Карты videoprodakshn_rf 129741361072",
+    "yandex.com/maps/org/videoprodakshn_rf/129741361072 reviews",
+    "\"Видеопродакшн.РФ\" отзыв сотрудничество \"видеоролик\" \"благодарим\" команду",
+    "\"VIDEOKZN\" отзыв \"благодарим\" студия Казань",
+    "spravka.city Видеопродакшн.РФ Спартаковская отзывы рейтинг",
+    "\"Видеопродакшн.РФ\" 9.7 из 10 40 отзывов",
+    "\"Видеопродакшн.РФ\" flamp OR otzovik OR zoon отзывы",
+    "\"videokzn\" profi.ru видеооператор Казань",
+    "vc.ru рейтинг студий видеопродакшена в Казани 2026 Видеопродакшн.РФ",
+    "\"Видеопродакшн.РФ\" команда специалистов \"Команда\" режиссер оператор монтажер Казань",
+    "xn--80adgaeqsyfakm2i.xn--p1ai ob-etapah-sozdaniya-videorolikov этапы создания видеороликов",
+    "\"Видеопродакшн.РФ\" блог статья site:xn--80adgaeqsyfakm2i.xn--p1ai видеоролик",
+    "\"Видеопродакшн.РФ\" \"как мы работаем\" этапы бриф сценарий съемка монтаж",
+    "\"Видеопродакшн.РФ\" гарантии договор оплата возврат",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai видеоролик статья",
+    "\"Видеопродакшн.РФ\" xn--80adgaeqsyfakm2i.xn--p1ai рекламный ролик как заказать",
+    "\"Видеопродакшн.РФ\" имиджевый ролик статья стоимость",
+    "\"- Видеопродакшн.РФ\" видео для бизнеса советы",
+    "\"Видеопродакшн.РФ\" презентационный ролик компании статья",
+    "\"Видеопродакшн.РФ\" аэросъемка квадрокоптер статья",
+    "\"Видеопродакшн.РФ\" 2D 3D анимация моушн-дизайн статья",
+    "\"Видеопродакшн.РФ\" видео для соцсетей reels статья",
+    "\"Видеопродакшн.РФ\" HR-видео вакансии ролик статья",
+    "\"Видеопродакшн.РФ\" съемка мероприятий репортаж статья",
+    "\"Видеопродакшн.РФ\" логотип бренд ребрендинг VIDEOKZN год",
+    "\"VIDEOKZN.RU - это предыдущее название\"",
+    "\"Влюбляем в вашу компанию\" видеопродакшн",
+    "Видеопродакшн.РФ Казань kazanuslugi рекламные агентства рейтинг отзывы",
+    "ruborg.ru Казань видеостудия Видеопродакшн.РФ Спартаковская",
+    "asktel.ru Казань видеостудия Видеопродакшн Спартаковская 88б",
+    "zoon.ru Казань Спартаковская 88б видеопродакшн",
+    "\"Видеопродакшн\" \"Спартаковская, 88Б\" Казань офис 10",
+    "\"Видеопродакшн.РФ\" Москва адрес офис телефон видеосъемка",
+    "\"Видеопродакшн.РФ\" Санкт-Петербург адрес видеосъемка студия",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai как",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai видео",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai сценарий",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai монтаж",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai реклама бизнес",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai корпоративный фильм",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai интервью подкаст",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai видеокурс обучающее видео",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai стоимость цена",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai Казань",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai Москва",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai ошибки",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai YouTube продвижение",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai свет камера оборудование",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai нейросети ИИ",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai контакты",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai тариф Старт Стандарт Комбо",
+    "site:videokzn.ru",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai что такое",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai топ секреты",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai звук музыка озвучка",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai анимация графика",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai фотосъемка",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai недвижимость",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai соцсети Reels Shorts",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai тренды 2025 2026",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai история кино",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai клиенты отзывы руководитель директор",
+    "site:videokzn.ru видео",
+    "site:videokzn.ru как",
+    "site:videokzn.ru ролик",
+    "\"Сутугин\" \"Русский Стандарт\" видеопродакшн отзыв",
+    "\"Жми5\" Идрисов отзыв видеопродакшн аэросъемка",
+    "\"Волжское пароходство\" презентационный ролик видеопродакшн.рф",
+    "instagram videokzn OR \"видеопродакшн.рф\" instagram",
+    "t.me videokzn OR \"видеопродакшн.рф\" telegram канал",
+    "rutube OR dzen \"Видеопродакшн.РФ\" канал студия Казань",
+    "\"videokzn\" behance OR vimeo OR pinterest",
+    "\"242957269641\"",
+    "\"129741361072\" Видеопродакшн",
+    "\"Журавлева Ирина Александровна\" Казань предприниматель",
+    "checko.ru OR list-org.com OR zachestnyibiznes.ru \"Журавлева Ирина Александровна\" Татарстан",
+    "\"Роман\" видеопродакшн.рф Казань режиссер оператор продюсер студия VIDEOKZN",
+    "\"Роман Журавлев\" видеограф Казань",
+    "hh.ru \"Видеопродакшн.РФ\" вакансия Казань",
+    "hh.ru \"VIDEOKZN\" вакансия видеооператор монтажер Казань",
+    "\"Видеопродакшн.РФ\" премия награда конкурс лауреат",
+    "\"Профессиональная видеосъемка для вашего бизнеса\" видеопродакшн.рф полный цикл описание",
+    "\"Заказать видео для компании под ключ в Москве\" VIDEOKZN видеостудия Москва",
+    "videokzn.ru/spb видеосъемка Санкт-Петербург VIDEOKZN \"Санкт-Петербург\"",
+    "2gis Видеопродакшн.РФ отзыв \"сроки\" \"оперативно\" Казань видео компания",
+    "2gis Видеопродакшн.РФ отзыв \"второй раз\" OR \"не первый раз\" OR \"повторно\"",
+    "Видеопродакшн.РФ Казань отзыв ООО директор \"выражаем благодарность\"",
+    "wadline VIDEOKZN.RU отзыв клиент \"рекомендую\" видеоролик",
+    "marketing-tech \"Видеопродакшн.РФ\" клиенты проекты кейсы Казань 2016",
+    "\"Видеопродакшн.рф\" alladvertising Казань \"Видео-продакшн\" контакты сайт год основания",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai почему зачем",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai советов шагов",
+    "\"Видеопродакшн.РФ\" отзыв футболист чемпион мероприятие видео VideoKzn",
+    "\"Видеопродакшн.РФ\" отзыв 2ГИС маркетплейс ролик товар",
+    "\"Видеопродакшн.РФ\" отзыв конференция форум съемка репортаж Казань 2ГИС",
+    "\"Видеопродакшн.РФ\" отзыв интервью подкаст студия запись",
+    "\"Видеопродакшн.РФ\" отзыв аэросъемка дрон объект",
+    "\"Видеопродакшн.РФ\" отзыв \"рекламное агентство\" OR \"агентства\" сотрудничество бренды",
+    "\"Видеопродакшн.РФ\" отзыв \"презентационный\" OR \"имиджевый\" ролик компания Казань",
+    "\"Видеопродакшн.РФ\" отзыв \"неделю\" OR \"дней\" быстро сдали клип",
+    "Яндекс Карты \"Видеопродакшн.рф\" отзыв Казань \"Роман\"",
+    "\"Видеопродакшн.РФ\" \"2023\" OR \"2024\" ребрендинг новое название сайта VIDEOKZN",
+    "\"видеопродакшн.рф\" \"о компании\" история миссия преимущества студии \"с 2015\"",
+    "\"видеопродакшн.рф\" \"часто задаваемые вопросы\" OR \"вопросы и ответы\" OR \"сколько стоит\" OR \"сколько времени\"",
+    "\"видеопродакшн.рф\" логотип фирменный стиль цвета",
+    "\"ИП Журавлева И.А.\" Казань",
+    "\"Журавлева Ирина Александровна\" ОГРНИП 316169 OR 317169 OR 315169 OR 318169",
+    "\"Видеопродакшн.РФ\" tenchat OR vc.ru OR linkedin студия Казань автор",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai 10",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai руководство гид",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai маркетинг продажи",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai смартфон телефон",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai кадр цвет цветокоррекция",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai фильм",
+    "site:videokzn.ru зачем",
+    "site:videokzn.ru советов",
+    "site:videokzn.ru анимация графика",
+    "site:videokzn.ru мероприятие съемка",
+    "site:videokzn.ru что такое",
+    "site:videokzn.ru реклама маркетинг бизнес",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai инфографика логотип интро заставка",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai выставка презентация мероприятие",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai видеооператор оператор съемка",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai закон право авторские",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai vse-videoroliki",
+    "\"Видеопродакшн.РФ\" отзыв \"мебели-трансформера\" OR \"мебель-трансформер\" завод отель ролик",
+    "\"Видеопродакшн.РФ\" отзыв \"продажи\" выросли рекламный ролик 2ГИС Казань",
+    "\"Видеопродакшн.РФ\" отзыв HR-видео OR \"HR ролик\" OR вакансии сотрудники",
+    "\"Видеопродакшн.РФ\" отзыв \"Ирина\" OR \"менеджер\" OR \"координатор\" Казань студия",
+    "\"Видеопродакшн.РФ\" оборудование камеры Sony OR Blackmagic OR Canon OR RED дрон DJI",
+    "\"Видеопродакшн.РФ\" портфолио клиенты Татнефть OR КАМАЗ OR \"Ак Барс\" OR Сбер OR Газпром",
+    "\"Видеопродакшн.РФ\" \"этапы работы\" бриф \"коммерческое предложение\" договор предоплата",
+    "alladvertising.ru/top/video-production Видеопродакшн.рф место рейтинг Казань",
+    "\"Видеопродакшн.рф\" Аметьево режим работы телефон Яндекс",
+    "2ГИС \"Видеопродакшн.РФ\" Спартаковская 88Б \"этаж\" OR \"офис\" вход",
+    "yell.ru OR spravker.ru \"Видеопродакшн\" Казань Спартаковская 88б",
+    "\"Видеопродакшн.РФ\" \"видеосъемка под ключ\" описание \"создание видеороликов, продающих и корпоративных видео\"",
+    "\"Видеопродакшн.РФ\" 2ГИС отзыв \"оператор\" \"монтаж\" \"свет\" звук профессионалы",
+    "\"Журавлева\" видеопродакшн Казань продюсер OR директор OR руководитель Ирина видео",
+    "site:videokzn.ru 10",
+    "site:videokzn.ru фото",
+    "site:videokzn.ru свадьба свадебный",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai юбилей корпоратив праздник",
+    "site:xn--80adgaeqsyfakm2i.xn--p1ai VR 360 дрон FPV",
+    "\"Процесс производства рекламного ролика\" \"как это делаем мы\" Видеопродакшн.РФ этапы",
+    "\"ВИДЕОПРОДАКШН.РФ - видеопроизводство полного цикла\" о компании квадрокоптеры FPV камеры",
+    "\"видеопродакшн.рф\" \"videokzn.ru\" 2023 OR 2022 сайт студия Казань новый домен",
+    "\"Видеопродакшн.РФ\" Екатеринбург OR \"Нижний Новгород\" OR Уфа съемка кейс клиент",
+    "\"Видеопродакшн.РФ\" 2ГИС рубрики \"Видеосъёмка\" \"Фотоуслуги\" \"Аэросъёмка\" Приволжский район"
+  ]
+}

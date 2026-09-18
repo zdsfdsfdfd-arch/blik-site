@@ -12,7 +12,7 @@ interface ArrowLinkProps {
 
 /** Text link with a rising arrow — used for "all projects", "next", captions. */
 export function ArrowLink({ to, href, children, className = '', size = 'md' }: ArrowLinkProps) {
-  const classes = `group inline-flex items-center gap-2 font-medium text-fg transition-colors hover:text-signal ${
+  const classes = `group inline-flex items-center gap-2 font-medium text-fg transition-colors hover:text-signal-text ${
     size === 'sm' ? 'text-sm' : 'text-[0.9375rem]'
   } ${className}`
   const inner = (

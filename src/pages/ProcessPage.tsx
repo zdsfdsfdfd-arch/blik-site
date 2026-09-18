@@ -11,7 +11,7 @@ export function ProcessPage() {
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
-            <p className="label-mono text-signal">Процесс</p>
+            <p className="label-mono text-signal-text">Процесс</p>
             <SplitLines as="h1" lines={['Как рождается', 'ролик']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">
@@ -25,7 +25,7 @@ export function ProcessPage() {
         speed={30}
         items={fullCycle.map((step, i) => (
           <span key={step} className="label-mono-lg text-fg-2">
-            <span className="mr-3 text-signal">{String(i + 1).padStart(2, '0')}</span>
+            <span className="mr-3 text-signal-text">{String(i + 1).padStart(2, '0')}</span>
             {step}
           </span>
         ))}
@@ -36,7 +36,7 @@ export function ProcessPage() {
           {processStages.map((stage, i) => (
             <Reveal key={stage.index} as="li" className="grid-12 gap-y-6 border-b border-line py-10 md:py-14">
               <div className="col-span-12 md:col-span-2">
-                <p className="text-display-lg text-signal">{stage.index}</p>
+                <p className="text-display-lg text-signal-text">{stage.index}</p>
                 <p className="label-mono mt-2 text-fg-3">{stage.code}</p>
               </div>
               <div className="col-span-12 md:col-span-5">
