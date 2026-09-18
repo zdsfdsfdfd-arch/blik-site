@@ -7,7 +7,7 @@ import { scrollTo, scrollToId } from '../lib/scroll'
  * `#section` named in the URL hash after the enter transition has started.
  */
 export function useScrollToHash(): void {
-  const { hash } = useLocation()
+  const { hash, pathname } = useLocation()
 
   useEffect(() => {
     if (!hash) {
@@ -15,7 +15,7 @@ export function useScrollToHash(): void {
       return
     }
     const id = decodeURIComponent(hash.slice(1))
-    const timer = window.setTimeout(() => scrollToId(id), 400)
+    const timer = window.setTimeout(() => scrollToId(id), 450)
     return () => window.clearTimeout(timer)
-  }, [hash])
+  }, [hash, pathname])
 }

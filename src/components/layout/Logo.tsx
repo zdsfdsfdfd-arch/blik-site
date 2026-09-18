@@ -1,28 +1,27 @@
 import { Link } from 'react-router-dom'
 
 interface LogoProps {
-  tone?: 'ink' | 'paper'
   className?: string
   onClick?: () => void
+  /** Compact form for the navbar; the footer uses the large lockup. */
+  size?: 'sm' | 'lg'
 }
 
-export function Logo({ tone = 'ink', className = '', onClick }: LogoProps) {
+/** Typographic wordmark with a blinking REC tally — the studio's signature. */
+export function Logo({ className = '', onClick, size = 'sm' }: LogoProps) {
   return (
     <Link
       to="/"
       onClick={onClick}
-      aria-label="PLAN — на главную"
-      className={`group/logo inline-flex items-baseline gap-1 font-display text-2xl font-extrabold tracking-[-0.06em] transition-colors duration-300 ${
-        tone === 'paper' ? 'text-paper' : 'text-ink'
+      aria-label="Видеопродакшн.РФ — на главную"
+      className={`group/logo inline-flex items-center gap-2.5 font-display font-semibold uppercase text-fg ${
+        size === 'lg' ? 'text-2xl tracking-[-0.02em] sm:text-3xl' : 'text-[0.8125rem] tracking-[0.02em]'
       } ${className}`}
     >
-      PLAN
-      <span
-        aria-hidden="true"
-        className={`inline-block h-1.5 w-1.5 translate-y-[-0.1em] rounded-full transition-transform duration-500 ease-out group-hover/logo:scale-150 ${
-          tone === 'paper' ? 'bg-sand' : 'bg-ocean'
-        }`}
-      />
+      <span aria-hidden="true" className={`rec-dot inline-block bg-signal ${size === 'lg' ? 'h-3.5 w-3.5' : 'h-2 w-2'}`} />
+      <span>
+        Видеопродакшн<span className="text-signal transition-colors duration-300 group-hover/logo:text-fg">.рф</span>
+      </span>
     </Link>
   )
 }

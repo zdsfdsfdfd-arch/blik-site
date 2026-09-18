@@ -1,135 +1,148 @@
-import { ArrowUpRight } from 'lucide-react'
-import { careers, company, milestones, team } from '../data/company'
 import { Page } from '../components/layout/Page'
-import { Benefits } from '../components/home/Benefits'
-import { CTA } from '../components/home/CTA'
-import { Stats } from '../components/home/Stats'
+import { Counter } from '../components/ui/Counter'
+import { Button } from '../components/ui/Button'
+import { Marquee } from '../components/ui/Marquee'
 import { Reveal } from '../components/ui/Reveal'
-import { SectionHeading } from '../components/ui/SectionHeading'
-import { SmartImage } from '../components/ui/SmartImage'
+import { Slate } from '../components/ui/Slate'
+import { SplitLines } from '../components/ui/SplitLines'
+import { company, site } from '../data/company'
+import { fullCycle } from '../data/process'
+
+const principles = [
+  { title: 'Индивидуальный подход', body: 'К каждой задаче — свой подход: это позволяет добиваться высоких результатов в создании видеороликов в оптимальные сроки за разумные деньги.' },
+  { title: 'Только штатные специалисты', body: 'Сценаристы, операторы, монтажёры и другие мастера своего дела — 15 человек в штате. Без сторонних подрядчиков, с контролем качества на каждом этапе.' },
+  { title: 'Собственная база', body: 'Съёмочная база с оборудованием стоимостью 5 млн рублей: снимаем, монтируем, делаем графику и озвучку внутри студии.' },
+  { title: 'Прозрачная стоимость', body: 'Вместо смет с десятками скрытых пунктов — несколько тарифов «всё включено», где цена зависит от ключевых параметров.' },
+]
+
+const timeline = [
+  { year: '2015', text: 'Команда начинает снимать видео для бизнеса в Казани под именем VIDEOKZN.' },
+  { year: '2018', text: 'Постоянные клиенты — сотрудничество, которое в отзывах отмечают как многолетнее и надёжное.' },
+  { year: 'Сегодня', text: 'Ребрендинг в Видеопродакшн.РФ: сайт переименован, чтобы его было проще найти и узнать об опыте создания видео для сотен компаний.' },
+]
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'О студии',
+  url: `${site.url}/about`,
+  mainEntity: { '@type': 'Organization', name: site.name, foundingDate: String(company.founded), numberOfEmployees: 15, url: site.url },
+}
 
 export function AboutPage() {
   return (
-    <Page
-      title="О PLAN"
-      description="PLAN — туристическое агентство с 2012 года: команда, история и открытые вакансии."
-      className="pt-28 md:pt-40"
-    >
-      <section className="container-x pb-20 md:pb-28">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <p className="eyebrow flex items-center gap-3 text-muted">
-                <span className="font-display text-ocean">Est. {company.founded}</span>
-                <span className="h-px w-8 bg-line" aria-hidden="true" />О PLAN
-              </p>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h1 className="text-display-lg mt-5">
-                Агентство, которое{' '}
-                <span className="serif-accent text-ocean">ездит само</span> — прежде чем отправить вас.
-              </h1>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p className="lead mt-6 max-w-2xl">
-                PLAN появился в {company.founded} году как бюро индивидуальных путешествий. С тех пор мы
-                выросли до команды из двадцати экспертов, но принцип остался прежним: мы советуем только
-                то, что видели сами.
-              </p>
-            </Reveal>
+    <Page theme="light" title="О студии" description="Видеопродакшн.РФ — видеопроизводство полного цикла с 2015 года: 15 специалистов, собственная съёмочная база, более 2500 работ для 600+ клиентов в 25 городах России." path="/about" jsonLd={jsonLd}>
+      <section className="container-x pt-28 md:pt-36">
+        <div className="grid-12 items-end gap-y-8">
+          <div className="col-span-12 lg:col-span-8">
+            <p className="label-mono text-signal">04 · Студия</p>
+            <SplitLines as="h1" lines={['Видеопроизводство', 'полного цикла']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
-          <Reveal className="lg:col-span-5" delay={0.2}>
-            <SmartImage
-              photo="photo-1522202176988-66273c2fd55f"
-              alt="Команда обсуждает маршрут за столом с ноутбуками"
-              className="aspect-[4/5] lg:aspect-[4/4.6]"
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              fallbackKeywords="office,team"
-              fallbackLabel="Команда PLAN"
-            />
+          <p className="lead col-span-12 lg:col-span-4">
+            Продакшн-студия полного цикла работает в сфере видеосъёмок для бизнеса с {company.founded} года — в Москве, Казани, Санкт-Петербурге и по всей России.
+          </p>
+        </div>
+      </section>
+
+      <Marquee
+        className="mt-16 border-y border-line py-4 motion-reduce:hidden"
+        speed={30}
+        items={[...company.cities, ...company.extraCities, 'и ещё 20+ городов'].map((city) => (
+          <span key={city} className="label-mono-lg text-fg-2">
+            {city}
+          </span>
+        ))}
+      />
+
+      <section className="container-x mt-16 md:mt-24">
+        <div className="grid-12 gap-y-12">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <p className="text-display-md leading-[1.25]">
+              С {company.founded} года команда создала тысячи вдохновляющих видео, которые привлекают внимание и укрепляют связь с аудиторией. Наши видео для бизнеса смотрят по всему миру.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="col-span-12 lg:col-span-6 lg:col-start-7">
+            <p className="prose-body">
+              В студии работают только высококвалифицированные специалисты — сценаристы, операторы, монтажёры и другие мастера своего дела. Это позволяет гарантировать качественный результат на любой задаче: от создания анимированного логотипа до съёмки имиджевых и презентационных видео, мастер-классов, лекций и мероприятий.
+            </p>
+            <p className="prose-body mt-4">
+              Мы берём на себя полный цикл производства — {fullCycle.map((s) => s.toLowerCase()).join(', ')} — и гарантируем каждому заказчику индивидуальный подход.
+            </p>
           </Reveal>
         </div>
+      </section>
 
-        <ol className="mt-20 grid gap-px border border-line bg-line md:grid-cols-5">
-          {milestones.map((milestone, index) => (
-            <Reveal as="li" key={milestone.year} delay={index * 0.06} className="bg-paper p-6">
-              <p className="font-display text-3xl font-semibold tracking-[-0.03em] text-ocean">{milestone.year}</p>
-              <p className="mt-3 text-sm text-ink-2">{milestone.text}</p>
+      <section className="container-x mt-20 md:mt-28">
+        <dl className="grid grid-cols-2 border-l border-t border-line md:grid-cols-3">
+          {company.numbers.map((item, i) => (
+            <Reveal key={item.label} as="div" delay={i * 0.05} className="border-b border-r border-line p-5 md:p-6">
+              <dt className="label-mono text-fg-3">{item.label}</dt>
+              <dd className="text-display-lg mt-8 md:mt-12">
+                <Counter value={item.value} suffix={item.suffix} />
+              </dd>
+              <dd className="mt-2 text-sm text-fg-2">{item.note}</dd>
+            </Reveal>
+          ))}
+        </dl>
+      </section>
+
+      <section className="container-x mt-20 md:mt-28">
+        <div className="flex items-center justify-between border-t border-line pt-3">
+          <p className="label-mono text-fg-3">
+            <span className="text-signal">→</span> Принципы
+          </p>
+          <p className="label-mono text-fg-3">04</p>
+        </div>
+        <ol className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2">
+          {principles.map((principle, i) => (
+            <Reveal key={principle.title} as="li" delay={i * 0.06} className="bg-bg p-6 md:p-8">
+              <p className="label-mono text-signal">{String(i + 1).padStart(2, '0')}</p>
+              <h2 className="text-display-md mt-6">{principle.title}</h2>
+              <p className="prose-body mt-3 max-w-md">{principle.body}</p>
             </Reveal>
           ))}
         </ol>
       </section>
 
-      <section id="team" className="section-y scroll-mt-20 border-t border-line">
-        <div className="container-x">
-          <SectionHeading
-            index="01"
-            eyebrow="Команда"
-            title={
-              <>
-                Люди, которые <span className="serif-accent text-ocean">знают дорогу</span>
-              </>
-            }
-            subtitle="Каждый эксперт PLAN отвечает за свой регион и проводит в нём не меньше месяца в году."
-          />
-          <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member, index) => (
-              <Reveal as="li" key={member.id} delay={index * 0.08} className="group">
-                <SmartImage
-                  photo={member.photo}
-                  alt={member.alt}
-                  className="aspect-[4/5]"
-                  imgClassName="grayscale-[35%] transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                  fallbackKeywords="portrait"
-                  fallbackLabel={member.name}
-                />
-                <h3 className="text-display-sm mt-5">{member.name}</h3>
-                <p className="mt-1 text-sm text-muted">{member.role}</p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <Benefits />
-      <Stats />
-
-      <section id="careers" className="section-y scroll-mt-20">
-        <div className="container-x grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <SectionHeading
-              index="02"
-              eyebrow="Карьера"
-              title={
-                <>
-                  Станьте частью <span className="serif-accent text-ocean">команды</span>
-                </>
-              }
-              subtitle="Мы ищем людей, которые любят дороги и умеют держать в голове сто деталей одновременно."
-            />
+      <section className="container-x mt-20 md:mt-28">
+        <div className="grid-12 gap-y-10">
+          <div className="col-span-12 lg:col-span-4">
+            <p className="label-mono text-fg-3">История</p>
+            <h2 className="text-display-md mt-4">От VIDEOKZN к Видеопродакшн.РФ</h2>
           </div>
-          <ul className="lg:col-span-7">
-            {careers.map((job, index) => (
-              <Reveal as="li" key={job.id} delay={index * 0.06}>
-                <a
-                  href={`mailto:${company.email}?subject=${encodeURIComponent(`Вакансия: ${job.title}`)}`}
-                  className="group flex items-start justify-between gap-6 border-t border-line py-7 transition-colors last:border-b hover:text-ocean"
-                >
-                  <div>
-                    <p className="eyebrow text-muted">{job.type}</p>
-                    <h3 className="text-display-sm mt-2">{job.title}</h3>
-                    <p className="mt-2 max-w-lg text-sm text-ink-2">{job.text}</p>
-                  </div>
-                  <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.75} aria-hidden="true" />
-                </a>
-              </Reveal>
+          <ol className="col-span-12 border-t border-line lg:col-span-8">
+            {timeline.map((item) => (
+              <li key={item.year} className="grid gap-2 border-b border-line py-6 md:grid-cols-[8rem_1fr] md:gap-8">
+                <p className="text-display-sm text-signal">{item.year}</p>
+                <p className="prose-body">{item.text}</p>
+              </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </section>
 
-      <CTA />
+      <section className="container-x py-20 md:py-28">
+        <Slate
+          columns={4}
+          fields={[
+            { label: 'Штаб', value: 'Казань, Спартаковская 88Б' },
+            { label: 'Рейтинг 2ГИС', value: '5,0 · 52 отзыва' },
+            { label: 'Рейтинг на сайте', value: '9,7 · 40 отзывов' },
+            { label: 'Работаем', value: company.hours },
+          ]}
+        />
+        <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p className="prose-body max-w-md">Посмотрите, как это выглядит в работе, — или сразу расскажите о своей задаче.</p>
+          <div className="flex gap-3">
+            <Button to="/work" variant="outline" arrow="up-right">
+              Работы
+            </Button>
+            <Button to="/contact" variant="solid" arrow="right">
+              Обсудить проект
+            </Button>
+          </div>
+        </div>
+      </section>
     </Page>
   )
 }

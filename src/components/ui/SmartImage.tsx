@@ -1,89 +1,76 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ImageOff } from 'lucide-react'
-import { buildImageSources } from '../../lib/images'
+import { TestPattern } from './TestPattern'
 
 interface SmartImageProps {
-  /** Unsplash photo id in the form "photo-<timestamp>-<hash>". */
-  photo: string
+  /** Ordered candidate URLs; the first that loads wins. */
+  sources: string[]
   alt: string
-  /** English keywords used to source a topical photo if the primary CDN fails. */
-  fallbackKeywords?: string
-  /** Classes for the wrapper — must define the box (aspect ratio or explicit height). */
   className?: string
-  /** Extra classes for the <img> element (e.g. hover transforms). */
   imgClassName?: string
   sizes?: string
-  /** Eager-load and prioritise: use for above-the-fold imagery only. */
   priority?: boolean
-  /** Label rendered inside the placeholder when no source could be loaded. */
   fallbackLabel?: string
+  /** Called when every candidate failed. */
+  onFail?: () => void
 }
 
 /**
- * Responsive image with a shimmer skeleton while loading. If a source fails it moves on
- * to the next one (local file → Unsplash → keyword lookup) and finally renders a styled
- * placeholder, so the layout never shifts or shows a broken image.
+ * Image that walks a list of candidate URLs on error (local copy → CDN →
+ * thumbnail fallbacks) and finally renders a test-pattern placeholder, so a
+ * missing asset never shows as a broken image or shifts the layout.
  */
-export function SmartImage({
-  photo,
-  alt,
-  fallbackKeywords,
-  className = '',
-  imgClassName = '',
-  sizes = '100vw',
-  priority = false,
-  fallbackLabel,
-}: SmartImageProps) {
+export function SmartImage({ sources, alt, className = '', imgClassName = '', sizes, priority = false, fallbackLabel, onFail }: SmartImageProps) {
   const ref = useRef<HTMLImageElement>(null)
-  const sources = useMemo(() => buildImageSources(photo, fallbackKeywords), [photo, fallbackKeywords])
-  const [state, setState] = useState({ photo, index: 0, loaded: false, failed: false })
+  const key = useMemo(() => sources.join('|'), [sources])
+  const [state, setState] = useState({ key, index: 0, loaded: false, failed: sources.length === 0 })
 
-  // Reset the source chain if the photo prop changes on a reused element.
-  if (state.photo !== photo) setState({ photo, index: 0, loaded: false, failed: false })
+  if (state.key !== key) setState({ key, index: 0, loaded: false, failed: sources.length === 0 })
 
-  // Cached images may finish before React attaches the onLoad handler.
   useEffect(() => {
     const img = ref.current
     if (img && img.complete && img.naturalWidth > 0) {
       setState((prev) => (prev.loaded ? prev : { ...prev, loaded: true }))
     }
-  }, [])
+  }, [state.index])
 
   const handleError = () => {
-    setState((prev) =>
-      prev.index < sources.length - 1
-        ? { ...prev, index: prev.index + 1, loaded: false }
-        : { ...prev, failed: true },
-    )
+    setState((prev) => {
+      if (prev.index < sources.length - 1) return { ...prev, index: prev.index + 1, loaded: false }
+      onFail?.()
+      return { ...prev, failed: true }
+    })
+  }
+
+  // YouTube serves a 120x90 grey placeholder instead of a 404 for missing maxres thumbnails.
+  const handleLoad = () => {
+    const img = ref.current
+    if (img && img.naturalWidth <= 120 && state.index < sources.length - 1) {
+      handleError()
+      return
+    }
+    setState((prev) => ({ ...prev, loaded: true }))
   }
 
   const source = sources[state.index]
 
   return (
-    <div className={`relative overflow-hidden bg-paper-2 ${className}`}>
+    <div className={`relative overflow-hidden bg-bg-2 ${className}`}>
       {!state.loaded && !state.failed && <div aria-hidden="true" className="skeleton absolute inset-0" />}
-
-      {state.failed ? (
-        <div
-          role="img"
-          aria-label={alt}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[linear-gradient(135deg,var(--color-ocean-2),var(--color-ocean)_55%,var(--color-sand))] p-6 text-center text-paper"
-        >
-          <ImageOff className="h-6 w-6 opacity-80" strokeWidth={1.5} />
-          {fallbackLabel && <span className="eyebrow opacity-90">{fallbackLabel}</span>}
+      {state.failed || !source ? (
+        <div className="absolute inset-0">
+          <TestPattern label={fallbackLabel ?? alt} />
         </div>
       ) : (
         <img
-          key={source.src}
+          key={source}
           ref={ref}
-          src={source.src}
-          srcSet={source.srcSet}
-          sizes={source.srcSet ? sizes : undefined}
+          src={source}
+          sizes={sizes}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding={priority ? 'sync' : 'async'}
           fetchPriority={priority ? 'high' : 'auto'}
-          onLoad={() => setState((prev) => ({ ...prev, loaded: true }))}
+          onLoad={handleLoad}
           onError={handleError}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${
             state.loaded ? 'opacity-100' : 'opacity-0'

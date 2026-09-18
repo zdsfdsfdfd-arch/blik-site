@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Magnetic } from './Magnetic'
 
-type Variant = 'primary' | 'ocean' | 'outline' | 'inverted' | 'ghost'
+type Variant = 'solid' | 'signal' | 'outline' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
@@ -14,49 +14,46 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'chi
   to?: string
   /** External URL — renders an <a>. */
   href?: string
+  /** Mono index rendered before the label, e.g. "01". */
+  index?: string
   arrow?: 'right' | 'up-right' | 'none'
   magnetic?: boolean
   className?: string
 }
 
 const base =
-  'group/btn relative inline-flex items-center justify-center gap-2.5 whitespace-nowrap font-display font-semibold tracking-[-0.01em] transition-[background-color,color,border-color,transform,opacity] duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-60'
+  'group/btn relative isolate inline-flex items-center justify-center gap-3 overflow-hidden whitespace-nowrap font-sans font-medium tracking-[-0.005em] transition-[color,border-color,opacity] duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-60 ' +
+  'before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:before:scale-x-100 focus-visible:before:scale-x-100'
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-ink text-paper hover:bg-ocean',
-  ocean: 'bg-ocean text-paper hover:bg-ocean-2',
-  outline: 'border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-paper',
-  inverted: 'bg-paper text-ink hover:bg-white',
-  ghost: 'text-ink hover:text-ocean',
+  solid: 'bg-fg text-bg before:bg-signal hover:text-ink focus-visible:text-ink',
+  signal: 'bg-signal text-ink before:bg-fg hover:text-bg focus-visible:text-bg',
+  outline: 'border border-line text-fg before:bg-fg hover:border-fg hover:text-bg focus-visible:text-bg',
+  ghost: 'text-fg before:bg-fg/10',
 }
 
 const sizes: Record<Size, string> = {
-  sm: 'h-10 px-5 text-sm',
+  sm: 'h-10 px-4 text-[0.8125rem]',
   md: 'h-12 px-6 text-[0.9375rem]',
   lg: 'h-14 px-8 text-base',
 }
 
-const arrowClasses = 'h-4 w-4 transition-transform duration-300 ease-out'
+const arrowClasses = 'h-4 w-4 shrink-0 transition-transform duration-300 ease-out'
 
 function ArrowIcon({ arrow }: { arrow: ButtonProps['arrow'] }) {
-  if (arrow === 'right')
-    return <ArrowRight className={`${arrowClasses} group-hover/btn:translate-x-1`} strokeWidth={2} />
+  if (arrow === 'right') return <ArrowRight className={`${arrowClasses} group-hover/btn:translate-x-1`} strokeWidth={1.75} aria-hidden="true" />
   if (arrow === 'up-right')
-    return (
-      <ArrowUpRight
-        className={`${arrowClasses} group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5`}
-        strokeWidth={2}
-      />
-    )
+    return <ArrowUpRight className={`${arrowClasses} group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5`} strokeWidth={1.75} aria-hidden="true" />
   return null
 }
 
 export function Button({
   children,
-  variant = 'primary',
+  variant = 'solid',
   size = 'md',
   to,
   href,
+  index,
   arrow = 'none',
   magnetic = false,
   className = '',
@@ -66,6 +63,7 @@ export function Button({
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`
   const content = (
     <>
+      {index && <span className="label-mono opacity-60">{index}</span>}
       <span>{children}</span>
       <ArrowIcon arrow={arrow} />
     </>

@@ -1,159 +1,137 @@
-import type { LucideIcon } from 'lucide-react'
+/** Shared content types for ВИДЕОПРОДАКШН.РФ. Data lives in src/data and is fully typed here. */
 
-export type RegionId = 'europe' | 'asia' | 'america' | 'middle-east' | 'africa' | 'oceania'
+export type ProjectCategory =
+  | 'advertising'
+  | 'image'
+  | 'presentation'
+  | 'event'
+  | 'social'
+  | 'interview'
+  | 'aerial'
+  | 'graphics'
+  | 'corporate'
+  | 'education'
 
-export type TravelType =
-  | 'beach'
-  | 'excursion'
-  | 'adventure'
-  | 'family'
-  | 'romance'
-  | 'luxury'
-  | 'city-break'
+export interface VideoRef {
+  /** Platform that hosts the video. Local files live under /media/videos. */
+  platform: 'youtube' | 'rutube' | 'vk' | 'vimeo' | 'local'
+  /** Platform video id (YouTube 11-char id) or a local path. */
+  id: string
+  /** Canonical watch URL. */
+  url: string
+  title?: string
+}
 
-export interface Region {
-  id: RegionId
+export interface ImageRef {
+  /** Remote source (Tilda CDN, YouTube thumbnail...). */
+  src: string
+  /** Local copy under /media/images when downloaded. */
+  local?: string
+  alt: string
+  width?: number
+  height?: number
+}
+
+export interface ProjectSection {
+  heading: string
+  body: string[]
+}
+
+export interface Project {
+  slug: string
+  title: string
+  client: string
+  category: ProjectCategory
+  /** Short human label for the category, e.g. «Рекламный ролик». */
+  format: string
+  year?: string
+  city?: string
+  duration?: string
+  summary: string
+  /** Case-study narrative. Each section becomes a chapter. */
+  sections: ProjectSection[]
+  services: string[]
+  video?: VideoRef
+  poster: ImageRef
+  gallery?: ImageRef[]
+  featured?: boolean
+  /** Source page or listing where the project was found. */
+  sourceUrl?: string
+  seoDescription?: string
+}
+
+export interface ServiceStep {
+  title: string
+  body: string
+}
+
+export interface Service {
+  slug: string
+  index: string
+  name: string
+  short: string
+  intro: string
+  description: string[]
+  includes: string[]
+  steps: ServiceStep[]
+  benefits: string[]
+  formats?: string[]
+  relatedProjects: string[]
+  seoTitle: string
+  seoDescription: string
+  /** Original page on the source site, if it existed. */
+  sourceUrl?: string
+}
+
+export interface Tariff {
+  slug: string
   name: string
   tagline: string
-  cities: string[]
-  photo: string
-  alt: string
-}
-
-export interface Photo {
-  photo: string
-  alt: string
-}
-
-export interface ItineraryDay {
-  day: number
-  title: string
-  description: string
-}
-
-export interface TourReview {
-  name: string
-  city: string
-  rating: number
-  text: string
-  date: string
-}
-
-export interface Tour {
-  id: string
-  slug: string
-  title: string
-  /** English search keyword used when a photo has to be sourced by topic. */
-  keyword: string
-  country: string
-  city: string
-  region: RegionId
-  days: number
-  price: number
-  rating: number
-  reviewsCount: number
-  /** Editorial ranking used by the default sort: 1 = most popular. */
-  popularity: number
-  types: TravelType[]
-  /** Months (1–12) when the tour operates. */
-  season: number[]
-  groupSize: string
-  summary: string
-  description: string[]
-  highlights: string[]
-  photo: string
-  alt: string
-  gallery: Photo[]
-  hotel: {
-    name: string
-    stars: number
-    area: string
-  }
-  meals: string
-  included: string[]
-  excluded: string[]
-  itinerary: ItineraryDay[]
-  reviews: TourReview[]
-}
-
-export interface Story {
-  id: string
-  slug: string
-  title: string
-  keyword: string
-  category: string
-  date: string
-  readingTime: number
-  excerpt: string
-  photo: string
-  alt: string
-  body: string[]
+  price?: string
+  priceNote?: string
+  includes: string[]
+  bestFor: string
+  timeline?: string
 }
 
 export interface Review {
   id: string
-  name: string
-  city: string
-  rating: number
+  author: string
+  role?: string
+  company?: string
   text: string
-  tour: string
+  rating?: number
+  source?: string
+  sourceUrl?: string
+  /** True when the text is a summary of a published review rather than a verbatim quote. */
+  paraphrased?: boolean
 }
 
 export interface FaqItem {
-  id: string
   question: string
   answer: string
-}
-
-export type GallerySpan = 'square' | 'wide' | 'tall' | 'large'
-
-export interface GalleryItem {
-  id: string
-  photo: string
-  alt: string
-  keyword: string
-  place: string
-  country: string
-  span: GallerySpan
-}
-
-export interface Benefit {
-  id: string
-  icon: LucideIcon
-  title: string
-  text: string
-}
-
-export interface Stat {
-  id: string
-  value: number
-  decimals?: number
-  suffix?: string
-  label: string
 }
 
 export interface NavItem {
   label: string
   to: string
+  index?: string
 }
 
 export interface TeamMember {
-  id: string
   name: string
   role: string
-  photo: string
-  alt: string
 }
 
-export interface LegalSection {
-  title: string
-  paragraphs: string[]
+export interface Address {
+  city: string
+  address: string
+  note?: string
+  mapUrl?: string
 }
 
-export interface LegalDocument {
-  slug: string
-  title: string
-  updated: string
-  intro: string
-  sections: LegalSection[]
+export interface SocialLink {
+  network: string
+  label: string
+  href: string
 }

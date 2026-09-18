@@ -1,55 +1,45 @@
-import type { Review } from '../types'
+import type { Review } from '../types/index'
 
-export const overallRating = 4.9
-export const overallReviewsCount = 2140
-
+/**
+ * Client feedback as published on public directories. Texts marked `paraphrased`
+ * summarise the published review; verbatim quotes are shown as such.
+ */
 export const reviews: Review[] = [
   {
-    id: 'r-1',
-    name: 'Александра',
-    city: 'Москва',
+    id: 'rakus',
+    author: 'RAKUS',
+    company: 'Санкт-Петербург',
+    text: 'Многолетнее сотрудничество по рекламным роликам. Клиент отмечает профессионализм и первоклассную работу команды и отдельно — Романа: команда знает своё дело, соблюдает сроки и готова подстраиваться под нужный график и локации съёмок по всей России.',
     rating: 5,
-    tour: 'Santorini Escape',
-    text: 'PLAN организовали поездку так, что не пришлось думать практически ни о чём. Трансферы, отель, экскурсии — всё просто случалось в нужное время.',
+    source: '2ГИС',
+    sourceUrl: 'https://2gis.ru/kazan/firm/70000001042632679/tab/reviews',
+    paraphrased: true,
   },
   {
-    id: 'r-2',
-    name: 'Дмитрий',
-    city: 'Ташкент',
+    id: 'yandex-2018',
+    author: 'Постоянный клиент',
+    text: 'Сотрудничество с 2018 года: надёжность, качественный результат и оперативность работы.',
     rating: 5,
-    tour: 'Iceland Ring Road',
-    text: 'Отличный маршрут и очень хорошая организация. Гид знал, куда ехать до толпы, и всегда находил вариант, если погода менялась.',
+    source: 'Яндекс Карты',
+    sourceUrl: 'https://yandex.ru/maps/org/videokzn/129741361072/reviews/',
+    paraphrased: true,
   },
   {
-    id: 'r-3',
-    name: 'Мария',
-    city: 'Алматы',
+    id: 'site-themes',
+    author: 'Клиенты студии',
+    text: 'Профессиональный подход от концепции до финального монтажа, гибкость команды, качественный продукт и отличное соотношение цены и качества.',
     rating: 5,
-    tour: 'Bali Experience',
-    text: 'Отель, трансферы и экскурсии были подобраны именно под наши пожелания. Мы просили тишину и джунгли — получили ровно это.',
+    source: 'Отзывы на сайте студии, рейтинг 9,7',
+    sourceUrl: 'https://xn--80adgaeqsyfakm2i.xn--p1ai/',
+    paraphrased: true,
   },
   {
-    id: 'r-4',
-    name: 'Константин',
-    city: 'Санкт-Петербург',
+    id: '2gis-themes',
+    author: 'Клиенты студии',
+    text: 'Очень адекватные цены, отличная клиентоориентированность, профессионализм и высокое качество работы.',
     rating: 5,
-    tour: 'Swiss Alps',
-    text: 'Ездили семьёй с детьми. Впервые за много лет отпуск, в котором я не открывал ни одного сайта с бронированиями.',
-  },
-  {
-    id: 'r-5',
-    name: 'Айгерим',
-    city: 'Астана',
-    rating: 4,
-    tour: 'Dubai Premium',
-    text: 'Быстро подобрали отель под бюджет, помогли с датами и не навязывали лишнего. Единственное — хотелось бы больше вариантов ужинов.',
-  },
-  {
-    id: 'r-6',
-    name: 'Виктор',
-    city: 'Минск',
-    rating: 5,
-    tour: 'Cape Town & Safari',
-    text: 'Сафари было мечтой двадцать лет. PLAN сделали так, что реальность оказалась лучше картинки в голове.',
+    source: '2ГИС, 5,0 из 5',
+    sourceUrl: 'https://2gis.ru/kazan/firm/70000001042632679/tab/reviews',
+    paraphrased: true,
   },
 ]

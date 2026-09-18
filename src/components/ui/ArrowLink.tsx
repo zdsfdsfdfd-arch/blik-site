@@ -1,32 +1,36 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 interface ArrowLinkProps {
-  to: string
+  to?: string
+  href?: string
   children: ReactNode
   className?: string
-  tone?: 'ink' | 'ocean' | 'paper'
+  size?: 'sm' | 'md'
 }
 
-const tones = {
-  ink: 'text-ink hover:text-ocean',
-  ocean: 'text-ocean hover:text-ocean-2',
-  paper: 'text-paper hover:text-sand',
-}
-
-/** Text link with an underline sweep and an arrow that slides on hover. */
-export function ArrowLink({ to, children, className = '', tone = 'ink' }: ArrowLinkProps) {
-  return (
-    <Link
-      to={to}
-      className={`group/link inline-flex items-center gap-2 font-display text-sm font-semibold tracking-[-0.01em] transition-colors duration-300 ${tones[tone]} ${className}`}
-    >
+/** Text link with a rising arrow — used for "all projects", "next", captions. */
+export function ArrowLink({ to, href, children, className = '', size = 'md' }: ArrowLinkProps) {
+  const classes = `group inline-flex items-center gap-2 font-medium text-fg transition-colors hover:text-signal ${
+    size === 'sm' ? 'text-sm' : 'text-[0.9375rem]'
+  } ${className}`
+  const inner = (
+    <>
       <span className="link-underline">{children}</span>
-      <ArrowRight
-        className="h-4 w-4 transition-transform duration-300 ease-out group-hover/link:translate-x-1"
-        strokeWidth={2}
-      />
+      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.75} aria-hidden="true" />
+    </>
+  )
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className={classes}>
+        {inner}
+      </a>
+    )
+  }
+  return (
+    <Link to={to ?? '/'} className={classes}>
+      {inner}
     </Link>
   )
 }

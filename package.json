@@ -1,8 +1,8 @@
 {
-  "name": "plan-travel",
+  "name": "videoproduction-rf",
   "private": true,
   "version": "1.0.0",
-  "description": "PLAN — туристическое агентство. Путешествия по всему миру.",
+  "description": "Видеопродакшн.РФ — продакшн-студия полного цикла. Многостраничный сайт.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
-    "check:images": "node scripts/check-images.mjs",
-    "images:download": "node scripts/download-images.mjs"
+    "media:download": "node scripts/download-media.mjs",
+    "media:check": "node scripts/check-media.mjs"
   },
   "dependencies": {
     "lenis": "^1.3.26",

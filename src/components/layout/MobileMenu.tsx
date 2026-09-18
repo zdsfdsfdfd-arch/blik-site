@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { motion } from 'motion/react'
+import { NavLink } from 'react-router-dom'
 import { ArrowUpRight, X } from 'lucide-react'
-import { company, socials } from '../../data/company'
+import { company } from '../../data/company'
 import { mainNav } from '../../data/navigation'
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll'
+import { phoneHref } from '../../lib/format'
 import { EASE_OUT_EXPO } from '../../lib/motion'
 import { Button } from '../ui/Button'
 import { Logo } from './Logo'
-import { SmartLink } from './SmartLink'
 
 interface MobileMenuProps {
   onClose: () => void
@@ -29,82 +30,75 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Меню"
-      className="fixed inset-0 z-[60] flex flex-col bg-ocean-2 text-paper"
+      data-theme="dark"
+      className="dots fixed inset-0 z-[60] flex flex-col bg-bg text-fg"
       initial={{ clipPath: 'inset(0 0 100% 0)' }}
       animate={{ clipPath: 'inset(0 0 0% 0)' }}
-      exit={{ clipPath: 'inset(0 0 100% 0)', transition: { duration: 0.45, ease: EASE_OUT_EXPO } }}
-      transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
+      exit={{ clipPath: 'inset(0 0 100% 0)', transition: { duration: 0.4, ease: EASE_OUT_EXPO } }}
+      transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
     >
-      <div className="container-x flex h-20 items-center justify-between">
-        <Logo tone="paper" onClick={onClose} />
+      <div className="container-x flex h-16 items-center justify-between border-b border-line md:h-20">
+        <Logo onClick={onClose} />
         <button
           type="button"
           onClick={onClose}
           aria-label="Закрыть меню"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors hover:bg-paper/10"
+          className="label-mono inline-flex h-10 items-center gap-2 border border-line px-3 transition-colors hover:border-fg"
         >
-          <X className="h-5 w-5" strokeWidth={1.75} />
+          <X className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+          Закрыть
         </button>
       </div>
 
       <nav aria-label="Мобильная навигация" className="container-x flex flex-1 flex-col justify-center py-8">
-        <ul className="space-y-1">
+        <ul>
           {mainNav.map((item, index) => (
-            <li key={item.to} className="overflow-hidden">
+            <li key={item.to} className="overflow-hidden border-b border-line">
               <motion.div
                 initial={{ y: '100%', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.15 + index * 0.05 }}
+                transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.12 + index * 0.05 }}
               >
-                <SmartLink
+                <NavLink
                   to={item.to}
                   onClick={onClose}
-                  className="group flex items-center justify-between border-b border-paper/10 py-3 font-display text-3xl font-semibold tracking-[-0.03em] xs:text-4xl sm:text-5xl"
+                  className={({ isActive }) =>
+                    `group flex items-baseline gap-4 py-4 font-display text-3xl font-medium tracking-[-0.03em] xs:text-4xl sm:text-5xl ${
+                      isActive ? 'text-signal' : 'text-fg'
+                    }`
+                  }
                 >
+                  <span className="label-mono w-8 shrink-0 text-fg-3">{item.index}</span>
                   <span>{item.label}</span>
-                  <ArrowUpRight
-                    className="h-6 w-6 text-sand opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
-                    strokeWidth={1.5}
-                  />
-                </SmartLink>
+                  <ArrowUpRight className="ml-auto h-6 w-6 self-center text-signal opacity-0 transition-all duration-300 group-hover:opacity-100" strokeWidth={1.5} aria-hidden="true" />
+                </NavLink>
               </motion.div>
             </li>
           ))}
         </ul>
 
-        <motion.div
-          className="mt-8"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-        >
-          <Button to="/tours" variant="inverted" size="lg" arrow="right" className="w-full sm:w-auto">
-            Найти тур
+        <motion.div className="mt-8" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
+          <Button to="/contact" variant="signal" size="lg" arrow="right" className="w-full sm:w-auto" onClick={onClose}>
+            Обсудить проект
           </Button>
         </motion.div>
       </nav>
 
       <motion.div
-        className="container-x flex flex-col gap-4 border-t border-paper/10 py-6 text-sm text-paper/70 sm:flex-row sm:items-center sm:justify-between"
+        className="container-x flex flex-col gap-3 border-t border-line py-5 text-sm text-fg-2 sm:flex-row sm:items-center sm:justify-between"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
       >
         <div className="flex flex-col gap-1">
-          <a href={company.phoneHref} className="text-paper">
-            {company.phone}
-          </a>
-          <a href={`mailto:${company.email}`}>{company.email}</a>
+          {company.phone && (
+            <a href={phoneHref(company.phone)} className="text-fg">
+              {company.phone}
+            </a>
+          )}
+          {company.email && <a href={`mailto:${company.email}`}>{company.email}</a>}
         </div>
-        <ul className="flex gap-5">
-          {socials.map((social) => (
-            <li key={social.label}>
-              <a href={social.href} target="_blank" rel="noreferrer" className="link-underline text-paper">
-                {social.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <p className="label-mono text-fg-3">{company.cities.join(' · ')}</p>
       </motion.div>
     </motion.div>
   )
