@@ -8,8 +8,12 @@ const LABELS: Record<string, string> = { play: 'Смотреть', view: 'Отк
 type Mode = 'idle' | 'hover' | 'label'
 
 /**
- * Viewfinder reticle that follows the pointer. Over links it grows, over media
- * flagged with data-cursor it turns into a labelled tag. Desktop only.
+ * Viewfinder reticle that follows the pointer. Drawn in white with
+ * `mix-blend-mode: difference` on the fixed layer itself, so it inverts against
+ * any background (dark chassis or light paper). The native cursor is hidden only
+ * while the reticle is on screen and comes back the moment the window loses
+ * focus, the tab is hidden or the pointer leaves — so the cursor is never lost.
+ * Desktop pointers only; disabled under reduced motion.
  */
 export function Cursor() {
   const finePointer = useFinePointer()
@@ -25,12 +29,19 @@ export function Cursor() {
 
   useEffect(() => {
     if (!enabled) return
-    document.documentElement.classList.add('custom-cursor')
-
+    const root = document.documentElement
+    const show = () => {
+      root.classList.add('custom-cursor')
+      setVisible(true)
+    }
+    const hide = () => {
+      root.classList.remove('custom-cursor')
+      setVisible(false)
+    }
     const onMove = (event: MouseEvent) => {
       x.set(event.clientX)
       y.set(event.clientY)
-      setVisible(true)
+      show()
     }
     const onOver = (event: MouseEvent) => {
       const target = event.target as Element | null
@@ -42,53 +53,57 @@ export function Cursor() {
       }
       setMode(target?.closest(INTERACTIVE) ? 'hover' : 'idle')
     }
-    const onLeave = () => setVisible(false)
-    const onEnter = () => setVisible(true)
+    const onVisibility = () => {
+      if (document.hidden) hide()
+    }
 
     window.addEventListener('mousemove', onMove, { passive: true })
     window.addEventListener('mouseover', onOver, { passive: true })
-    document.documentElement.addEventListener('mouseleave', onLeave)
-    document.documentElement.addEventListener('mouseenter', onEnter)
+    document.documentElement.addEventListener('mouseleave', hide)
+    window.addEventListener('blur', hide)
+    document.addEventListener('visibilitychange', onVisibility)
     return () => {
-      document.documentElement.classList.remove('custom-cursor')
+      hide()
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('mouseover', onOver)
-      document.documentElement.removeEventListener('mouseleave', onLeave)
-      document.documentElement.removeEventListener('mouseenter', onEnter)
+      document.documentElement.removeEventListener('mouseleave', hide)
+      window.removeEventListener('blur', hide)
+      document.removeEventListener('visibilitychange', onVisibility)
     }
   }, [enabled, x, y])
 
   if (!enabled) return null
 
+  const ringVisible = visible && mode !== 'label'
+  const labelVisible = visible && mode === 'label'
+
   return (
-    <motion.div
-      aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[95] flex items-center justify-center"
-      style={{ x: springX, y: springY, translateX: '-50%', translateY: '-50%' }}
-      animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.2 }}
-    >
-      {mode === 'label' ? (
+    <>
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[95] flex items-center justify-center mix-blend-difference"
+        style={{ x: springX, y: springY, translateX: '-50%', translateY: '-50%' }}
+        animate={{ opacity: ringVisible ? 1 : 0 }}
+        transition={{ duration: 0.15 }}
+      >
         <motion.span
-          key="label"
-          initial={{ scale: 0.6, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 26 }}
-          className="label-mono whitespace-nowrap bg-signal px-3 py-2 text-ink"
-        >
-          ▶ {label}
-        </motion.span>
-      ) : (
-        <motion.span
-          key="ring"
-          className="corners relative block text-[#f1eee8] mix-blend-difference"
+          className="corners relative block text-white"
           style={{ '--corner-size': '7px' } as React.CSSProperties}
           animate={{ width: mode === 'hover' ? 44 : 26, height: mode === 'hover' ? 44 : 26, rotate: mode === 'hover' ? 90 : 0 }}
           transition={{ type: 'spring', stiffness: 380, damping: 26 }}
         >
-          <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 bg-[#f1eee8]" />
+          <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 bg-white" />
         </motion.span>
-      )}
-    </motion.div>
+      </motion.div>
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[96] flex items-center justify-center"
+        style={{ x: springX, y: springY, translateX: '-50%', translateY: '-50%' }}
+        animate={{ opacity: labelVisible ? 1 : 0, scale: labelVisible ? 1 : 0.7 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 26 }}
+      >
+        <span className="label-mono whitespace-nowrap bg-signal px-3 py-2 text-ink">▶ {label}</span>
+      </motion.div>
+    </>
   )
 }

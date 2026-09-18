@@ -1,0 +1,37 @@
+name: Fetch source site
+
+# Crawls the original Tilda site (unreachable from the build sandbox), saves HTML,
+# texts, every image/video URL and the image files themselves, then pushes the
+# result to the research/source-fetch branch.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/laughing-pascal-y37ell']
+    paths:
+      - '.github/workflows/fetch-source-site.yml'
+      - 'scripts/fetch-source-site.mjs'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Crawl site and download media
+        run: node scripts/fetch-source-site.mjs
+      - name: Push results to research/source-fetch
+        run: |
+          git config user.name "source-fetch bot"
+          git config user.email "noreply@example.com"
+          git checkout -B research/source-fetch
+          git add -f research/source public/media/source
+          git commit -m "Fetch original site: HTML, texts, media URLs and files" || echo "nothing to commit"
+          git push -f origin research/source-fetch
