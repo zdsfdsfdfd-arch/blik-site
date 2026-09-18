@@ -7,7 +7,7 @@ import { Button } from '../ui/Button'
 import { SplitLines } from '../ui/SplitLines'
 import { VideoFrame } from '../ui/VideoFrame'
 
-const showreel = featuredProjects.find((project) => project.video) ?? featuredProjects[0]
+const showreel = featuredProjects.find((project) => project.slug === 'reklamnyj-rolik-zhk-art-city') ?? featuredProjects.find((project) => project.video) ?? featuredProjects[0]
 
 /**
  * Opening frame: oversized statement typography over a viewfinder grid, with the
@@ -66,7 +66,7 @@ export function Hero() {
             transition={{ duration: 0.9, ease: EASE_OUT_EXPO, delay: 0.75 }}
           >
             <p className="lead max-w-sm">
-              {company.slogan} Продакшн-студия полного цикла: от концепции и сценария до монтажа, графики и озвучки — без сторонних подрядчиков.
+              {company.headline}. Продакшн полного цикла: от концепции и сценария до монтажа, графики и озвучки — без сторонних подрядчиков.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button to="/contact" variant="signal" size="lg" arrow="right" magnetic>
@@ -89,7 +89,7 @@ export function Hero() {
               <p className="label-mono text-fg-3">Showreel · {showreel.title}</p>
               <p className="label-mono text-fg-3">{showreel.format}</p>
             </div>
-            <VideoFrame video={showreel.video} poster={showreel.poster} title={showreel.title} priority caption={`A001_C001 · ${showreel.city ?? 'Россия'}`} />
+            <VideoFrame video={showreel.video} poster={showreel.poster} title={showreel.title} priority caption={`${showreel.format} · ${showreel.client || 'Видеопродакшн.РФ'}`} />
           </motion.div>
         </div>
       </div>

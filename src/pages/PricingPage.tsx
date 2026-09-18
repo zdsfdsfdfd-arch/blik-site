@@ -28,8 +28,9 @@ export function PricingPage() {
               <div id={tariff.slug} className="scroll-mt-28">
                 <p className="label-mono text-fg-3">Тариф {String(i + 1).padStart(2, '0')}</p>
                 <h2 className="text-display-lg mt-4">{tariff.name}</h2>
+                <p className="text-display-lg mt-4 text-signal-text">{tariff.price}</p>
                 <p className="prose-body mt-4 min-h-[3.2em]">{tariff.tagline}</p>
-                <p className="label-mono mt-8 text-signal-text">{tariff.priceNote}</p>
+                <p className="label-mono mt-6 text-fg-3">{tariff.priceNote}</p>
                 <p className="label-mono mt-8 text-fg-3">Для чего</p>
                 <p className="mt-2 text-sm text-fg-2">{tariff.bestFor}</p>
                 <p className="label-mono mt-8 text-fg-3">Что входит</p>
@@ -70,8 +71,8 @@ export function PricingPage() {
                     {item}
                   </th>
                   {tariffs.map((tariff) => {
-                    const included = tariff.includes.includes(item) || (tariff.slug === 'combo' && !item.startsWith('Всё из'))
-                    const extended = tariff.slug === 'start' && item.startsWith('Расширенный')
+                    const included = tariff.includes.includes(item)
+                    const extended = false
                     return (
                       <td key={tariff.slug} className="py-3 pr-4">
                         {included ? (
@@ -93,7 +94,7 @@ export function PricingPage() {
             </tbody>
           </table>
         </div>
-        <p className="label-mono mt-4 text-fg-3">■ входит · ■ в расширенном варианте · — не входит. Итоговая стоимость рассчитывается индивидуально.</p>
+        <p className="label-mono mt-4 text-fg-3">■ входит · — не входит. Итоговая стоимость рассчитывается индивидуально; у каждой услуги есть свои ориентиры «от» — они указаны на страницах услуг.</p>
       </section>
 
       <section className="container-x mt-20 md:mt-28">

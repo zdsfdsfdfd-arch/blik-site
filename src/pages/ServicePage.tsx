@@ -7,7 +7,7 @@ import { ArrowLink } from '../components/ui/ArrowLink'
 import { Button } from '../components/ui/Button'
 import { Reveal } from '../components/ui/Reveal'
 import { Slate } from '../components/ui/Slate'
-import { getProjectsBySlugs } from '../data/projects'
+import { getProjectsBySlugs, projects } from '../data/projects'
 import { getServiceBySlug, services } from '../data/services'
 import { site } from '../data/company'
 import { NotFoundPage } from './NotFoundPage'
@@ -19,7 +19,7 @@ export function ServicePage() {
 
   const index = services.findIndex((s) => s.slug === service.slug)
   const next = services[(index + 1) % services.length]
-  const related = getProjectsBySlugs(service.relatedProjects)
+  const related = service.relatedProjects.length ? getProjectsBySlugs(service.relatedProjects) : projects.filter((p) => p.services.includes(service.slug)).slice(0, 2)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -57,6 +57,37 @@ export function ServicePage() {
           </Reveal>
         </div>
       </section>
+
+      {service.packages && service.packages.length > 0 && (
+        <section className="container-x mt-20 md:mt-28" aria-label="Стоимость">
+          <div className="flex items-center justify-between border-t border-line pt-3">
+            <h2 className="label-mono text-fg-3">
+              <span className="text-signal-text">→</span> Стоимость
+            </h2>
+            <ArrowLink to="/pricing" size="sm">
+              Все тарифы
+            </ArrowLink>
+          </div>
+          <div className="mt-10 grid border-t border-line md:grid-cols-3">
+            {service.packages.map((pack, i) => (
+              <Reveal key={pack.name} delay={i * 0.08} className={`border-b border-line py-8 md:border-b-0 md:py-10 ${i > 0 ? 'md:border-l md:pl-8' : ''} ${i < 2 ? 'md:pr-8' : ''}`}>
+                <p className="label-mono text-fg-3">Тариф {String(i + 1).padStart(2, '0')}</p>
+                <h3 className="text-display-md mt-3">{pack.name}</h3>
+                <p className="text-display-lg mt-4 text-signal-text">{pack.price}</p>
+                <ul className="mt-6 space-y-2">
+                  {pack.details.map((detail) => (
+                    <li key={detail} className="flex gap-3 text-sm text-fg-2">
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 bg-fg" />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+          <p className="label-mono mt-4 text-fg-3">Стоимость ориентировочная: итоговый расчёт по брифу, бесплатно и в течение 24 часов.</p>
+        </section>
+      )}
 
       <section className="container-x mt-20 md:mt-28">
         <div className="flex items-center justify-between border-t border-line pt-3">
@@ -106,6 +137,41 @@ export function ServicePage() {
           </Reveal>
         </div>
       </section>
+
+      {service.audience && service.audience.length > 0 && (
+        <section className="container-x mt-20 md:mt-28">
+          <div className="grid-12 gap-y-8">
+            <h2 className="label-mono col-span-12 text-fg-3 lg:col-span-3">
+              <span className="text-signal-text">→</span> Кому подходит
+            </h2>
+            <ul className="col-span-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:col-span-9 lg:grid-cols-3">
+              {service.audience.map((item) => (
+                <li key={item} className="bg-bg p-4 text-sm md:p-5">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {service.faq && service.faq.length > 0 && (
+        <section className="container-x mt-20 md:mt-28">
+          <div className="grid-12 gap-y-8">
+            <h2 className="label-mono col-span-12 text-fg-3 lg:col-span-3">
+              <span className="text-signal-text">→</span> Вопросы по услуге
+            </h2>
+            <dl className="col-span-12 border-t border-line lg:col-span-9">
+              {service.faq.map((item) => (
+                <div key={item.question} className="grid gap-3 border-b border-line py-5 md:grid-cols-[1fr_2fr] md:gap-8">
+                  <dt className="text-display-xs">{item.question}</dt>
+                  <dd className="text-sm leading-relaxed text-fg-2">{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section data-theme="dark" className="mt-24 bg-bg py-16 text-fg md:mt-32 md:py-24">

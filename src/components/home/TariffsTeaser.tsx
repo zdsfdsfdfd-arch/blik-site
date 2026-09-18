@@ -27,6 +27,7 @@ export function TariffsTeaser() {
               <Link to={`/pricing#${tariff.slug}`} className="group block">
                 <p className="label-mono text-fg-3">Тариф {(i + 1).toString().padStart(2, '0')}</p>
                 <h3 className="text-display-lg mt-4 transition-colors group-hover:text-signal-text">{tariff.name}</h3>
+                <p className="text-display-md mt-3 text-signal-text">{tariff.price}</p>
                 <p className="prose-body mt-4 min-h-[3.2em]">{tariff.tagline}</p>
                 <p className="label-mono mt-8 text-fg-3">Для чего</p>
                 <p className="mt-2 text-sm text-fg-2">{tariff.bestFor}</p>

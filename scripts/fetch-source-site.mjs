@@ -10,7 +10,7 @@ import { extname, join } from 'node:path'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const OUT = join(ROOT, 'research/source')
-const MEDIA = join(ROOT, 'public/media/source')
+const MEDIA = join(ROOT, 'research/source/media')
 const ORIGINS = ['https://xn--80adgaeqsyfakm2i.xn--p1ai', 'https://videokzn.ru']
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
 const MAX_PAGES = 400
@@ -259,7 +259,7 @@ async function downloadImages() {
         const file = name.toLowerCase().endsWith(ext.toLowerCase()) ? name : `${name}${ext}`
         const target = join(MEDIA, file)
         if (!existsSync(target)) writeFileSync(target, body)
-        saved = { file: `/media/source/${file}`, from: candidate, bytes: body.length, type }
+        saved = { file: `/research/source/media/${file}`, from: candidate, bytes: body.length, type }
         break
       } catch (error) {
         log(`  img ↻ ${candidate}: ${error.message}`)
@@ -288,7 +288,7 @@ async function enrichVideos() {
             if (img.length > 3000) {
               const file = `yt-${v.id}-${q}.jpg`
               writeFileSync(join(MEDIA, file), img)
-              item.poster = `/media/source/${file}`
+              item.poster = `/research/source/media/${file}`
               break
             }
           } catch {

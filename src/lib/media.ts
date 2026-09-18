@@ -27,8 +27,12 @@ export function embedUrl(video: VideoRef, autoplay = true): string {
       return `https://www.youtube-nocookie.com/embed/${video.id}?autoplay=${auto}&rel=0&modestbranding=1&playsinline=1&hl=ru`
     case 'rutube':
       return `https://rutube.ru/play/embed/${video.id}?autoplay=${auto}`
-    case 'vk':
-      return `https://vk.com/video_ext.php?${video.id}&autoplay=${auto}`
+    case 'vk': {
+      const [oid, id] = video.id.split('_')
+      return `https://vk.com/video_ext.php?oid=${oid}&id=${id}&hd=2&autoplay=${auto}`
+    }
+    case 'kinescope':
+      return `https://kinescope.io/embed/${video.id}?autoplay=${auto}`
     case 'vimeo':
       return `https://player.vimeo.com/video/${video.id}?autoplay=${auto}&dnt=1`
     default:

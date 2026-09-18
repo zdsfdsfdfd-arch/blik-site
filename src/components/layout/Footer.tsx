@@ -64,13 +64,18 @@ export function Footer() {
             <div>
               <h2 className="label-mono text-fg-3">Услуги</h2>
               <ul className="mt-5 space-y-2.5">
-                {services.map((service) => (
+                {services.slice(0, 12).map((service) => (
                   <li key={service.slug}>
                     <Link to={`/services/${service.slug}`} className="link-underline text-sm text-fg-2 transition-colors hover:text-fg">
                       {service.name}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link to="/services" className="link-underline text-sm text-fg transition-colors">
+                    Все услуги ({services.length})
+                  </Link>
+                </li>
               </ul>
             </div>
             {footerColumns.map((column) => (

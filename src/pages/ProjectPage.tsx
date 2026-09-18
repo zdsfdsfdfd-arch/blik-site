@@ -7,7 +7,7 @@ import { ProjectHero } from '../components/work/ProjectHero'
 import { ArrowLink } from '../components/ui/ArrowLink'
 import { Button } from '../components/ui/Button'
 import { Reveal } from '../components/ui/Reveal'
-import { getProjectBySlug, nextProject, projects } from '../data/projects'
+import { categoryLabels, getProjectBySlug, nextProject, relatedProjects } from '../data/projects'
 import { services } from '../data/services'
 import { site } from '../data/company'
 import { NotFoundPage } from './NotFoundPage'
@@ -18,14 +18,15 @@ export function ProjectPage() {
   if (!project) return <NotFoundPage />
 
   const next = nextProject(project.slug)
-  const related = projects.filter((p) => p.slug !== project.slug && p.category === project.category).slice(0, 2)
+  const related = relatedProjects(project.category, project.slug, 2)
   const usedServices = services.filter((s) => project.services.includes(s.slug))
+  const primary = usedServices[0]
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': project.video ? 'VideoObject' : 'CreativeWork',
     name: project.title,
-    description: project.summary,
-    ...(project.video ? { embedUrl: project.video.url, thumbnailUrl: project.poster.src || undefined } : {}),
+    description: project.seoDescription ?? project.summary ?? project.title,
+    ...(project.video ? { embedUrl: project.video.url, thumbnailUrl: `${site.url}${project.poster.src}`, uploadDate: '2023-01-01' } : {}),
     producer: { '@type': 'Organization', name: site.name, url: site.url },
   }
 
@@ -48,6 +49,10 @@ export function ProjectPage() {
                   </li>
                 ))}
               </ul>
+              <p className="label-mono mt-8 text-fg-3">Категория</p>
+              <Link to={`/work?type=${project.category}`} className="link-underline mt-2 inline-block text-sm text-fg-2 hover:text-fg">
+                {categoryLabels[project.category]}
+              </Link>
               {project.sourceUrl && (
                 <p className="label-mono mt-8 text-fg-3">
                   Источник:{' '}
@@ -59,22 +64,64 @@ export function ProjectPage() {
             </div>
           </aside>
           <div className="col-span-12 lg:col-span-8 lg:col-start-5">
-            {project.sections.map((section, i) => (
-              <Reveal key={section.heading} as="section" className="border-t border-line py-10 first:border-t-0 first:pt-0 md:py-12">
+            {project.sections.length > 0 ? (
+              project.sections.map((section, i) => (
+                <Reveal key={section.heading} as="section" className="border-t border-line py-10 first:border-t-0 first:pt-0 md:py-12">
+                  <div className="grid gap-4 md:grid-cols-[8rem_1fr] md:gap-8">
+                    <h2 className="label-mono text-signal-text">
+                      {String(i + 1).padStart(2, '0')} · {section.heading}
+                    </h2>
+                    <div className="space-y-4">
+                      {section.body.map((paragraph, j) => (
+                        <p key={j} className={j === 0 ? 'text-display-sm leading-[1.4]' : 'prose-body'}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              ))
+            ) : primary ? (
+              <Reveal as="section">
                 <div className="grid gap-4 md:grid-cols-[8rem_1fr] md:gap-8">
-                  <h2 className="label-mono text-signal-text">
-                    {String(i + 1).padStart(2, '0')} · {section.heading}
-                  </h2>
+                  <h2 className="label-mono text-signal-text">01 · Формат</h2>
                   <div className="space-y-4">
-                    {section.body.map((paragraph, j) => (
-                      <p key={j} className={j === 0 ? 'text-display-sm leading-[1.4]' : 'prose-body'}>
+                    <p className="text-display-sm leading-[1.4]">{primary.intro}</p>
+                    {primary.description.slice(0, 1).map((paragraph) => (
+                      <p key={paragraph} className="prose-body">
                         {paragraph}
                       </p>
                     ))}
+                    <ArrowLink to={`/services/${primary.slug}`} size="sm">
+                      Подробнее об услуге «{primary.name}»
+                    </ArrowLink>
                   </div>
                 </div>
+                {primary.steps.length > 0 && (
+                  <div className="mt-10 grid gap-4 border-t border-line pt-10 md:grid-cols-[8rem_1fr] md:gap-8">
+                    <h2 className="label-mono text-signal-text">02 · Как делаем</h2>
+                    <ol className="grid gap-px border border-line bg-line sm:grid-cols-2">
+                      {primary.steps.slice(0, 4).map((step, i) => (
+                        <li key={step.title} className="bg-bg p-5">
+                          <p className="label-mono text-fg-3">{String(i + 1).padStart(2, '0')}</p>
+                          <p className="text-display-xs mt-3">{step.title}</p>
+                          <p className="mt-2 text-sm text-fg-2">{step.body}</p>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
               </Reveal>
-            ))}
+            ) : null}
+            {project.quote && (
+              <Reveal as="blockquote" className="mt-12 border-l-2 border-signal pl-6 md:pl-8">
+                <p className="text-display-sm leading-[1.4]">«{project.quote.text}»</p>
+                <footer className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+                  <span className="label-mono-lg">{project.quote.author}</span>
+                  {project.quote.role && <span className="label-mono text-fg-3">{project.quote.role}</span>}
+                </footer>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
@@ -87,12 +134,12 @@ export function ProjectPage() {
             <h2 className="label-mono text-fg-3">
               <span className="text-signal-text">→</span> Похожие работы
             </h2>
-            <ArrowLink to="/work" size="sm">
-              Все работы
+            <ArrowLink to={`/work?type=${project.category}`} size="sm">
+              Все в категории
             </ArrowLink>
           </div>
           <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-6">
-            {(related.length ? related : projects.filter((p) => p.slug !== project.slug).slice(0, 2)).map((p, i) => (
+            {related.map((p, i) => (
               <ProjectCard key={p.slug} project={p} index={i} />
             ))}
           </div>

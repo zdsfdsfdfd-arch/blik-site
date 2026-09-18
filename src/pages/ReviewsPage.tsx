@@ -1,56 +1,94 @@
-import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
 import { Page } from '../components/layout/Page'
 import { Button } from '../components/ui/Button'
 import { Reveal } from '../components/ui/Reveal'
+import { SmartImage } from '../components/ui/SmartImage'
 import { SplitLines } from '../components/ui/SplitLines'
+import { VideoFrame } from '../components/ui/VideoFrame'
 import { company } from '../data/company'
-import { reviews } from '../data/reviews'
+import { letters, reviews } from '../data/reviews'
+import { posterSources } from '../lib/media'
+
+const PAGE = 12
 
 export function ReviewsPage() {
+  const [limit, setLimit] = useState(PAGE)
+  const shown = reviews.slice(0, limit)
   return (
-    <Page theme="light" title="Отзывы" description="Отзывы клиентов о студии Видеопродакшн.РФ: рейтинг 5,0 на 2ГИС и 9,7 на сайте студии. Профессиональный подход, соблюдение сроков, адекватные цены." path="/reviews">
+    <Page theme="light" title="Отзывы" description={`${reviews.length} видеоотзывов и ${letters.length} благодарственных писем клиентов студии Видеопродакшн.РФ: ICL Services, Волжская судоходная компания, Росдорнии, банк «Русский Стандарт» и другие.`} path="/reviews">
       <section className="container-x pt-28 md:pt-36">
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-7">
             <p className="label-mono text-signal-text">06 · Отзывы</p>
-            <SplitLines as="h1" lines={['Что говорят', 'клиенты']} className="text-display-2xl mt-5" delay={0.2} />
+            <SplitLines as="h1" lines={['Что говорят', 'о нас клиенты']} className="text-display-2xl mt-5" delay={0.2} />
           </div>
-          <ul className="col-span-12 grid grid-cols-2 gap-px border border-line bg-line lg:col-span-5">
-            {company.ratings.map((rating) => (
-              <li key={rating.source} className="bg-bg p-5">
-                <p className="label-mono text-fg-3">{rating.source}</p>
-                <p className="text-display-lg mt-3">{rating.value}</p>
-                <p className="mt-1 text-sm text-fg-2">{rating.note}</p>
+          <div className="col-span-12 lg:col-span-5">
+            <p className="lead">Посмотрите видеоотзывы наших счастливых клиентов — и благодарственные письма, которые они присылают после проектов.</p>
+            <ul className="mt-6 grid grid-cols-3 gap-px border border-line bg-line">
+              <li className="bg-bg p-4">
+                <p className="text-display-md">{reviews.length}</p>
+                <p className="label-mono mt-1 text-fg-3">видеоотзывов</p>
               </li>
-            ))}
-          </ul>
+              <li className="bg-bg p-4">
+                <p className="text-display-md">{letters.length}</p>
+                <p className="label-mono mt-1 text-fg-3">писем</p>
+              </li>
+              {company.ratings.slice(0, 1).map((rating) => (
+                <li key={rating.source} className="bg-bg p-4">
+                  <p className="text-display-md">{rating.value}</p>
+                  <p className="label-mono mt-1 text-fg-3">{rating.source}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section className="container-x mt-16 md:mt-24">
-        <ol className="border-t border-line">
-          {reviews.map((review, i) => (
-            <Reveal key={review.id} as="li" className="grid-12 gap-y-4 border-b border-line py-10 md:py-12">
-              <p className="label-mono col-span-12 text-signal-text md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
-              <blockquote className="col-span-12 md:col-span-8">
-                <p className="text-display-sm leading-[1.4]">{review.paraphrased ? review.text : `«${review.text}»`}</p>
+      <section className="container-x mt-16 md:mt-24" aria-label="Видеоотзывы">
+        <div className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {shown.map((review, i) => (
+            <Reveal key={review.id} as="article" delay={(i % 3) * 0.06}>
+              {review.video && review.poster && <VideoFrame video={review.video} poster={review.poster} title={`Видеоотзыв: ${review.author}`} caption={`Отзыв ${String(i + 1).padStart(2, '0')}`} />}
+              <blockquote className="mt-4 border-t border-line pt-4">
+                <p className="text-[0.9375rem] leading-relaxed text-fg-2">«{review.text}»</p>
+                <footer className="mt-3">
+                  <p className="label-mono-lg">{review.author}</p>
+                  {review.role && <p className="mt-1 text-sm text-fg-3">{review.role}</p>}
+                </footer>
               </blockquote>
-              <footer className="col-span-12 flex flex-col gap-1 md:col-span-3 md:col-start-10">
-                <p className="label-mono-lg">{review.author}</p>
-                {review.company && <p className="text-sm text-fg-2">{review.company}</p>}
-                {review.sourceUrl ? (
-                  <a href={review.sourceUrl} target="_blank" rel="noreferrer" className="group mt-1 inline-flex items-center gap-1 text-sm text-fg-3 hover:text-fg">
-                    <span className="link-underline">{review.paraphrased ? 'По отзыву: ' : ''}{review.source}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-                  </a>
-                ) : (
-                  <p className="text-sm text-fg-3">{review.source}</p>
-                )}
-              </footer>
             </Reveal>
           ))}
-        </ol>
-        <p className="label-mono mt-6 text-fg-3">Отзывы приводятся по публикациям клиентов на 2ГИС, Яндекс Картах и сайте студии.</p>
+        </div>
+        {shown.length < reviews.length && (
+          <div className="mt-14 flex flex-col items-center gap-4 border-t border-line pt-8">
+            <p className="label-mono text-fg-3">
+              Показано {shown.length} из {reviews.length}
+            </p>
+            <Button variant="outline" size="lg" onClick={() => setLimit((n) => n + PAGE)}>
+              Ещё отзывы
+            </Button>
+          </div>
+        )}
+      </section>
+
+      <section className="container-x mt-20 md:mt-28" aria-label="Благодарственные письма">
+        <div className="flex items-center justify-between border-t border-line pt-3">
+          <h2 className="label-mono text-fg-3">
+            <span className="text-signal-text">→</span> Благодарственные письма
+          </h2>
+          <p className="label-mono text-fg-3">{letters.length}</p>
+        </div>
+        <div className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {letters.map((letter, i) => (
+            <Reveal key={letter.from} as="figure" delay={(i % 4) * 0.05}>
+              <SmartImage sources={posterSources(letter.image)} alt={letter.image.alt} className="aspect-[1/1.35] border border-line" sizes="(min-width: 1024px) 25vw, 50vw" imgClassName="object-contain object-top bg-white" />
+              <figcaption className="mt-3">
+                <p className="label-mono-lg">{letter.from}</p>
+                <p className="mt-1 text-sm text-fg-2">«{letter.quote}»</p>
+              </figcaption>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="container-x py-20 md:py-28">

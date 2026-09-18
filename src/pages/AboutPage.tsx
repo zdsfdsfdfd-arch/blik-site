@@ -2,6 +2,7 @@ import { Page } from '../components/layout/Page'
 import { Counter } from '../components/ui/Counter'
 import { Button } from '../components/ui/Button'
 import { Marquee } from '../components/ui/Marquee'
+import { SmartImage } from '../components/ui/SmartImage'
 import { Reveal } from '../components/ui/Reveal'
 import { Slate } from '../components/ui/Slate'
 import { SplitLines } from '../components/ui/SplitLines'
@@ -9,12 +10,7 @@ import { clients } from '../data/clients'
 import { company, site } from '../data/company'
 import { fullCycle } from '../data/process'
 
-const principles = [
-  { title: 'Индивидуальный подход', body: 'К каждой задаче — свой подход: это позволяет добиваться высоких результатов в создании видеороликов в оптимальные сроки за разумные деньги.' },
-  { title: 'Только штатные специалисты', body: 'Сценаристы, операторы, монтажёры и другие мастера своего дела — 15 человек в штате. Без сторонних подрядчиков, с контролем качества на каждом этапе. В отзывах клиенты благодарят лично оператора Романа и менеджера Алину.' },
-  { title: 'Собственная база', body: 'Съёмочная база с оборудованием стоимостью 5 млн рублей: снимаем, монтируем, делаем графику и озвучку внутри студии.' },
-  { title: 'Прозрачная стоимость', body: 'Вместо смет с десятками скрытых пунктов — несколько тарифов «всё включено», где цена зависит от ключевых параметров.' },
-]
+const principles = company.strengths
 
 const timeline = [
   { year: '2015', text: 'Команда начинает снимать видео для бизнеса в Казани под именем VIDEOKZN.' },
@@ -37,7 +33,7 @@ export function AboutPage() {
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-12 lg:col-span-8">
             <p className="label-mono text-signal-text">04 · Студия</p>
-            <SplitLines as="h1" lines={['Видеопроизводство', 'полного цикла']} className="text-display-2xl mt-5" delay={0.2} />
+            <SplitLines as="h1" lines={['Видеопроизводство', 'полного цикла']} className="text-display-xl mt-5" delay={0.2} />
           </div>
           <p className="lead col-span-12 lg:col-span-4">
             Продакшн-студия полного цикла работает в сфере видеосъёмок для бизнеса с {company.founded} года — в Москве, Казани, Санкт-Петербурге и по всей России.
@@ -56,6 +52,37 @@ export function AboutPage() {
       />
 
       <section className="container-x mt-16 md:mt-24">
+        <div className="grid-12 items-center gap-y-12">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <div className="relative">
+              <SmartImage sources={[company.founder.photo]} alt={`${company.founder.name} — ${company.founder.role}`} className="aspect-square" sizes="(min-width: 1024px) 40vw, 100vw" imgClassName="object-contain" priority />
+              <div aria-hidden="true" className="corners corners-lg pointer-events-none absolute inset-2 text-fg-3" />
+            </div>
+            <div className="mt-4 flex items-baseline justify-between border-t border-line pt-3">
+              <p className="text-display-sm">{company.founder.name}</p>
+              <p className="label-mono text-fg-3">{company.founder.role}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1} className="col-span-12 lg:col-span-6 lg:col-start-7">
+            <p className="text-display-md leading-[1.25]">{company.statement}</p>
+            <p className="prose-body mt-6">
+              В студии работают только высококвалифицированные специалисты — сценаристы, операторы, монтажёры и другие мастера своего дела. Это позволяет гарантировать качественный результат на любой задаче: от создания анимированного логотипа до съёмки имиджевых и презентационных видео, мастер-классов, лекций и мероприятий.
+            </p>
+            <p className="prose-body mt-4">
+              Мы берём на себя полный цикл производства — {fullCycle.map((s) => s.toLowerCase()).join(', ')} — и гарантируем каждому заказчику индивидуальный подход.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {company.gear.map((item) => (
+                <li key={item} className="label-mono border border-line px-2.5 py-1.5 text-fg-2">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="container-x mt-20 md:mt-28">
         <div className="grid-12 gap-y-12">
           <Reveal className="col-span-12 lg:col-span-5">
             <p className="text-display-md leading-[1.25]">
@@ -63,12 +90,8 @@ export function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1} className="col-span-12 lg:col-span-6 lg:col-start-7">
-            <p className="prose-body">
-              В студии работают только высококвалифицированные специалисты — сценаристы, операторы, монтажёры и другие мастера своего дела. Это позволяет гарантировать качественный результат на любой задаче: от создания анимированного логотипа до съёмки имиджевых и презентационных видео, мастер-классов, лекций и мероприятий.
-            </p>
-            <p className="prose-body mt-4">
-              Мы берём на себя полный цикл производства — {fullCycle.map((s) => s.toLowerCase()).join(', ')} — и гарантируем каждому заказчику индивидуальный подход.
-            </p>
+            <p className="prose-body">Команда: {company.team.map((member) => `${member.name} — ${member.role}`).join('; ')}.</p>
+            <p className="prose-body mt-4">Основные города присутствия — Москва и Казань, но съёмки проходят практически по всей России: при необходимости команда лично приезжает в нужный город. Монтаж и 2D/3D-графику делаем удалённо.</p>
           </Reveal>
         </div>
       </section>
@@ -92,9 +115,9 @@ export function AboutPage() {
           <p className="label-mono text-fg-3">
             <span className="text-signal-text">→</span> Принципы
           </p>
-          <p className="label-mono text-fg-3">04</p>
+          <p className="label-mono text-fg-3">{String(principles.length).padStart(2, '0')}</p>
         </div>
-        <ol className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2">
+        <ol className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {principles.map((principle, i) => (
             <Reveal key={principle.title} as="li" delay={i * 0.06} className="bg-bg p-6 md:p-8">
               <p className="label-mono text-signal-text">{String(i + 1).padStart(2, '0')}</p>

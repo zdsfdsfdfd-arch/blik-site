@@ -12,6 +12,9 @@ interface ServiceHeroProps {
 /** Light service opener: index and running position on a rule, the name as a spec-sheet headline. */
 export function ServiceHero({ service, position }: ServiceHeroProps) {
   const reduceMotion = useReducedMotion()
+  // Unbounded is wide: a single word longer than ~13 letters cannot fit the 8-column heading at the largest size.
+  const longestWord = Math.max(...service.name.split(/\s+/).map((word) => word.length))
+  const headingClass = longestWord > 13 ? 'text-display-xl' : 'text-display-2xl'
   return (
     <header className="container-x pt-28 md:pt-36">
       <div className="flex items-center justify-between border-t border-line pt-3">
@@ -22,7 +25,7 @@ export function ServiceHero({ service, position }: ServiceHeroProps) {
       </div>
       <div className="grid-12 mt-10 items-end gap-y-8 md:mt-14">
         <div className="col-span-12 lg:col-span-8">
-          <SplitLines as="h1" lines={service.name.split(' и ').length > 1 ? service.name.split(' и ').map((part, i) => (i === 0 ? `${part} и` : part)) : [service.name]} className="text-display-2xl" delay={0.2} />
+          <SplitLines as="h1" lines={service.name.split(' и ').length > 1 ? service.name.split(' и ').map((part, i) => (i === 0 ? `${part} и` : part)) : [service.name]} className={headingClass} delay={0.2} />
         </div>
         <motion.div
           className="col-span-12 lg:col-span-4"

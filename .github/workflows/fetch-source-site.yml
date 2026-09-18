@@ -32,6 +32,6 @@ jobs:
           git config user.name "source-fetch bot"
           git config user.email "noreply@example.com"
           git checkout -B research/source-fetch
-          git add -f research/source public/media/source
+          git add -f research/source
           git commit -m "Fetch original site: HTML, texts, media URLs and files" || echo "nothing to commit"
           git push -f origin research/source-fetch
