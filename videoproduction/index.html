@@ -4,155 +4,62 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Видеопродакшн.рф — журнал о производстве видео</title>
-<meta name="description" content="Видеопродакшн полного цикла: от идеи до кадра. Казань, Москва, Санкт-Петербург и вся Россия. Реклама, имиджевые и презентационные ролики, документальные фильмы.">
-<meta name="theme-color" content="#07060B">
+<meta name="description" content="Видеопродакшн полного цикла: от идеи до кадра. Казань, Москва, Санкт-Петербург и вся Россия.">
+<meta name="theme-color" content="#08080A">
 <meta name="color-scheme" content="dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ---------- Палитра: чёрно-фиолетовая ---------- */
 :root {
-  --bg: #07060B;
-  --bg-2: #0E0B16;
-  --bg-3: #130E1E;
-  --surface: #100B1A;
-  --ink-hi: #E4DBFF;
-  --ink: #B4A7D6;
-  --muted: #8F82B3;
-  --accent: #8B5CF6;
-  --accent-hi: #A78BFA;
-  --accent-deep: #6D28D9;
-  --on-accent: #0B0714;
-  --line: rgba(228,219,255,0.12);
-  --grad-text: linear-gradient(100deg, #E4DBFF 0%, #A78BFA 55%, #7C3AED 100%);
-  --glow: rgba(139,92,246,0.55);
-  color-scheme: dark;
+  --accent: #8B5CF6;      /* фиолетовый вместо синего #1E5BFF */
+  --accent-hi: #A78BFA;   /* фиолетовый для текста и линий */
+  --surface: #120C1F;     /* бывшие белые секции */
+  --bg-2: #130E1E;        /* подсветка тарифа */
+  --bg-3: #120E1B;        /* фон слота/флаера */
 }
-html { -webkit-text-size-adjust: 100%; background: var(--bg); }
-body { margin: 0; background: var(--bg); overflow-x: hidden; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #08080A; overflow-x: hidden; }
 * { box-sizing: border-box; }
-::selection { background: var(--accent); color: var(--on-accent); }
+::selection { background: var(--accent); color: #F2F0EC; }
 a { color: var(--accent-hi); text-decoration: none; }
-a:hover { color: var(--ink-hi); }
+a:hover { color: #F2F0EC; }
 button { font: inherit; }
 body.om-nocursor, body.om-nocursor * { cursor: none !important; }
 summary { list-style: none; }
 summary::-webkit-details-marker { display: none; }
 summary::marker { content: ''; }
-details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color: var(--accent-hi); }
+details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); }
 
-/* ---------- Фоновое свечение ---------- */
-.ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(55% 45% at 82% 8%, rgba(109,40,217,0.20), transparent 70%),
-    radial-gradient(45% 40% at 8% 92%, rgba(139,92,246,0.12), transparent 70%); }
-
-/* ---------- Слоты изображений ---------- */
-.slot { position: relative; display: block; width: 100%; height: 100%; overflow: hidden;
-  background: linear-gradient(135deg, #16102A 0%, #0E0B16 55%, #1A1030 100%); }
+/* слоты изображений: локальный файл → Unsplash → Picsum → заглушка */
+.slot { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--bg-3); }
 .slot::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(-45deg, rgba(228,219,255,0.035) 0 2px, transparent 2px 14px); }
-.slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
-  opacity: 0; transition: opacity 0.9s ease; }
+  background: repeating-linear-gradient(-45deg, rgba(242,240,236,0.035) 0 2px, transparent 2px 14px); }
+.slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.8s ease; }
 .slot img.ready { opacity: 1; }
-.slot-cap { position: absolute; left: 14px; bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(228,219,255,0.5); pointer-events: none; transition: opacity .5s; }
-.slot.ready .slot-cap { opacity: 0; }
+.slot-cap { position: absolute; left: 14px; bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(242,240,236,0.45); pointer-events: none; }
+.slot.ready .slot-cap { display: none; }
 
-/* ---------- Обложка: градиентный заголовок, проявление «из расфокуса» ---------- */
-.cover-title { filter: drop-shadow(0 0 34px rgba(139,92,246,0.35)); }
-.cover-line { display: block; color: transparent;
-  background: linear-gradient(100deg, #EDE6FF 0%, #C4B5FD 32%, #8B5CF6 58%, #EDE6FF 100%);
-  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text;
-  animation: cover-in 1.2s cubic-bezier(0.16,1,0.3,1) both, cover-shimmer 10s linear infinite;
-  animation-delay: calc(var(--i, 0) * 0.16s + 0.15s), calc(var(--i, 0) * 0.16s + 1.4s); }
-.cover-line .dot { color: var(--accent); -webkit-text-stroke: 0; text-shadow: 0 0 28px rgba(139,92,246,0.9); }
-@keyframes cover-in {
-  from { clip-path: inset(0 0 100% 0); transform: translate3d(0, 0.3em, 0); filter: blur(14px); }
-  to   { clip-path: inset(-0.1em 0 -0.25em 0); transform: none; filter: blur(0); } }
-@keyframes cover-shimmer { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
-
-/* ---------- «Перевод фокуса» для заголовков секций ---------- */
-.fx-focus { --vv: clamp(0, calc((var(--v, 1) - var(--lag, 0)) / (1 - var(--lag, 0))), 1);
-  filter: blur(calc((1 - var(--vv)) * 16px));
-  opacity: calc(0.12 + var(--vv) * 0.88);
-  letter-spacing: calc(var(--ls, -0.035em) + (1 - var(--vv)) * 0.07em);
-  transform: translate3d(0, calc((1 - var(--vv)) * 12px), 0); }
-
-/* ---------- Контурный текст ---------- */
-.outline { color: transparent; -webkit-text-stroke: 1px rgba(196,181,253,0.45); }
-
-/* ---------- Процесс: контур → заливка с сиянием ---------- */
-.proc { opacity: 1 !important; }
-.proc-word { color: transparent; -webkit-text-stroke: 1px rgba(228,219,255,0.28); text-shadow: 0 0 0 rgba(139,92,246,0);
-  transition: color 0.55s, -webkit-text-stroke-color 0.55s, text-shadow 0.7s; }
-.proc.on .proc-word { color: var(--ink-hi); -webkit-text-stroke-color: transparent; text-shadow: 0 0 44px rgba(139,92,246,0.65); }
-.proc-num { transition: color 0.4s; }
-
-/* ---------- За кадром: барабан слов ---------- */
-.roll { height: 0.92em; overflow: hidden; filter: drop-shadow(0 0 28px rgba(139,92,246,0.55)) drop-shadow(0 0 70px rgba(109,40,217,0.35)); font-weight: 900; font-size: clamp(52px, 15vw, 260px); line-height: 0.92;
-  letter-spacing: -0.05em; text-transform: uppercase; text-align: center; padding: 0 0.1em; }
-.roll-inner { transform: translate3d(0, calc(var(--roll, 0) * -0.92em), 0); transition: transform 0.95s cubic-bezier(0.16,1,0.3,1); }
-.roll-word { display: block; height: 0.92em; color: transparent; -webkit-text-stroke: 1.5px rgba(196,181,253,0.5);
-  transition: color 0.5s, -webkit-text-stroke-color 0.5s; }
-.roll-word.on { color: var(--ink-hi); -webkit-text-stroke-color: transparent; transition-delay: 0.25s; }
-.roll-shade { position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(7,6,11,0.62), rgba(7,6,11,0.22) 45%, rgba(7,6,11,0.78)); }
-
-/* ---------- Отзывы: смена «через фокус» ---------- */
-.rev { opacity: 0; filter: blur(18px); transform: scale(0.97); pointer-events: none;
-  transition: opacity 0.6s, filter 0.75s, transform 0.85s cubic-bezier(0.16,1,0.3,1); }
-.rev.on { opacity: 1; filter: blur(0); transform: none; pointer-events: auto; }
-
-/* ---------- География: заливка контура по скроллу ---------- */
-.geo { --vv: clamp(0, calc((var(--v, 1) - var(--lag, 0)) * 1.7), 1);
-  color: transparent; -webkit-text-stroke: 1px rgba(228,219,255,0.3);
-  background: var(--geo-grad, linear-gradient(90deg, #EDE6FF 0%, #C4B5FD 45%, #8B5CF6 100%));
-  background-size: calc(var(--vv) * 100%) 100%; background-repeat: no-repeat;
-  -webkit-background-clip: text; background-clip: text; }
-.geo.geo-accent { --geo-grad: linear-gradient(90deg, #6D28D9 0%, #A78BFA 55%, #E9D5FF 100%); background-position: 100% 0; }
-
-/* ---------- Контакт: трекинг + пульсирующая точка ---------- */
-.fx-track { letter-spacing: calc(-0.05em + (1 - var(--v, 1)) * 0.2em); opacity: calc(0.15 + var(--v, 1) * 0.85);
-  filter: blur(calc((1 - var(--v, 1)) * 8px)); }
-.dot-accent { color: var(--accent); text-shadow: 0 0 30px rgba(139,92,246,0.8); animation: dot-pulse 3.2s ease-in-out infinite; }
-@keyframes dot-pulse { 0%, 100% { text-shadow: 0 0 22px rgba(139,92,246,0.55); } 50% { text-shadow: 0 0 46px rgba(167,139,250,1); } }
-
-/* ---------- Бриф ---------- */
+/* бриф (рендерится скриптом, стили как в оригинале, заливка при наведении — фиолетовая) */
 .brief-opt { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%;
-  padding: clamp(14px, 1.7vw, 22px) clamp(10px, 1.4vw, 20px); border: 0; background: transparent; color: var(--ink-hi);
-  font-weight: 600; font-size: clamp(16px, 1.5vw, 24px); letter-spacing: -0.02em; text-align: left; cursor: pointer;
-  background-image: linear-gradient(90deg, rgba(139,92,246,0.28), rgba(139,92,246,0.02)); background-size: 0% 100%; background-repeat: no-repeat;
-  transition: background-size 0.45s cubic-bezier(0.16,1,0.3,1), padding 0.45s cubic-bezier(0.16,1,0.3,1), color 0.3s; }
-.brief-opt:hover, .brief-opt:focus-visible { background-size: 100% 100%; padding-left: clamp(18px, 2.6vw, 40px); color: #F1EBFF; outline: none; }
+  padding: clamp(14px, 1.7vw, 22px) clamp(10px, 1.4vw, 20px); border: 0; background: none; color: #F2F0EC; font-weight: 600;
+  font-size: clamp(16px, 1.5vw, 24px); letter-spacing: -0.02em; text-align: left; cursor: pointer;
+  transition: background 0.3s, color 0.3s, padding 0.4s cubic-bezier(0.16,1,0.3,1); }
+.brief-opt:hover { background: var(--accent); color: #F2F0EC; padding-left: clamp(18px, 2.6vw, 40px); }
 .brief-opt .num { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.5; }
-.brief-input { width: 100%; margin-top: 10px; padding: 12px 0; border: 0; border-bottom: 1px solid rgba(228,219,255,0.3);
-  background: none; color: var(--ink-hi); font-family: 'Golos Text', sans-serif; font-size: clamp(16px, 1.3vw, 20px); }
+.brief-input { width: 100%; margin-top: 10px; padding: 12px 0; border: 0; border-bottom: 1px solid rgba(242,240,236,0.3); background: none;
+  color: #F2F0EC; font-family: 'Golos Text', sans-serif; font-size: clamp(16px, 1.3vw, 20px); }
 .brief-input:focus { outline: none; border-bottom-color: var(--accent-hi); }
-.brief-ghost { padding: 10px 0; border: 0; background: none; color: rgba(228,219,255,0.5); font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; letter-spacing: 0.16em; cursor: pointer; }
-.brief-ghost:hover { color: var(--accent-hi); }
-.btn-accent { display: inline-block; padding: 18px 28px; border: 0; background: var(--accent); color: var(--on-accent);
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; cursor: pointer;
-  box-shadow: 0 10px 34px -10px var(--glow); transition: background 0.3s, box-shadow 0.3s, transform 0.2s; }
-.btn-accent:hover { background: var(--accent-hi); color: var(--on-accent); box-shadow: 0 14px 40px -8px var(--glow); transform: translateY(-1px); }
-.btn-line { display: inline-block; padding: 16px 24px; border: 1px solid rgba(228,219,255,0.28); color: var(--ink-hi);
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; transition: border-color 0.3s, color 0.3s; }
+.brief-ghost { padding: 10px 0; border: 0; background: none; color: rgba(242,240,236,0.5); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; cursor: pointer; }
+.btn-accent { display: inline-block; padding: 18px 28px; border: 0; background: var(--accent); color: #F2F0EC; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; cursor: pointer; transition: background 0.3s; }
+.btn-accent:hover { background: var(--accent-hi); color: #F2F0EC; }
+.btn-line { display: inline-block; padding: 16px 24px; border: 1px solid rgba(242,240,236,0.28); color: #F2F0EC; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; transition: border-color 0.3s, color 0.3s; }
 .btn-line:hover { border-color: var(--accent-hi); color: var(--accent-hi); }
 
-/* ---------- Курсор ---------- */
-[data-cursor-el] { box-shadow: 0 0 0 1px rgba(196,181,253,0.35), 0 0 26px rgba(139,92,246,0.55); }
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-  .cover-line { clip-path: none; }
-  .fx-focus, .fx-track { filter: none; opacity: 1; transform: none; }
-  .rev { filter: none; }
-  .geo { background-size: 100% 100%; }
-}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 @media (min-width: 768px) {
-  #sp-04 > div, #sp-06 > div, #sp-07 > div, #sp-09 > div, #sp-11 > div { padding-right: 168px; }
+  #sp-04 > div, #sp-07 > div, #sp-09 > div, #sp-11 > div { padding-right: 168px; }
   [data-nav-wrap] { display: flex !important; }
   [data-mininav] { display: none !important; }
 }
@@ -170,7 +77,7 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
   #sp-00 header { grid-template-columns: 1fr !important; gap: 5px !important; }
   #sp-00 header span { text-align: left !important; }
   #sp-00 h1 { font-size: clamp(38px, 13.4vw, 64px) !important; }
-  #sp-00 [data-cover-img] { right: 0 !important; top: auto !important; bottom: 0 !important; width: 100% !important; height: 40vh !important; margin: 0 !important; opacity: 0.45 !important; }
+  #sp-00 [data-cover-img] { right: 0 !important; top: auto !important; bottom: 0 !important; width: 100% !important; height: 40vh !important; margin: 0 !important; opacity: 0.4 !important; }
   #sp-00 footer { grid-template-columns: 1fr !important; gap: 16px !important; }
   #sp-00 footer > div { display: flex !important; flex-wrap: wrap; gap: 4px 16px; line-height: 1.6 !important; }
   #sp-00 footer > a { justify-self: start !important; }
@@ -182,7 +89,6 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
   #sp-02 [data-track] > h2 { font-size: clamp(40px, 13vw, 72px) !important; }
   #sp-02 [data-track] > button > span:first-child { height: 50vh !important; }
   #sp-03 { min-height: 300vh !important; }
-  #sp-03 .proc { transform: none !important; }
   #sp-03 [data-proc] > span:last-child { font-size: clamp(22px, min(9vw, 6.2vh), 58px) !important; }
   #sp-03 [data-proc-img-wrap] { width: 100% !important; height: 100% !important; top: 0 !important; right: 0 !important; margin: 0 !important; opacity: 0.3 !important; }
   #sp-03 > div > div:last-child { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -195,60 +101,59 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
   #sp-08 { min-height: 240vh !important; }
   #sp-08 > div > div:last-child { flex-direction: column !important; align-items: flex-start !important; }
   #sp-08 > div > div:last-child > div { flex: 0 0 auto !important; width: 100% !important; max-width: none !important; }
-  #sp-10 .geo { font-size: clamp(24px, 8.4vw, 46px) !important; }
+  #sp-10 div[style*="font-weight: 900"] { font-size: clamp(24px, 8.4vw, 46px) !important; }
   #sp-12 h2 { font-size: clamp(38px, 13.6vw, 74px) !important; }
   [data-overlay] [data-close] { top: 14px !important; right: 18px !important; }
 }
 </style>
 </head>
 <body>
-<div data-root="1" style="position: relative; background: var(--bg); color: var(--ink-hi); font-family: 'Golos Text', system-ui, sans-serif; font-weight: 500; overflow-x: clip;">
-  <div class="ambient" aria-hidden="true"></div>
+<div data-root="1" style="position: relative; background: #08080A; color: #F2F0EC; font-family: 'Golos Text', system-ui, sans-serif; font-weight: 500; overflow-x: clip;">
 
-  <div aria-hidden="true" style="position: fixed; inset: 0 auto 0 0; width: 26px; z-index: 40; pointer-events: none; background: var(--bg); border-right: 1px solid rgba(228,219,255,0.1);">
-    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(228,219,255,0.22) 0 14px, transparent 14px 40px); background-position: 0 calc(var(--perf, 0) * -1px); margin: 0 7px;"></div>
+  <div aria-hidden="true" style="position: fixed; inset: 0 auto 0 0; width: 26px; z-index: 40; pointer-events: none; background: #08080A; border-right: 1px solid rgba(242,240,236,0.1);">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(242,240,236,0.22) 0 14px, transparent 14px 40px); background-position: 0 calc(var(--perf, 0) * -1px); margin: 0 7px;"></div>
   </div>
-  <div aria-hidden="true" style="position: fixed; inset: 0 0 0 auto; width: 26px; z-index: 40; pointer-events: none; background: var(--bg); border-left: 1px solid rgba(228,219,255,0.1);">
-    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(228,219,255,0.22) 0 14px, transparent 14px 40px); background-position: 0 calc(var(--perf, 0) * -1px); margin: 0 7px;"></div>
+  <div aria-hidden="true" style="position: fixed; inset: 0 0 0 auto; width: 26px; z-index: 40; pointer-events: none; background: #08080A; border-left: 1px solid rgba(242,240,236,0.1);">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(242,240,236,0.22) 0 14px, transparent 14px 40px); background-position: 0 calc(var(--perf, 0) * -1px); margin: 0 7px;"></div>
   </div>
 
   <div aria-hidden="true" style="position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 60; pointer-events: none;">
     <div data-progress="1" style="height: 100%; width: 100%; background: var(--accent); transform: scaleX(var(--sp, 0)); transform-origin: 0 50%;"></div>
   </div>
 
-  <div data-cursor-el="1" aria-hidden="true" style="position: fixed; top: 0; left: 0; z-index: 90; pointer-events: none; opacity: var(--cur-o, 0); display: flex; align-items: center; justify-content: center; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; color: var(--ink-hi); white-space: nowrap; transition: width 0.35s cubic-bezier(0.16,1,0.3,1), height 0.35s cubic-bezier(0.16,1,0.3,1), background 0.3s;"><span data-cursor-label="1" style="opacity: 0; transition: opacity 0.2s;"></span></div>
+  <div data-cursor-el="1" aria-hidden="true" style="position: fixed; top: 0; left: 0; z-index: 90; pointer-events: none; opacity: var(--cur-o, 0); display: flex; align-items: center; justify-content: center; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; color: #F2F0EC; white-space: nowrap; transition: width 0.35s cubic-bezier(0.16,1,0.3,1), height 0.35s cubic-bezier(0.16,1,0.3,1), background 0.3s;"><span data-cursor-label="1" style="opacity: 0; transition: opacity 0.2s;"></span></div>
 
   <nav aria-label="Разделы журнала" style="position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 55; display: var(--nav-side, none); flex-direction: column; gap: 9px; padding: 14px 18px 14px 14px;" data-nav-wrap="1">
-    <a data-nav="0" href="#sp-00" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>00 ОБЛОЖКА</a>
-    <a data-nav="1" href="#sp-01" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>01 НАЧАЛО</a>
-    <a data-nav="2" href="#sp-02" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>02 РАБОТЫ</a>
-    <a data-nav="3" href="#sp-03" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>03 ПРОЦЕСС</a>
-    <a data-nav="4" href="#sp-04" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>04 УСЛУГИ</a>
-    <a data-nav="5" href="#sp-05" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>05 ЗА КАДРОМ</a>
-    <a data-nav="6" href="#sp-06" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>06 ТАРИФЫ</a>
-    <a data-nav="7" href="#sp-07" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>07 КОМАНДА</a>
-    <a data-nav="8" href="#sp-08" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>08 ОТЗЫВЫ</a>
-    <a data-nav="9" href="#sp-09" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>09 БРИФ</a>
-    <a data-nav="10" href="#sp-10" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>10 ГЕОГРАФИЯ</a>
-    <a data-nav="11" href="#sp-11" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>11 ВОПРОСЫ</a>
-    <a data-nav="12" href="#sp-12" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);"><span style="width: 14px; height: 1px; background: currentColor;"></span>12 КОНТАКТ</a>
+    <a data-nav="0" href="#sp-00" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>00 ОБЛОЖКА</a>
+    <a data-nav="1" href="#sp-01" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>01 НАЧАЛО</a>
+    <a data-nav="2" href="#sp-02" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>02 РАБОТЫ</a>
+    <a data-nav="3" href="#sp-03" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>03 ПРОЦЕСС</a>
+    <a data-nav="4" href="#sp-04" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>04 УСЛУГИ</a>
+    <a data-nav="5" href="#sp-05" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>05 ЗА КАДРОМ</a>
+    <a data-nav="6" href="#sp-06" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>06 ТАРИФЫ</a>
+    <a data-nav="7" href="#sp-07" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>07 КОМАНДА</a>
+    <a data-nav="8" href="#sp-08" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>08 ОТЗЫВЫ</a>
+    <a data-nav="9" href="#sp-09" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>09 БРИФ</a>
+    <a data-nav="10" href="#sp-10" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>10 ГЕОГРАФИЯ</a>
+    <a data-nav="11" href="#sp-11" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>11 ВОПРОСЫ</a>
+    <a data-nav="12" href="#sp-12" style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;"><span style="width: 14px; height: 1px; background: currentColor;"></span>12 КОНТАКТ</a>
   </nav>
 
-  <div data-mininav="1" style="position: fixed; left: 26px; right: 26px; bottom: 0; z-index: 56; display: var(--nav-mini, flex); align-items: stretch; background: rgba(7,6,11,0.92); border-top: 1px solid rgba(228,219,255,0.18); backdrop-filter: blur(6px);">
+  <div data-mininav="1" style="position: fixed; left: 26px; right: 26px; bottom: 0; z-index: 56; display: var(--nav-mini, flex); align-items: stretch; background: rgba(8,8,10,0.92); border-top: 1px solid rgba(242,240,236,0.18); backdrop-filter: blur(6px);">
     <div data-mininav-scroll="1" style="flex: 1; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;">
-      <a data-nav2="0" href="#sp-00" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">00 ОБЛОЖКА</a>
-      <a data-nav2="1" href="#sp-01" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">01 НАЧАЛО</a>
-      <a data-nav2="2" href="#sp-02" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">02 РАБОТЫ</a>
-      <a data-nav2="3" href="#sp-03" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">03 ПРОЦЕСС</a>
-      <a data-nav2="4" href="#sp-04" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">04 УСЛУГИ</a>
-      <a data-nav2="5" href="#sp-05" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">05 ЗА КАДРОМ</a>
-      <a data-nav2="6" href="#sp-06" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">06 ТАРИФЫ</a>
-      <a data-nav2="7" href="#sp-07" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">07 КОМАНДА</a>
-      <a data-nav2="8" href="#sp-08" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">08 ОТЗЫВЫ</a>
-      <a data-nav2="9" href="#sp-09" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">09 БРИФ</a>
-      <a data-nav2="10" href="#sp-10" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">10 ГЕОГРАФИЯ</a>
-      <a data-nav2="11" href="#sp-11" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">11 ВОПРОСЫ</a>
-      <a data-nav2="12" href="#sp-12" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">12 КОНТАКТ</a>
+      <a data-nav2="0" href="#sp-00" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">00 ОБЛОЖКА</a>
+      <a data-nav2="1" href="#sp-01" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">01 НАЧАЛО</a>
+      <a data-nav2="2" href="#sp-02" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">02 РАБОТЫ</a>
+      <a data-nav2="3" href="#sp-03" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">03 ПРОЦЕСС</a>
+      <a data-nav2="4" href="#sp-04" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">04 УСЛУГИ</a>
+      <a data-nav2="5" href="#sp-05" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">05 ЗА КАДРОМ</a>
+      <a data-nav2="6" href="#sp-06" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">06 ТАРИФЫ</a>
+      <a data-nav2="7" href="#sp-07" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">07 КОМАНДА</a>
+      <a data-nav2="8" href="#sp-08" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">08 ОТЗЫВЫ</a>
+      <a data-nav2="9" href="#sp-09" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">09 БРИФ</a>
+      <a data-nav2="10" href="#sp-10" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">10 ГЕОГРАФИЯ</a>
+      <a data-nav2="11" href="#sp-11" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">11 ВОПРОСЫ</a>
+      <a data-nav2="12" href="#sp-12" style="flex: 0 0 auto; display: flex; align-items: center; padding: 0 14px; min-height: 46px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">12 КОНТАКТ</a>
     </div>
   </div>
 
@@ -257,96 +162,95 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
     <section id="sp-00" data-scene="1" data-screen-label="Обложка" style="position: relative; min-height: 168vh;">
       <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 22px 0 26px;">
 
-        <header style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 16px; padding: 0 clamp(14px, 3vw, 44px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.55);">
-          <span style="color: var(--ink-hi);">ВИДЕОПРОДАКШН.РФ</span>
+        <header style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 16px; padding: 0 clamp(14px, 3vw, 44px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.55);">
+          <span style="color: #F2F0EC;">ВИДЕОПРОДАКШН.РФ</span>
           <span style="text-align: center;">ЖУРНАЛ О ПРОИЗВОДСТВЕ ВИДЕО · ВЫПУСК 01</span>
           <span style="text-align: right;">КАЗАНЬ · С 2015 ГОДА</span>
         </header>
 
         <div data-cover-stage="1" style="position: relative; display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; padding: 0 clamp(14px, 3vw, 44px); transform: translate3d(0, calc(var(--e, 0) * -9vh), 0); opacity: calc(1 - var(--e, 0) * 1.25);">
 
-          <div data-cover-img="1" style="position: absolute; right: calc(clamp(14px, 3vw, 44px) * -1); top: 50%; width: min(52vw, 760px); height: min(62vh, 620px); margin-top: -31vh; overflow: hidden; transform: translate3d(calc(var(--mx, 0) * -16px), calc(var(--my, 0) * -12px), 0) scale(calc(1.04 + var(--e, 0) * 0.14)); filter: contrast(1.08) brightness(0.7) saturate(1.1);">
+          <div data-cover-img="1" style="position: absolute; right: calc(clamp(14px, 3vw, 44px) * -1); top: 50%; width: min(52vw, 760px); height: min(62vh, 620px); margin-top: -31vh; overflow: hidden; transform: translate3d(calc(var(--mx, 0) * -16px), calc(var(--my, 0) * -12px), 0) scale(calc(1.04 + var(--e, 0) * 0.14)); filter: contrast(1.16) brightness(0.82);">
             <span class="slot" data-slot="cover-hero"><img alt="Кадр со съёмки — обложка" data-srcs="images/cover-hero.jpg|https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/cover-hero/1400/900" loading="eager" decoding="async"><span class="slot-cap">Кадр со съёмки — обложка</span></span>
-            <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,6,11,0.88), rgba(7,6,11,0.12) 58%, rgba(7,6,11,0.45));"></div>
           </div>
 
-          <h1 data-cover-type="1" class="cover-title" style="position: relative; z-index: 2; grid-column: 1 / span 9; margin: 0; font-weight: 900; font-size: clamp(56px, 11.2vw, 196px); line-height: 0.82; letter-spacing: -0.045em; text-transform: uppercase;">
-            <span class="cover-line" style="--i: 0;">От идеи</span>
-            <span class="cover-line" style="--i: 1; padding-left: 0.14em;">до кадра<span class="dot">.</span></span>
+          <h1 data-cover-type="1" style="position: relative; z-index: 2; grid-column: 1 / span 9; margin: 0; font-weight: 900; font-size: clamp(56px, 11.2vw, 196px); line-height: 0.82; letter-spacing: -0.045em; text-transform: uppercase; transform: translate3d(calc(var(--mx, 0) * 7px), 0, 0);">
+            <span style="display: block;">От идеи</span>
+            <span style="display: block; padding-left: 0.14em;">до кадра<span style="color: var(--accent-hi);">.</span></span>
           </h1>
 
         </div>
 
         <footer style="display: grid; grid-template-columns: repeat(12, 1fr); align-items: end; gap: 16px; padding: 0 clamp(14px, 3vw, 44px); transform: translate3d(0, 0, 0); opacity: calc(1 - var(--e, 0) * 1.6);">
-          <p style="grid-column: 1 / span 5; margin: 0; max-width: 34ch; font-size: clamp(15px, 1.15vw, 19px); line-height: 1.45; color: var(--ink); text-wrap: pretty;">Создаем видеоролики, которые работают на рост вашей компании</p>
-          <div style="grid-column: 7 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5); line-height: 2;">
+          <p style="grid-column: 1 / span 5; margin: 0; max-width: 34ch; font-size: clamp(15px, 1.15vw, 19px); line-height: 1.45; color: #C9C7C2; text-wrap: pretty;">Создаем видеоролики, которые работают на рост вашей компании</p>
+          <div style="grid-column: 7 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5); line-height: 2;">
             <div>МОСКВА</div>
             <div>КАЗАНЬ</div>
             <div>САНКТ-ПЕТЕРБУРГ</div>
           </div>
-          <a href="#sp-01" data-cursor="ВПЕРЁД" style="grid-column: 11 / span 2; justify-self: end; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-hi);">ЛИСТАТЬ <span style="display: inline-block; width: 1px; height: 34px; background: linear-gradient(var(--ink-hi), rgba(228,219,255,0));"></span></a>
+          <a href="#sp-01" data-cursor="ВПЕРЁД" style="grid-column: 11 / span 2; justify-self: end; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #F2F0EC;">ЛИСТАТЬ <span style="display: inline-block; width: 1px; height: 34px; background: linear-gradient(#F2F0EC, rgba(242,240,236,0));"></span></a>
         </footer>
 
       </div>
     </section>
 
-    <section id="sp-01" data-scene="1" data-screen-label="01 Начало" style="position: relative; padding: clamp(80px, 14vh, 190px) clamp(14px, 3vw, 44px) clamp(80px, 12vh, 160px); border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-01" data-scene="1" data-screen-label="01 Начало" style="position: relative; padding: clamp(80px, 14vh, 190px) clamp(14px, 3vw, 44px) clamp(80px, 12vh, 160px); border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px);">
 
-        <div style="grid-column: 1 / span 2; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">01 / НАЧАЛО</div>
+        <div style="grid-column: 1 / span 2; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">01 / НАЧАЛО</div>
 
         <h2 style="grid-column: 3 / span 9; margin: 0; font-weight: 800; font-size: clamp(34px, 5.4vw, 92px); line-height: 0.96; letter-spacing: -0.035em; text-wrap: balance;">
-          <span class="fx-focus" style="display: block; --lag: 0;">Видеопродакшн</span>
-          <span class="fx-focus" style="display: block; padding-left: 0.1em; --lag: 0.25;">полного цикла</span>
+          <span data-line="1" style="display: block; transform: translate3d(0, calc((1 - var(--p, 1)) * 34px), 0); opacity: var(--p, 1);">Видеопродакшн</span>
+          <span data-line="1" style="display: block; padding-left: 0.1em; transform: translate3d(0, calc((1 - var(--p, 1)) * 54px), 0); opacity: var(--p, 1);">полного цикла</span>
         </h2>
 
-        <p style="grid-column: 3 / span 4; margin: clamp(36px, 5vw, 78px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">Продакшн-студия полного цикла работает с бизнесом с 2015 года. Компания делает упор на повышение качества создаваемых роликов. В команде работают сценаристы, видеооператоры, монтажёры и другие специалисты.</p>
+        <p style="grid-column: 3 / span 4; margin: clamp(36px, 5vw, 78px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Продакшн-студия полного цикла работает с бизнесом с 2015 года. Компания делает упор на повышение качества создаваемых роликов. В команде работают сценаристы, видеооператоры, монтажёры и другие специалисты.</p>
 
-        <p style="grid-column: 8 / span 4; margin: clamp(36px, 5vw, 78px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">Выполняем задачи от создания анимированного логотипа до имиджевых и презентационных роликов, съёмок мастер-классов, лекций и мероприятий.</p>
+        <p style="grid-column: 8 / span 4; margin: clamp(36px, 5vw, 78px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Выполняем задачи от создания анимированного логотипа до имиджевых и презентационных роликов, съёмок мастер-классов, лекций и мероприятий.</p>
 
         <dl data-facts="1" style="grid-column: 1 / span 12; margin: clamp(56px, 9vh, 120px) 0 0; padding-right: clamp(0px, 8vw, 150px); display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); column-gap: clamp(16px, 2.4vw, 40px); row-gap: clamp(26px, 4vh, 52px);">
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(228,219,255,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">ВИДЕОРОЛИКОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">2500+</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(228,219,255,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">ГОРОДОВ СЪЁМОК</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">25</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(228,219,255,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">КЛИЕНТОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">600+</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(228,219,255,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">СПЕЦИАЛИСТОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">15</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(228,219,255,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">ЧАСОВ ОПЫТА</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">45 000+</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--accent-hi);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink);">СВОЁ ОБОРУДОВАНИЕ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">5 000 000 ₽</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(242,240,236,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">ВИДЕОРОЛИКОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">2500+</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(242,240,236,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">ГОРОДОВ СЪЁМОК</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">25</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(242,240,236,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">КЛИЕНТОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">600+</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(242,240,236,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">СПЕЦИАЛИСТОВ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">15</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(242,240,236,0.22);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">ЧАСОВ ОПЫТА</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">45 000+</dd></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--accent-hi);"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #C9C7C2;">СВОЁ ОБОРУДОВАНИЕ</dt><dd style="margin: 0; font-weight: 700; font-size: clamp(26px, 2.5vw, 42px); line-height: 1; letter-spacing: -0.035em; white-space: nowrap;">5 000 000 ₽</dd></div>
         </dl>
 
       </div>
     </section>
 
-    <section id="sp-02" data-scene="1" data-screen-label="02 Работы" style="position: relative; min-height: 340vh; border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-02" data-scene="1" data-screen-label="02 Работы" style="position: relative; min-height: 340vh; border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden;">
-        <div style="position: absolute; top: clamp(20px, 4vh, 44px); left: clamp(14px, 3vw, 44px); right: clamp(14px, 3vw, 44px); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5); z-index: 3;">
+        <div style="position: absolute; top: clamp(20px, 4vh, 44px); left: clamp(14px, 3vw, 44px); right: clamp(14px, 3vw, 44px); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5); z-index: 3;">
           <span>02 / РАБОТЫ</span>
           <span>ПОРТФОЛИО 100+ · ГОРИЗОНТАЛЬНАЯ ЛЕНТА</span>
         </div>
         <div data-track="1" style="position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; gap: clamp(28px, 4vw, 72px); padding: 0 clamp(14px, 3vw, 44px); will-change: transform; transform: translate3d(calc(var(--e, 0) * var(--tw, 0px) * -1), 0, 0);">
 
-          <h2 style="flex: 0 0 auto; margin: 0 clamp(20px, 4vw, 60px) 0 0; font-weight: 900; font-size: clamp(48px, 9vw, 150px); line-height: 0.86; letter-spacing: -0.045em; text-transform: uppercase; color: var(--ink-hi);">Снятое<br><span class="outline">и смонтированное</span></h2>
+          <h2 style="flex: 0 0 auto; margin: 0 clamp(20px, 4vw, 60px) 0 0; font-weight: 900; font-size: clamp(48px, 9vw, 150px); line-height: 0.86; letter-spacing: -0.045em; text-transform: uppercase; color: #F2F0EC;">Снятое<br><span style="color: rgba(242,240,236,0.22);">и смонтированное</span></h2>
 
           <button data-work="0" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(42vw, 560px); align-self: center; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 62vh; overflow: hidden; filter: contrast(1.12) brightness(0.86); transition: filter 0.6s;"><span class="slot" data-slot="work-0"><img alt="ЖК «Art City»" data-srcs="images/work-0.jpg|https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-0/1400/900" loading="eager" decoding="async"><span class="slot-cap">ЖК «Art City»</span></span></span>
-            <span style="display: flex; justify-content: space-between; gap: 16px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">01 · РЕКЛАМА<span>2500+ РОЛИКОВ В АРХИВЕ</span></span>
+            <span style="display: flex; justify-content: space-between; gap: 16px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">01 · РЕКЛАМА<span>2500+ РОЛИКОВ В АРХИВЕ</span></span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(19px, 1.7vw, 30px); letter-spacing: -0.02em;">Рекламный ролик ЖК «Art City»</span>
           </button>
 
           <button data-work="1" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(24vw, 320px); align-self: flex-start; margin-top: 14vh; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 44vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-1"><img alt="Ролик для кинотеатров" data-srcs="images/work-1.jpg|https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-1/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ролик для кинотеатров</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">02 · РЕКЛАМА</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">02 · РЕКЛАМА</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(17px, 1.4vw, 24px); letter-spacing: -0.02em;">Рекламный ролик «Apple» для кинотеатров</span>
           </button>
 
           <button data-work="2" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(20vw, 260px); align-self: flex-end; margin-bottom: 12vh; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 54vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-2"><img alt="Видео для маркетплейсов" data-srcs="images/work-2.jpg|https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-2/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Видео для маркетплейсов</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">03 · МАРКЕТПЛЕЙСЫ</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">03 · МАРКЕТПЛЕЙСЫ</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(17px, 1.4vw, 24px); letter-spacing: -0.02em;">Рекламный видеоролик для маркетплейсов</span>
           </button>
 
           <button data-work="3" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(48vw, 680px); align-self: center; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 52vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-3"><img alt="Авиационные интерьеры" data-srcs="images/work-3.jpg|https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-3/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Авиационные интерьеры</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">04 · ПРОИЗВОДСТВО</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">04 · ПРОИЗВОДСТВО</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(19px, 1.7vw, 30px); letter-spacing: -0.02em; max-width: 24ch;">Рекламный ролик для компании по производству авиационных интерьеров</span>
           </button>
 
@@ -358,41 +262,41 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
 
           <button data-work="5" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(30vw, 400px); align-self: flex-end; margin-bottom: 6vh; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 58vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-5"><img alt="Технодор СК" data-srcs="images/work-5.jpg|https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-5/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Технодор СК</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">06 · ИМИДЖ</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">06 · ИМИДЖ</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(17px, 1.4vw, 24px); letter-spacing: -0.02em;">Имиджевый ролик о компании «Технодор СК»</span>
           </button>
 
           <button data-work="6" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(44vw, 620px); align-self: center; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 66vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-6"><img alt="НИИ «Турбокомпрессор»" data-srcs="images/work-6.jpg|https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-6/1400/900" loading="lazy" decoding="async"><span class="slot-cap">НИИ «Турбокомпрессор»</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">07 · ДОКУМЕНТАЛЬНЫЙ ФИЛЬМ</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">07 · ДОКУМЕНТАЛЬНЫЙ ФИЛЬМ</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(19px, 1.7vw, 30px); letter-spacing: -0.02em; max-width: 26ch;">Документальный фильм о В.Б. Шнеппе для НИИ «Турбокомпрессор»</span>
           </button>
 
           <button data-work="7" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(22vw, 300px); align-self: flex-start; margin-top: 18vh; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 38vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-7"><img alt="Государственный университет" data-srcs="images/work-7.jpg|https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-7/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Государственный университет</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">08 · ПРЕЗЕНТАЦИЯ</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">08 · ПРЕЗЕНТАЦИЯ</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(17px, 1.4vw, 24px); letter-spacing: -0.02em;">Презентационный фильм о государственном университете</span>
           </button>
 
           <button data-work="8" data-cursor="ОТКРЫТЬ" style="flex: 0 0 auto; width: min(34vw, 460px); align-self: center; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer;">
             <span style="display: block; height: 48vh; overflow: hidden; filter: contrast(1.12) brightness(0.86);"><span class="slot" data-slot="work-8"><img alt="Cattoi" data-srcs="images/work-8.jpg|https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/work-8/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Cattoi</span></span></span>
-            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">09 · РЕКЛАМА</span>
+            <span style="display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">09 · РЕКЛАМА</span>
             <span style="display: block; margin-top: 8px; font-weight: 700; font-size: clamp(17px, 1.4vw, 24px); letter-spacing: -0.02em;">Рекламное видео для компании «Cattoi»</span>
           </button>
 
-          <div style="flex: 0 0 auto; width: min(30vw, 380px); align-self: center; padding-left: clamp(20px, 3vw, 48px); border-left: 1px solid rgba(228,219,255,0.14);">
-            <p style="margin: 0 0 22px; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">На сайте студии — раздел «Портфолио 100+»: ознакомительные ролики, видео о продукции, имиджевые и продающие видео.</p>
-            <a href="#sp-09" data-cursor="ВПЕРЁД" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border: 1px solid rgba(228,219,255,0.28); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-hi);" style-hover="border-color: var(--accent-hi); color: var(--accent-hi);">ОБСУДИТЬ ПРОЕКТ →</a>
+          <div style="flex: 0 0 auto; width: min(30vw, 380px); align-self: center; padding-left: clamp(20px, 3vw, 48px); border-left: 1px solid rgba(242,240,236,0.14);">
+            <p style="margin: 0 0 22px; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">На сайте студии — раздел «Портфолио 100+»: ознакомительные ролики, видео о продукции, имиджевые и продающие видео.</p>
+            <a href="#sp-09" data-cursor="ВПЕРЁД" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border: 1px solid rgba(242,240,236,0.28); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #F2F0EC;" style-hover="border-color: var(--accent-hi); color: var(--accent-hi);">ОБСУДИТЬ ПРОЕКТ →</a>
           </div>
 
         </div>
       </div>
     </section>
 
-    <section id="sp-03" data-scene="1" data-screen-label="03 Процесс" style="position: relative; min-height: 460vh; border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-03" data-scene="1" data-screen-label="03 Процесс" style="position: relative; min-height: 460vh; border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(20px, 4vh, 44px) clamp(14px, 3vw, 44px) clamp(26px, 5vh, 54px);">
 
-        <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">
+        <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">
           <span>03 / ПРОЦЕСС</span>
           <span>ЭТАПЫ ПРОИЗВОДСТВА · <span data-proc-num="1" style="color: var(--accent-hi);">01</span> / 07</span>
         </div>
@@ -406,20 +310,20 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
           </div>
 
           <ol data-proc-list="1" style="position: relative; z-index: 2; grid-column: 1 / span 8; margin: 0; padding: 0; list-style: none;">
-            <li data-proc="0" class="proc on" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--accent-hi);">01</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Сценарий</span></li>
-            <li data-proc="1" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">02</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Раскадровка</span></li>
-            <li data-proc="2" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">03</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Видеосъёмка</span></li>
-            <li data-proc="3" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">04</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Видеомонтаж</span></li>
-            <li data-proc="4" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">05</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Цветокоррекция</span></li>
-            <li data-proc="5" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">06</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Саунд-дизайн</span></li>
-            <li data-proc="6" class="proc" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span class="proc-num" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">07</span><span class="proc-word" style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Графика</span></li>
+            <li data-proc="0" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 1; transform: translate3d(0,0,0); transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--accent-hi);">01</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Сценарий</span></li>
+            <li data-proc="1" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">02</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Раскадровка</span></li>
+            <li data-proc="2" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">03</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Видеосъёмка</span></li>
+            <li data-proc="3" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">04</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Видеомонтаж</span></li>
+            <li data-proc="4" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">05</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Цветокоррекция</span></li>
+            <li data-proc="5" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">06</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Саунд-дизайн</span></li>
+            <li data-proc="6" style="display: flex; align-items: baseline; gap: clamp(14px, 2vw, 34px); padding: 0.06em 0; opacity: 0.16; transition: opacity 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">07</span><span style="font-weight: 900; font-size: clamp(26px, min(7vw, 8.2vh), 124px); line-height: 0.94; letter-spacing: -0.045em; text-transform: uppercase;">Графика</span></li>
           </ol>
 
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px); align-items: end;">
-          <p data-proc-note="1" style="grid-column: 1 / span 4; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; line-height: 2; color: rgba(228,219,255,0.5);">ВХОДИТ В ТАРИФЫ<br><span data-proc-tariffs="1" style="color: var(--ink-hi);">СТАРТ · СТАНДАРТ · КОМБО</span></p>
-          <div style="grid-column: 6 / span 7; height: 1px; background: rgba(228,219,255,0.16); position: relative;">
+          <p data-proc-note="1" style="grid-column: 1 / span 4; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; line-height: 2; color: rgba(242,240,236,0.5);">ВХОДИТ В ТАРИФЫ<br><span data-proc-tariffs="1" style="color: #F2F0EC;">СТАРТ · СТАНДАРТ · КОМБО</span></p>
+          <div style="grid-column: 6 / span 7; height: 1px; background: rgba(242,240,236,0.16); position: relative;">
             <div data-proc-line="1" style="position: absolute; inset: 0 auto 0 0; width: calc(var(--e, 0) * 100%); background: var(--accent);"></div>
           </div>
         </div>
@@ -427,68 +331,67 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
       </div>
     </section>
 
-    <section id="sp-04" data-scene="1" data-screen-label="04 Услуги" style="position: relative; background: var(--surface); color: var(--ink-hi); padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(70px, 12vh, 140px);">
+    <section id="sp-04" data-scene="1" data-screen-label="04 Услуги" style="position: relative; background: var(--surface); color: #F2F0EC; padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(70px, 12vh, 140px);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px);">
-        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">04 / УСЛУГИ<br>27 НАПРАВЛЕНИЙ</div>
-        <h2 class="fx-focus" style="grid-column: 4 / span 8; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em; --ls: -0.04em;">Что мы снимаем</h2>
-        <p style="grid-column: 4 / span 4; margin: clamp(26px, 3.4vw, 52px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">Задачи от анимированного логотипа до имиджевых и презентационных роликов, съёмок мастер-классов, лекций и мероприятий.</p>
+        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">04 / УСЛУГИ<br>27 НАПРАВЛЕНИЙ</div>
+        <h2 style="grid-column: 4 / span 8; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em; transform: translate3d(0, calc((1 - var(--p, 1)) * 24px), 0);">Что мы снимаем</h2>
+        <p style="grid-column: 4 / span 4; margin: clamp(26px, 3.4vw, 52px) 0 0; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Задачи от анимированного логотипа до имиджевых и презентационных роликов, съёмок мастер-классов, лекций и мероприятий.</p>
 
-        <ol style="grid-column: 1 / span 12; margin: clamp(46px, 8vh, 100px) 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(228,219,255,0.14);">
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">01</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Рекламный видеоролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">02</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Информационный ролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">03</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Презентационное видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">04</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоролик для выставок</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">05</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видео для маркетплейсов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">06</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Монтаж видеороликов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">07</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеообращение от CEO</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">08</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Съёмка интервью и подкастов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">09</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Имиджевый ролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">10</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Корпоративные ролики</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">11</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Документальный фильм</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">12</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка недвижимости</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">13</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Предметная съёмка</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">14</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Обучающие видео и видеокурсы</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">15</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка мероприятий</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">16</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Аэросъёмка с дроном</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">17</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">2D-анимация</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">18</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">HR-видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">19</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видео для соцсетей</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">20</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Производственные видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">21</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Отчётные ролики</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">22</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка форумов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">23</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка для YouTube</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">24</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоинструкции для бизнеса</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">25</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Запись вебинаров</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">26</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Создание фильма на юбилей компании</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
-          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(228,219,255,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: linear-gradient(90deg, rgba(139,92,246,0.26), rgba(139,92,246,0.03)); color: #F1EBFF; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">27</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоролики для B2B</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+        <ol style="grid-column: 1 / span 12; margin: clamp(46px, 8vh, 100px) 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(242,240,236,0.14);">
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">01</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Рекламный видеоролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">02</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Информационный ролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">03</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Презентационное видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">04</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоролик для выставок</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">05</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видео для маркетплейсов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">06</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Монтаж видеороликов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">07</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеообращение от CEO</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">08</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Съёмка интервью и подкастов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">09</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Имиджевый ролик</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">10</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Корпоративные ролики</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">11</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Документальный фильм</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">12</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка недвижимости</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">13</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Предметная съёмка</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">14</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Обучающие видео и видеокурсы</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">15</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка мероприятий</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">16</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Аэросъёмка с дроном</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">17</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">2D-анимация</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">18</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">HR-видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">19</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видео для соцсетей</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">20</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Производственные видео</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">21</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Отчётные ролики</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">22</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка форумов</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">23</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеосъёмка для YouTube</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">24</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоинструкции для бизнеса</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">25</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Запись вебинаров</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">26</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Создание фильма на юбилей компании</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
+          <li data-srv="1" style="display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: clamp(12px, 2vw, 28px); padding: clamp(11px, 1.3vw, 17px) clamp(8px, 1.2vw, 18px); border-bottom: 1px solid rgba(242,240,236,0.14); transition: background 0.35s, color 0.35s, padding 0.4s cubic-bezier(0.16,1,0.3,1);" style-hover="background: #8B5CF6; color: #F2F0EC; padding-left: clamp(20px, 3vw, 46px);"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; opacity: 0.55;">27</span><span style="font-weight: 600; font-size: clamp(17px, 1.9vw, 31px); letter-spacing: -0.022em;">Видеоролики для B2B</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.45;">↗</span></li>
         </ol>
       </div>
     </section>
 
     <section id="sp-05" data-scene="1" data-screen-label="05 За кадром" style="position: relative; min-height: 360vh;">
-      <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden; background: var(--bg);">
+      <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden; background: #08080A;">
 
-        <div style="position: absolute; inset: 0; filter: contrast(1.1) brightness(0.82) saturate(1.05);">
+        <div style="position: absolute; inset: 0; filter: contrast(1.2) brightness(0.78);">
           <span class="slot" data-slot="bts-1"><img alt="За кадром: площадка" data-srcs="images/bts-1.jpg|https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/bts-1/1400/900" loading="lazy" decoding="async"><span class="slot-cap">За кадром: площадка</span></span>
         </div>
-        <div style="position: absolute; inset: 0; filter: contrast(1.1) brightness(0.82) saturate(1.05); clip-path: inset(calc(100% - clamp(0%, (var(--e, 0) - 0.22) * 320%, 100%)) 0 0 0);">
+        <div style="position: absolute; inset: 0; filter: contrast(1.2) brightness(0.78); clip-path: inset(calc(100% - clamp(0%, (var(--e, 0) - 0.22) * 320%, 100%)) 0 0 0);">
           <span class="slot" data-slot="bts-2"><img alt="За кадром: свет" data-srcs="images/bts-2.jpg|https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/bts-2/1400/900" loading="lazy" decoding="async"><span class="slot-cap">За кадром: свет</span></span>
         </div>
-        <div style="position: absolute; inset: 0; filter: contrast(1.1) brightness(0.82) saturate(1.05); clip-path: inset(0 0 calc(100% - clamp(0%, (var(--e, 0) - 0.58) * 320%, 100%)) 0);">
+        <div style="position: absolute; inset: 0; filter: contrast(1.2) brightness(0.78); clip-path: inset(0 0 calc(100% - clamp(0%, (var(--e, 0) - 0.58) * 320%, 100%)) 0);">
           <span class="slot" data-slot="bts-3"><img alt="За кадром: команда на съёмке" data-srcs="images/bts-3.jpg|https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/bts-3/1400/900" loading="lazy" decoding="async"><span class="slot-cap">За кадром: команда на съёмке</span></span>
         </div>
 
-        <div class="roll-shade" aria-hidden="true"></div>
-        <div style="position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;">
-          <div class="roll" data-roll="1" style="--roll: 0;" aria-live="polite"><div class="roll-inner"><span class="roll-word on">Мотор</span><span class="roll-word">Камера</span><span class="roll-word">Свет</span><span class="roll-word">Команда</span><span class="roll-word">Кадр</span><span class="roll-word">Снято</span></div></div>
+        <div style="position: absolute; inset: 0; display: grid; place-items: center; mix-blend-mode: difference; pointer-events: none;">
+          <span data-bts-word="1" style="font-weight: 900; font-size: clamp(52px, 15vw, 260px); line-height: 0.86; letter-spacing: -0.05em; text-transform: uppercase; color: #F2F0EC;">Камера</span>
         </div>
 
-        <div style="position: absolute; top: clamp(20px, 4vh, 44px); left: clamp(14px, 3vw, 44px); right: clamp(14px, 3vw, 44px); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.66);">
+        <div style="position: absolute; top: clamp(20px, 4vh, 44px); left: clamp(14px, 3vw, 44px); right: clamp(14px, 3vw, 44px); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.66);">
           <span>05 / ЗА КАДРОМ</span>
           <span>СЪЁМКИ В 25 ГОРОДАХ · СВОЁ ОБОРУДОВАНИЕ 5 000 000 ₽</span>
         </div>
 
-        <div style="position: absolute; left: 0; right: 0; bottom: clamp(20px, 4vh, 44px); overflow: hidden; padding: 10px 0; border-top: 1px solid rgba(228,219,255,0.16); border-bottom: 1px solid rgba(228,219,255,0.16);">
+        <div style="position: absolute; left: 0; right: 0; bottom: clamp(20px, 4vh, 44px); overflow: hidden; padding: 10px 0; border-top: 1px solid rgba(242,240,236,0.16); border-bottom: 1px solid rgba(242,240,236,0.16);">
           <div style="display: flex; gap: 10px; padding: 0 clamp(14px, 3vw, 44px); transform: translate3d(calc(var(--e, 0) * -34vw), 0, 0);">
             <div style="flex: 0 0 auto; width: clamp(120px, 15vw, 210px); height: clamp(72px, 9vw, 122px); filter: contrast(1.1) brightness(0.86);"><span class="slot" data-slot="bts-s1"><img alt="кадр 01" data-srcs="images/bts-s1.jpg|https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/bts-s1/1400/900" loading="lazy" decoding="async"><span class="slot-cap">кадр 01</span></span></div>
             <div style="flex: 0 0 auto; width: clamp(120px, 15vw, 210px); height: clamp(72px, 9vw, 122px); filter: contrast(1.1) brightness(0.86);"><span class="slot" data-slot="bts-s2"><img alt="кадр 02" data-srcs="images/bts-s2.jpg|https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/bts-s2/1400/900" loading="lazy" decoding="async"><span class="slot-cap">кадр 02</span></span></div>
@@ -502,201 +405,201 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
       </div>
     </section>
 
-    <section id="sp-06" data-scene="1" data-screen-label="06 Тарифы" style="position: relative; padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(70px, 12vh, 140px); border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-06" data-scene="1" data-screen-label="06 Тарифы" style="position: relative; padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(70px, 12vh, 140px); border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px); align-items: end;">
-        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">06 / ТАРИФЫ</div>
-        <h2 class="fx-focus" style="grid-column: 4 / span 6; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em; --ls: -0.04em;">Ориентир<br>по бюджету</h2>
-        <p style="grid-column: 10 / span 3; margin: 0; font-size: clamp(14px, 1.05vw, 17px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">Финальная стоимость индивидуальна, тарифы не фиксированные, но они могут послужить удобным ориентиром для вашего выбора.</p>
+        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">06 / ТАРИФЫ</div>
+        <h2 style="grid-column: 4 / span 6; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em;">Ориентир<br>по бюджету</h2>
+        <p style="grid-column: 10 / span 3; margin: 0; font-size: clamp(14px, 1.05vw, 17px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Финальная стоимость индивидуальна, тарифы не фиксированные, но они могут послужить удобным ориентиром для вашего выбора.</p>
       </div>
 
-      <div data-tariffs="1" style="display: flex; flex-wrap: wrap; gap: 1px; margin-top: clamp(46px, 8vh, 100px); background: rgba(228,219,255,0.14);">
+      <div data-tariffs="1" style="display: flex; flex-wrap: wrap; gap: 1px; margin-top: clamp(46px, 8vh, 100px); background: rgba(242,240,236,0.14);">
 
-        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: var(--bg); padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: #0E0B16; box-shadow: inset 0 2px 0 #8B5CF6;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);"><span>ТАРИФ 01</span><span>СТАРТ</span></div>
+        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: #08080A; padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: var(--bg-2);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);"><span>ТАРИФ 01</span><span>СТАРТ</span></div>
           <div style="margin: clamp(26px, 4vw, 54px) 0 0; font-weight: 800; font-size: clamp(34px, 4.4vw, 74px); line-height: 1; letter-spacing: -0.045em;">от 90 000 ₽</div>
-          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: var(--ink); border-top: 1px solid rgba(228,219,255,0.14);">
+          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: #C9C7C2; border-top: 1px solid rgba(242,240,236,0.14);">
             <li>БАЗОВЫЙ СЦЕНАРИЙ</li><li>ВИДЕОСЪЁМКА</li><li>ВИДЕОМОНТАЖ</li>
           </ul>
-          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: var(--ink); text-wrap: pretty;">Минимальный препродакшн и небольшая команда. Такие проекты выполняем быстро и в большом количестве.</p>
-          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(228,219,255,0.5);">МАРКЕТПЛЕЙСЫ · ВИДЕОКУРСЫ · ИНТЕРВЬЮ И ПОДКАСТЫ · YOUTUBE И СОЦСЕТИ · СОПРОВОЖДЕНИЕ МЕРОПРИЯТИЙ</p>
+          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Минимальный препродакшн и небольшая команда. Такие проекты выполняем быстро и в большом количестве.</p>
+          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(242,240,236,0.5);">МАРКЕТПЛЕЙСЫ · ВИДЕОКУРСЫ · ИНТЕРВЬЮ И ПОДКАСТЫ · YOUTUBE И СОЦСЕТИ · СОПРОВОЖДЕНИЕ МЕРОПРИЯТИЙ</p>
         </article>
 
-        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: var(--bg); padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: #0E0B16; box-shadow: inset 0 2px 0 #8B5CF6;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);"><span style="color: var(--accent-hi);">ТАРИФ 02</span><span>СТАНДАРТ</span></div>
+        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: #08080A; padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: var(--bg-2);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);"><span style="color: var(--accent-hi);">ТАРИФ 02</span><span>СТАНДАРТ</span></div>
           <div style="margin: clamp(26px, 4vw, 54px) 0 0; font-weight: 800; font-size: clamp(34px, 4.4vw, 74px); line-height: 1; letter-spacing: -0.045em;">от 350 000 ₽</div>
-          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: var(--ink); border-top: 1px solid rgba(228,219,255,0.14);">
+          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: #C9C7C2; border-top: 1px solid rgba(242,240,236,0.14);">
             <li>СЦЕНАРИЙ</li><li>РАСКАДРОВКА</li><li>ВИДЕОСЪЁМКА</li><li>ВИДЕОМОНТАЖ</li><li>ЦВЕТОКОРРЕКЦИЯ</li><li>САУНД-ДИЗАЙН</li><li>ГРАФИКА</li>
           </ul>
-          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: var(--ink); text-wrap: pretty;">Заложены все необходимые этапы и специалисты, которые могут потребоваться для наилучшего результата.</p>
-          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(228,219,255,0.5);">КОРПОРАТИВНЫЕ РОЛИКИ · ПРЕЗЕНТАЦИЯ КОМПАНИИ · РЕКЛАМА · HR-ВИДЕО</p>
+          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Заложены все необходимые этапы и специалисты, которые могут потребоваться для наилучшего результата.</p>
+          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(242,240,236,0.5);">КОРПОРАТИВНЫЕ РОЛИКИ · ПРЕЗЕНТАЦИЯ КОМПАНИИ · РЕКЛАМА · HR-ВИДЕО</p>
         </article>
 
-        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: var(--bg); padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: #0E0B16; box-shadow: inset 0 2px 0 #8B5CF6;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);"><span>ТАРИФ 03</span><span>КОМБО</span></div>
+        <article data-tariff="1" style="flex: 1 1 260px; min-width: 260px; background: #08080A; padding: clamp(24px, 3vw, 44px); transition: flex-grow 0.6s cubic-bezier(0.16,1,0.3,1), background 0.5s;" style-hover="flex-grow: 2.2; background: var(--bg-2);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);"><span>ТАРИФ 03</span><span>КОМБО</span></div>
           <div style="margin: clamp(26px, 4vw, 54px) 0 0; font-weight: 800; font-size: clamp(34px, 4.4vw, 74px); line-height: 1; letter-spacing: -0.045em;">от 750 000 ₽</div>
-          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: var(--ink); border-top: 1px solid rgba(228,219,255,0.14);">
+          <ul style="margin: clamp(22px, 3vw, 40px) 0 0; padding: 0; list-style: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.3; color: #C9C7C2; border-top: 1px solid rgba(242,240,236,0.14);">
             <li>СЦЕНАРИЙ</li><li>РАСКАДРОВКА</li><li>ВИДЕОСЪЁМКА</li><li>ВИДЕОМОНТАЖ</li><li>ЦВЕТОКОРРЕКЦИЯ</li><li>САУНД-ДИЗАЙН</li><li>ГРАФИКА</li>
           </ul>
-          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: var(--ink); text-wrap: pretty;">Самый насыщенный тариф. Минимум компромиссов — максимум качества.</p>
-          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(228,219,255,0.5);">ИМИДЖЕВЫЕ И ДОКУМЕНТАЛЬНЫЕ ФИЛЬМЫ · ШИРОКАЯ ГЕОГРАФИЯ И КОМАНДИРОВКИ · МНОГО СПЕЦИАЛИСТОВ · СРОЧНЫЕ ЗАКАЗЫ</p>
+          <p style="margin: clamp(22px, 3vw, 38px) 0 0; font-size: 15px; line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">Самый насыщенный тариф. Минимум компромиссов — максимум качества.</p>
+          <p style="margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: rgba(242,240,236,0.5);">ИМИДЖЕВЫЕ И ДОКУМЕНТАЛЬНЫЕ ФИЛЬМЫ · ШИРОКАЯ ГЕОГРАФИЯ И КОМАНДИРОВКИ · МНОГО СПЕЦИАЛИСТОВ · СРОЧНЫЕ ЗАКАЗЫ</p>
         </article>
 
       </div>
 
-      <p style="margin: clamp(26px, 4vh, 48px) 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: rgba(228,219,255,0.5);">ЗАПОЛНИВ БРИФ, ВЫ ПОЛУЧИТЕ ИНДИВИДУАЛЬНЫЙ РАСЧЁТ КОММЕРЧЕСКОГО ПРЕДЛОЖЕНИЯ · <a href="#sp-09" data-cursor="ВПЕРЁД">ПЕРЕЙТИ К БРИФУ →</a></p>
+      <p style="margin: clamp(26px, 4vh, 48px) 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: rgba(242,240,236,0.5);">ЗАПОЛНИВ БРИФ, ВЫ ПОЛУЧИТЕ ИНДИВИДУАЛЬНЫЙ РАСЧЁТ КОММЕРЧЕСКОГО ПРЕДЛОЖЕНИЯ · <a href="#sp-09" data-cursor="ВПЕРЁД">ПЕРЕЙТИ К БРИФУ →</a></p>
     </section>
 
-    <section id="sp-07" data-scene="1" data-screen-label="07 Команда" style="position: relative; background: var(--surface); color: var(--ink-hi); padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(60px, 10vh, 120px);">
+    <section id="sp-07" data-scene="1" data-screen-label="07 Команда" style="position: relative; background: var(--surface); color: #F2F0EC; padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px) clamp(60px, 10vh, 120px);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px); align-items: end;">
-        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">07 / КОМАНДА<br>15 СПЕЦИАЛИСТОВ</div>
-        <h2 class="fx-focus" style="grid-column: 4 / span 7; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em; --ls: -0.04em;">Кто это делает</h2>
+        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">07 / КОМАНДА<br>15 СПЕЦИАЛИСТОВ</div>
+        <h2 style="grid-column: 4 / span 7; margin: 0; font-weight: 800; font-size: clamp(32px, 5vw, 86px); line-height: 0.96; letter-spacing: -0.04em;">Кто это делает</h2>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(40px, 7vh, 90px);">
-        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--v, 1)) * 40px), 0); opacity: calc(0.15 + var(--v, 1) * 0.85); transition: transform 0.2s;">
-          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05) saturate(1.18);"><span class="slot" data-slot="team-1"><img alt="Роман Лузянин" data-srcs="images/team-1.jpg|https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-1/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Роман Лузянин</span></span></div>
+        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--p, 1)) * 40px), 0); opacity: calc(0.15 + var(--p, 1) * 0.85); transition: transform 0.2s;">
+          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05);"><span class="slot" data-slot="team-1"><img alt="Роман Лузянин" data-srcs="images/team-1.jpg|https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-1/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Роман Лузянин</span></span></div>
           <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Роман Лузянин</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--accent-hi);">РУКОВОДИТЕЛЬ</span></figcaption>
         </figure>
-        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--v, 1)) * 66px), 0); opacity: calc(0.15 + var(--v, 1) * 0.85);">
-          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05) saturate(1.18);"><span class="slot" data-slot="team-2"><img alt="Ришат Нафиков" data-srcs="images/team-2.jpg|https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-2/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ришат Нафиков</span></span></div>
-          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ришат Нафиков</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">КОМАНДА СТУДИИ</span></figcaption>
+        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--p, 1)) * 66px), 0); opacity: calc(0.15 + var(--p, 1) * 0.85);">
+          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05);"><span class="slot" data-slot="team-2"><img alt="Ришат Нафиков" data-srcs="images/team-2.jpg|https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-2/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ришат Нафиков</span></span></div>
+          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ришат Нафиков</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">КОМАНДА СТУДИИ</span></figcaption>
         </figure>
-        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--v, 1)) * 92px), 0); opacity: calc(0.15 + var(--v, 1) * 0.85);">
-          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05) saturate(1.18);"><span class="slot" data-slot="team-3"><img alt="Наиль Иштыряков" data-srcs="images/team-3.jpg|https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-3/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Наиль Иштыряков</span></span></div>
-          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Наиль Иштыряков</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">КОМАНДА СТУДИИ</span></figcaption>
+        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--p, 1)) * 92px), 0); opacity: calc(0.15 + var(--p, 1) * 0.85);">
+          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05);"><span class="slot" data-slot="team-3"><img alt="Наиль Иштыряков" data-srcs="images/team-3.jpg|https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-3/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Наиль Иштыряков</span></span></div>
+          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Наиль Иштыряков</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">КОМАНДА СТУДИИ</span></figcaption>
         </figure>
-        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--v, 1)) * 118px), 0); opacity: calc(0.15 + var(--v, 1) * 0.85);">
-          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05) saturate(1.18);"><span class="slot" data-slot="team-4"><img alt="Ильнар Тухватуллин" data-srcs="images/team-4.jpg|https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-4/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ильнар Тухватуллин</span></span></div>
-          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ильнар Тухватуллин</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">КОМАНДА СТУДИИ</span></figcaption>
+        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--p, 1)) * 118px), 0); opacity: calc(0.15 + var(--p, 1) * 0.85);">
+          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05);"><span class="slot" data-slot="team-4"><img alt="Ильнар Тухватуллин" data-srcs="images/team-4.jpg|https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-4/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ильнар Тухватуллин</span></span></div>
+          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ильнар Тухватуллин</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">КОМАНДА СТУДИИ</span></figcaption>
         </figure>
-        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--v, 1)) * 144px), 0); opacity: calc(0.15 + var(--v, 1) * 0.85);">
-          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05) saturate(1.18);"><span class="slot" data-slot="team-5"><img alt="Ирина Журавлева" data-srcs="images/team-5.jpg|https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-5/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ирина Журавлева</span></span></div>
-          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ирина Журавлева</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">КОМАНДА СТУДИИ</span></figcaption>
+        <figure data-portrait="1" style="margin: 0; transform: translate3d(0, calc((1 - var(--p, 1)) * 144px), 0); opacity: calc(0.15 + var(--p, 1) * 0.85);">
+          <div style="height: min(52vh, 460px); overflow: hidden; filter: contrast(1.1); transition: filter 0.6s;" style-hover="filter: contrast(1.05);"><span class="slot" data-slot="team-5"><img alt="Ирина Журавлева" data-srcs="images/team-5.jpg|https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/team-5/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Ирина Журавлева</span></span></div>
+          <figcaption style="margin-top: 12px;"><span style="display: block; font-weight: 700; font-size: clamp(16px, 1.3vw, 22px); letter-spacing: -0.02em;">Ирина Журавлева</span><span style="display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">КОМАНДА СТУДИИ</span></figcaption>
         </figure>
       </div>
 
-      <p style="margin: clamp(30px, 5vh, 60px) 0 0; max-width: 62ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">В команде работают сценаристы, видеооператоры, монтажёры и другие специалисты. На сайте студии открыт раздел «Вступить в команду».</p>
+      <p style="margin: clamp(30px, 5vh, 60px) 0 0; max-width: 62ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">В команде работают сценаристы, видеооператоры, монтажёры и другие специалисты. На сайте студии открыт раздел «Вступить в команду».</p>
     </section>
 
-    <section id="sp-08" data-scene="1" data-screen-label="08 Отзывы" style="position: relative; min-height: 300vh; border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-08" data-scene="1" data-screen-label="08 Отзывы" style="position: relative; min-height: 300vh; border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="position: sticky; top: 0; height: calc(100vh - var(--navh, 0px)); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(20px, 4vh, 44px) clamp(14px, 3vw, 44px) clamp(26px, 5vh, 54px);">
-        <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">
+        <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">
           <span>08 / ОТЗЫВЫ</span>
           <span><span data-rev-num="1" style="color: var(--accent-hi);">01</span> / 04</span>
         </div>
 
         <div style="position: relative; display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px); align-items: center;">
-          <div data-rev="0" class="rev on" style="grid-column: 1 / span 10; grid-row: 1;">
+          <div data-rev="0" style="grid-column: 1 / span 10; grid-row: 1; opacity: 1; transform: translate3d(0, 0, 0); transition: opacity 0.6s, transform 0.7s cubic-bezier(0.16,1,0.3,1);">
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--accent-hi);">ICL SERVICES</div>
             <div style="margin-top: clamp(14px, 2vh, 26px); font-weight: 800; font-size: clamp(38px, 7vw, 122px); line-height: 0.94; letter-spacing: -0.045em;">Ольга Бармакова</div>
-            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: var(--ink);">Старший маркетолог ICL SERVICES</div>
+            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: #C9C7C2;">Старший маркетолог ICL SERVICES</div>
           </div>
-          <div data-rev="1" class="rev" style="grid-column: 1 / span 10; grid-row: 1;">
+          <div data-rev="1" style="grid-column: 1 / span 10; grid-row: 1; opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.6s, transform 0.7s cubic-bezier(0.16,1,0.3,1);">
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--accent-hi);">ВОЛЖСКАЯ СУДОХОДНАЯ КОМПАНИЯ</div>
             <div style="margin-top: clamp(14px, 2vh, 26px); font-weight: 800; font-size: clamp(38px, 7vw, 122px); line-height: 0.94; letter-spacing: -0.045em;">Олеся Палагина</div>
-            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: var(--ink);">Руководитель отдела персонала Волжской судоходной компании</div>
+            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: #C9C7C2;">Руководитель отдела персонала Волжской судоходной компании</div>
           </div>
-          <div data-rev="2" class="rev" style="grid-column: 1 / span 10; grid-row: 1;">
+          <div data-rev="2" style="grid-column: 1 / span 10; grid-row: 1; opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.6s, transform 0.7s cubic-bezier(0.16,1,0.3,1);">
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--accent-hi);">ФАУ «РОСДОРНИИ»</div>
             <div style="margin-top: clamp(14px, 2vh, 26px); font-weight: 800; font-size: clamp(38px, 7vw, 122px); line-height: 0.94; letter-spacing: -0.045em;">Васильева Эвелина</div>
-            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: var(--ink);">Начальник отдела пресс-службы ФАУ «Росдорнии»</div>
+            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: #C9C7C2;">Начальник отдела пресс-службы ФАУ «Росдорнии»</div>
           </div>
-          <div data-rev="3" class="rev" style="grid-column: 1 / span 10; grid-row: 1;">
+          <div data-rev="3" style="grid-column: 1 / span 10; grid-row: 1; opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.6s, transform 0.7s cubic-bezier(0.16,1,0.3,1);">
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--accent-hi);">ООО «МЕТАЛЛКЛИНЕР»</div>
             <div style="margin-top: clamp(14px, 2vh, 26px); font-weight: 800; font-size: clamp(38px, 7vw, 122px); line-height: 0.94; letter-spacing: -0.045em;">Тимур Рустамов</div>
-            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: var(--ink);">Руководитель отдела продаж ООО «МеталлКлинер»</div>
+            <div style="margin-top: clamp(14px, 2vh, 24px); font-size: clamp(15px, 1.3vw, 22px); color: #C9C7C2;">Руководитель отдела продаж ООО «МеталлКлинер»</div>
           </div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: end; gap: 20px;">
-          <p style="margin: 0; max-width: 48ch; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: var(--ink);">ТЕКСТЫ ОТЗЫВОВ ОПУБЛИКОВАНЫ В РАЗДЕЛЕ «ОТЗЫВЫ» ИСХОДНОГО САЙТА — БЛОК ГОТОВ К ПОДСТАНОВКЕ</p>
-          <div style="flex: 0 0 34%; max-width: 380px; height: 1px; background: rgba(228,219,255,0.16); position: relative;"><div style="position: absolute; inset: 0 auto 0 0; width: calc(var(--e, 0) * 100%); background: var(--accent);"></div></div>
+          <p style="margin: 0; max-width: 48ch; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: #C9C7C2;">ТЕКСТЫ ОТЗЫВОВ ОПУБЛИКОВАНЫ В РАЗДЕЛЕ «ОТЗЫВЫ» ИСХОДНОГО САЙТА — БЛОК ГОТОВ К ПОДСТАНОВКЕ</p>
+          <div style="flex: 0 0 34%; max-width: 380px; height: 1px; background: rgba(242,240,236,0.16); position: relative;"><div style="position: absolute; inset: 0 auto 0 0; width: calc(var(--e, 0) * 100%); background: var(--accent);"></div></div>
         </div>
       </div>
     </section>
 
-    <section id="sp-09" data-scene="1" data-screen-label="09 Бриф" style="position: relative; background: var(--surface); color: var(--ink-hi); padding: clamp(60px, 10vh, 120px) clamp(14px, 3vw, 44px) clamp(60px, 10vh, 120px); border-top: 1px solid rgba(228,219,255,0.14);">
+    <section id="sp-09" data-scene="1" data-screen-label="09 Бриф" style="position: relative; background: var(--surface); color: #F2F0EC; padding: clamp(60px, 10vh, 120px) clamp(14px, 3vw, 44px) clamp(60px, 10vh, 120px); border-top: 1px solid rgba(242,240,236,0.14);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px);">
-        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">09 / БРИФ<br>~1,5 МИНУТЫ</div>
+        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">09 / БРИФ<br>~1,5 МИНУТЫ</div>
         <div style="grid-column: 4 / span 9; display: flex; align-items: center; gap: 18px;">
-          <span data-brief-step="1" style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-hi);">ШАГ 01 / 05</span>
-          <span style="flex: 1; height: 1px; background: rgba(228,219,255,0.16); position: relative;"><span style="position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1);" data-brief-bar="1"></span></span>
+          <span data-brief-step="1" style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #F2F0EC;">ШАГ 01 / 05</span>
+          <span style="flex: 1; height: 1px; background: rgba(242,240,236,0.16); position: relative;"><span style="position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1);" data-brief-bar="1"></span></span>
         </div>
 
         <div data-brief="1" style="grid-column: 4 / span 8; min-height: min(56vh, 520px); display: flex; flex-direction: column; justify-content: center; padding: clamp(30px, 6vh, 80px) 0;"></div>
 
-        <p style="grid-column: 4 / span 5; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: var(--ink);">ФОРМА НЕ ПОДКЛЮЧЕНА К CRM — ОТВЕТЫ СОБИРАЮТСЯ В БРАУЗЕРЕ ДЛЯ ДЕМОНСТРАЦИИ ЛОГИКИ</p>
+        <p style="grid-column: 4 / span 5; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; line-height: 2; color: #C9C7C2;">ФОРМА НЕ ПОДКЛЮЧЕНА К CRM — ОТВЕТЫ СОБИРАЮТСЯ В БРАУЗЕРЕ ДЛЯ ДЕМОНСТРАЦИИ ЛОГИКИ</p>
       </div>
     </section>
 
     <section id="sp-10" data-scene="1" data-screen-label="10 География" style="position: relative; padding: clamp(80px, 14vh, 180px) clamp(14px, 3vw, 44px); overflow: hidden;">
-      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">
+      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">
         <span>10 / ГЕОГРАФИЯ</span>
         <span>СЪЁМКИ В 25 ГОРОДАХ</span>
       </div>
       <div style="margin-top: clamp(40px, 8vh, 110px);">
-        <div class="geo" style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; --lag: 0;">Москва</div>
-        <div class="geo geo-accent" style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; text-align: right; --lag: 0.14;">Казань</div>
-        <div class="geo" style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; --lag: 0.28;">Санкт-Петербург</div>
+        <div style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; transform: translate3d(calc(var(--p, 0) * 6vw - 3vw), 0, 0);">Москва</div>
+        <div style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; text-align: right; color: var(--accent-hi); transform: translate3d(calc(3vw - var(--p, 0) * 6vw), 0, 0);">Казань</div>
+        <div style="font-weight: 900; font-size: clamp(44px, 11vw, 178px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; transform: translate3d(calc(var(--p, 0) * 8vw - 4vw), 0, 0);">Санкт-Петербург</div>
       </div>
-      <p style="margin: clamp(34px, 6vh, 70px) 0 0; max-width: 40ch; font-size: clamp(16px, 1.3vw, 22px); line-height: 1.5; color: var(--ink); text-wrap: pretty;">И по всей России: студия полного цикла выезжает на объект заказчика.</p>
+      <p style="margin: clamp(34px, 6vh, 70px) 0 0; max-width: 40ch; font-size: clamp(16px, 1.3vw, 22px); line-height: 1.5; color: #C9C7C2; text-wrap: pretty;">И по всей России: студия полного цикла выезжает на объект заказчика.</p>
     </section>
 
-    <section id="sp-11" data-scene="1" data-screen-label="11 Вопросы" style="position: relative; background: var(--surface); color: var(--ink-hi); padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px);">
+    <section id="sp-11" data-scene="1" data-screen-label="11 Вопросы" style="position: relative; background: var(--surface); color: #F2F0EC; padding: clamp(70px, 12vh, 150px) clamp(14px, 3vw, 44px);">
       <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px);">
-        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">11 / ВОПРОСЫ</div>
-        <h2 class="fx-focus" style="grid-column: 4 / span 8; margin: 0 0 clamp(36px, 6vh, 74px); font-weight: 800; font-size: clamp(30px, 4.6vw, 78px); line-height: 0.98; letter-spacing: -0.04em; --ls: -0.04em;">Коротко и по делу</h2>
+        <div style="grid-column: 1 / span 3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">11 / ВОПРОСЫ</div>
+        <h2 style="grid-column: 4 / span 8; margin: 0 0 clamp(36px, 6vh, 74px); font-weight: 800; font-size: clamp(30px, 4.6vw, 78px); line-height: 0.98; letter-spacing: -0.04em;">Коротко и по делу</h2>
 
-        <div style="grid-column: 4 / span 8; border-top: 1px solid rgba(228,219,255,0.16);">
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">С какого года работает студия?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Студия работает в сфере видеосъёмок для бизнеса с 2015 года.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">В каких городах вы снимаете?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Москва, Казань, Санкт-Петербург и по всей России. Съёмки проводили в 25 городах.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Какие этапы входят в производство?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Сценарий, раскадровка, видеосъёмка, видеомонтаж, цветокоррекция, саунд-дизайн, графика. В тарифе «Старт» — базовый сценарий, видеосъёмка и видеомонтаж.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Сколько стоит видеоролик?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Ориентиры: «Старт» — от 90 000 ₽, «Стандарт» — от 350 000 ₽, «Комбо» — от 750 000 ₽. Финальная стоимость индивидуальна, тарифы не фиксированные. Заполнив бриф, вы получите индивидуальный расчёт коммерческого предложения.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Кто работает над проектом?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Команда из 15 специалистов: сценаристы, видеооператоры, монтажёры и другие мастера.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">На чём снимаете?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Работаем на собственном съёмочном оборудовании стоимостью 5 000 000 ₽.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Сколько проектов уже сделано?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Создано более 2500 видеороликов для более 600 клиентов, более 45 000 часов опыта.</p></details>
-          <details style="border-bottom: 1px solid rgba(228,219,255,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Как начать работу?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: var(--ink); text-wrap: pretty;">Заполнить бриф, позвонить или написать в WhatsApp либо Telegram — мы обсудим проект и подготовим расчёт.</p></details>
+        <div style="grid-column: 4 / span 8; border-top: 1px solid rgba(242,240,236,0.16);">
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">С какого года работает студия?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Студия работает в сфере видеосъёмок для бизнеса с 2015 года.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">В каких городах вы снимаете?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Москва, Казань, Санкт-Петербург и по всей России. Съёмки проводили в 25 городах.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Какие этапы входят в производство?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Сценарий, раскадровка, видеосъёмка, видеомонтаж, цветокоррекция, саунд-дизайн, графика. В тарифе «Старт» — базовый сценарий, видеосъёмка и видеомонтаж.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Сколько стоит видеоролик?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Ориентиры: «Старт» — от 90 000 ₽, «Стандарт» — от 350 000 ₽, «Комбо» — от 750 000 ₽. Финальная стоимость индивидуальна, тарифы не фиксированные. Заполнив бриф, вы получите индивидуальный расчёт коммерческого предложения.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Кто работает над проектом?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Команда из 15 специалистов: сценаристы, видеооператоры, монтажёры и другие мастера.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">На чём снимаете?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Работаем на собственном съёмочном оборудовании стоимостью 5 000 000 ₽.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Сколько проектов уже сделано?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Создано более 2500 видеороликов для более 600 клиентов, более 45 000 часов опыта.</p></details>
+          <details style="border-bottom: 1px solid rgba(242,240,236,0.16);"><summary data-cursor="ОТКРЫТЬ" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(16px, 2vw, 26px) 0; cursor: pointer; font-weight: 600; font-size: clamp(17px, 1.6vw, 26px); letter-spacing: -0.02em;">Как начать работу?<span data-faq-sign="1" style="flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 15px; transition: transform 0.35s;">+</span></summary><p style="margin: 0 0 clamp(20px, 2.6vw, 32px); max-width: 60ch; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.6; color: #C9C7C2; text-wrap: pretty;">Заполнить бриф, позвонить или написать в WhatsApp либо Telegram — мы обсудим проект и подготовим расчёт.</p></details>
         </div>
       </div>
     </section>
 
     <section id="sp-12" data-scene="1" data-screen-label="12 Контакт" style="position: relative; padding: clamp(80px, 14vh, 170px) clamp(14px, 3vw, 44px) clamp(30px, 5vh, 50px); overflow: hidden;">
-      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">
+      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">
         <span>12 / КОНТАКТ</span>
         <span>ВИДЕОПРОДАКШН.РФ · С 2015 ГОДА</span>
       </div>
 
       <h2 style="margin: clamp(40px, 8vh, 110px) 0 0; font-weight: 900; font-size: clamp(50px, 13vw, 220px); line-height: 0.86; letter-spacing: -0.05em; text-transform: uppercase;">
-        <span class="fx-track" style="display: block;">Сделаем</span>
-        <span class="fx-track" style="display: block; padding-left: 0.12em;">кадр<span class="dot-accent">.</span></span>
+        <span style="display: block; transform: translate3d(calc(var(--p, 0) * 3vw - 1.5vw), 0, 0);">Сделаем</span>
+        <span style="display: block; padding-left: 0.12em; transform: translate3d(calc(1.5vw - var(--p, 0) * 3vw), 0, 0);">кадр<span style="color: var(--accent-hi);">.</span></span>
       </h2>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(20px, 3vw, 44px); margin-top: clamp(50px, 9vh, 120px); padding-top: clamp(22px, 3vh, 36px); border-top: 1px solid rgba(228,219,255,0.16);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(20px, 3vw, 44px); margin-top: clamp(50px, 9vh, 120px); padding-top: clamp(22px, 3vh, 36px); border-top: 1px solid rgba(242,240,236,0.16);">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">ТЕЛЕФОН</div>
-          <a href="tel:89053771278" data-cursor="ПОЗВОНИТЬ" style="display: inline-block; margin-top: 10px; font-weight: 700; font-size: clamp(19px, 1.9vw, 30px); letter-spacing: -0.02em; color: var(--ink-hi);" style-hover="color: var(--accent-hi);">8 905 377 12 78</a>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">ТЕЛЕФОН</div>
+          <a href="tel:89053771278" data-cursor="ПОЗВОНИТЬ" style="display: inline-block; margin-top: 10px; font-weight: 700; font-size: clamp(19px, 1.9vw, 30px); letter-spacing: -0.02em; color: #F2F0EC;" style-hover="color: var(--accent-hi);">8 905 377 12 78</a>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">E-MAIL</div>
-          <a href="mailto:mail@xn--80adgaeqsyfakm2i.xn--p1ai" data-cursor="НАПИСАТЬ" style="display: inline-block; margin-top: 10px; font-weight: 700; font-size: clamp(16px, 1.5vw, 24px); letter-spacing: -0.02em; color: var(--ink-hi); word-break: break-word;" style-hover="color: var(--accent-hi);">mail@видеопродакшн.рф</a>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">E-MAIL</div>
+          <a href="mailto:mail@xn--80adgaeqsyfakm2i.xn--p1ai" data-cursor="НАПИСАТЬ" style="display: inline-block; margin-top: 10px; font-weight: 700; font-size: clamp(16px, 1.5vw, 24px); letter-spacing: -0.02em; color: #F2F0EC; word-break: break-word;" style-hover="color: var(--accent-hi);">mail@видеопродакшн.рф</a>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">МЕССЕНДЖЕРЫ</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">МЕССЕНДЖЕРЫ</div>
           <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 10px;">
-            <a href="https://wa.me/79053771278" data-cursor="ОТКРЫТЬ" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: var(--ink-hi);" style-hover="color: var(--accent-hi);">WhatsApp</a>
-            <span style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: rgba(228,219,255,0.55); border-bottom: 1px dashed rgba(228,219,255,0.3); width: max-content;" title="Нужна ссылка на аккаунт">Telegram</span>
+            <a href="https://wa.me/79053771278" data-cursor="ОТКРЫТЬ" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: #F2F0EC;" style-hover="color: var(--accent-hi);">WhatsApp</a>
+            <span style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: rgba(242,240,236,0.55); border-bottom: 1px dashed rgba(242,240,236,0.3); width: max-content;" title="Нужна ссылка на аккаунт">Telegram</span>
           </div>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">ДАЛЬШЕ</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">ДАЛЬШЕ</div>
           <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 10px;">
-            <a href="#sp-09" data-cursor="ВПЕРЁД" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: var(--ink-hi);" style-hover="color: var(--accent-hi);">Заполнить бриф</a>
-            <a href="#sp-02" data-cursor="ВПЕРЁД" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: var(--ink-hi);" style-hover="color: var(--accent-hi);">Портфолио</a>
+            <a href="#sp-09" data-cursor="ВПЕРЁД" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: #F2F0EC;" style-hover="color: var(--accent-hi);">Заполнить бриф</a>
+            <a href="#sp-02" data-cursor="ВПЕРЁД" style="font-weight: 700; font-size: clamp(16px, 1.4vw, 22px); color: #F2F0EC;" style-hover="color: var(--accent-hi);">Портфолио</a>
           </div>
         </div>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: clamp(40px, 7vh, 90px); padding-top: 18px; border-top: 1px solid rgba(228,219,255,0.16); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: clamp(40px, 7vh, 90px); padding-top: 18px; border-top: 1px solid rgba(242,240,236,0.16); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #C9C7C2;">
         <span>ВИДЕОПРОДАКШН.РФ · ВИДЕОПРОДАКШН ПОЛНОГО ЦИКЛА</span>
         <span>ПОРТФОЛИО 100+ · СТАТЬИ 200+ · ВСТУПИТЬ В КОМАНДУ</span>
         <span>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ — НУЖНА ССЫЛКА</span>
@@ -705,21 +608,21 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
 
   </main>
 
-  <div data-overlay="1" role="dialog" aria-modal="true" aria-label="Кейс" style="position: fixed; inset: 0; z-index: 80; display: none; background: var(--bg);">
-    <button data-close="1" data-cursor="ЗАКРЫТЬ" aria-label="Закрыть кейс" style="position: absolute; top: 22px; right: 34px; z-index: 4; padding: 12px 18px; border: 1px solid rgba(228,219,255,0.3); background: none; color: var(--ink-hi); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; cursor: pointer;">ЗАКРЫТЬ ✕</button>
+  <div data-overlay="1" role="dialog" aria-modal="true" aria-label="Кейс" style="position: fixed; inset: 0; z-index: 80; display: none; background: #08080A;">
+    <button data-close="1" data-cursor="ЗАКРЫТЬ" aria-label="Закрыть кейс" style="position: absolute; top: 22px; right: 34px; z-index: 4; padding: 12px 18px; border: 1px solid rgba(242,240,236,0.3); background: none; color: #F2F0EC; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; cursor: pointer;">ЗАКРЫТЬ ✕</button>
     <div data-flyer="1" style="position: absolute; overflow: hidden; background: var(--bg-3); filter: contrast(1.12); will-change: transform, width, height, top, left;"></div>
     <div data-casebody="1" style="position: absolute; inset: 0; overflow-y: auto; opacity: 0; transition: opacity 0.5s 0.35s;">
       <div style="min-height: 100%; padding: clamp(80px, 12vh, 150px) clamp(26px, 6vw, 110px) clamp(60px, 10vh, 120px); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 32px); align-content: start;">
-        <div style="grid-column: 1 / span 2; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(228,219,255,0.5);">КЕЙС <span data-case-num="1">01</span></div>
+        <div style="grid-column: 1 / span 2; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(242,240,236,0.5);">КЕЙС <span data-case-num="1">01</span></div>
         <h3 style="grid-column: 3 / span 8; margin: 0; font-weight: 800; font-size: clamp(30px, 4.4vw, 74px); line-height: 0.98; letter-spacing: -0.035em;"><span data-case-title="1"></span></h3>
-        <div style="grid-column: 3 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(228,219,255,0.5);">ТИП<br><span data-case-type="1" style="color: var(--ink-hi);"></span></div>
-        <div style="grid-column: 6 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(228,219,255,0.5);">СТУДИЯ<br><span style="color: var(--ink-hi);">ВИДЕОПРОДАКШН.РФ</span></div>
-        <div style="grid-column: 9 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(228,219,255,0.5);">ЦИКЛ<br><span style="color: var(--ink-hi);">ПОЛНЫЙ</span></div>
+        <div style="grid-column: 3 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(242,240,236,0.5);">ТИП<br><span data-case-type="1" style="color: #F2F0EC;"></span></div>
+        <div style="grid-column: 6 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(242,240,236,0.5);">СТУДИЯ<br><span style="color: #F2F0EC;">ВИДЕОПРОДАКШН.РФ</span></div>
+        <div style="grid-column: 9 / span 3; margin-top: clamp(28px, 4vh, 54px); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; line-height: 2.2; color: rgba(242,240,236,0.5);">ЦИКЛ<br><span style="color: #F2F0EC;">ПОЛНЫЙ</span></div>
         <div data-case-slots="1" style="grid-column: 1 / span 12; margin-top: clamp(40px, 7vh, 90px); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(12px, 1.6vw, 24px);">
           <div style="grid-column: 1 / span 7; height: min(58vh, 520px);"><span class="slot" data-slot="case-a"><img alt="Кадр из проекта" data-srcs="images/case-a.jpg|https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/case-a/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Кадр из проекта</span></span></div>
           <div style="grid-column: 8 / span 5; height: min(58vh, 520px); align-self: end;"><span class="slot" data-slot="case-b"><img alt="Кадр со съёмки" data-srcs="images/case-b.jpg|https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=72|https://picsum.photos/seed/case-b/1400/900" loading="lazy" decoding="async"><span class="slot-cap">Кадр со съёмки</span></span></div>
         </div>
-        <p style="grid-column: 3 / span 6; margin: clamp(36px, 5vh, 70px) 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.9; letter-spacing: 0.04em; color: var(--ink); text-wrap: pretty;">Описание, видео и результаты кейса на исходном сайте не опубликованы в открытом виде — блок готов к подстановке, как только материалы будут переданы.</p>
+        <p style="grid-column: 3 / span 6; margin: clamp(36px, 5vh, 70px) 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.9; letter-spacing: 0.04em; color: #C9C7C2; text-wrap: pretty;">Описание, видео и результаты кейса на исходном сайте не опубликованы в открытом виде — блок готов к подстановке, как только материалы будут переданы.</p>
       </div>
     </div>
   </div>
@@ -731,7 +634,7 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
   var coarse = matchMedia('(pointer: coarse)').matches;
   var canHover = matchMedia('(hover: hover)').matches;
   var LERP = 0.07;
-  var ACCENT = '#8B5CF6', ACCENT_HI = '#A78BFA', INK = '#B4A7D6', DIM = 'rgba(228,219,255,0.5)';
+  var ACCENT = '#8B5CF6', ACCENT_HI = '#A78BFA', INK = '#C9C7C2', DIM = 'rgba(242,240,236,0.5)';
 
   var S = {
     mx: 0, my: 0, tmx: 0, tmy: 0, cx: -100, cy: -100, ccx: -100, ccy: -100,
@@ -935,14 +838,17 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
     S.idx[id] = i;
     apply(sec, i);
   }
-  function applyRoll(sec, i) {
-    var roll = sec.querySelector('[data-roll]');
-    if (!roll) return;
-    roll.style.setProperty('--roll', i);
-    [].forEach.call(roll.querySelectorAll('.roll-word'), function (w, n) { w.classList.toggle('on', n === i); });
+  var BTS = ['Мотор', 'Камера', 'Свет', 'Команда', 'Кадр', 'Снято'];
+  function applyWord(sec, i) {
+    var w = sec.querySelector('[data-bts-word]');
+    if (w) w.textContent = BTS[i];
   }
   function applyRev(sec, i) {
-    [].forEach.call(sec.querySelectorAll('[data-rev]'), function (el, n) { el.classList.toggle('on', n === i); });
+    [].forEach.call(sec.querySelectorAll('[data-rev]'), function (el, n) {
+      var on = n === i;
+      el.style.opacity = on ? '1' : '0';
+      el.style.transform = 'translate3d(0,' + (on ? 0 : (n < i ? -40 : 40)) + 'px,0)';
+    });
     var num = sec.querySelector('[data-rev-num]');
     if (num) num.textContent = String(i + 1).padStart(2, '0');
   }
@@ -958,8 +864,8 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
     S.procIdx = i;
     S.procItems.forEach(function (li, n) {
       var on = n === i;
-      li.classList.toggle('on', on);
-      li.style.transform = 'translate3d(' + (on ? '0.35em' : (n < i ? '-0.1em' : '0')) + ',0,0)';
+      li.style.opacity = on ? '1' : '0.16';
+      li.style.transform = 'translate3d(' + (on ? 0 : (n < i ? -18 : 18)) + 'px,0,0)';
       li.firstElementChild.style.color = on ? ACCENT_HI : DIM;
     });
     var num = sec.querySelector('[data-proc-num]');
@@ -980,7 +886,7 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
       if (tw !== S.tw) { S.tw = tw; sec.style.setProperty('--tw', tw + 'px'); }
     }
     tickProcess();
-    tickSticky('sp-05', BTS_WORDS, applyRoll);
+    tickSticky('sp-05', BTS_WORDS, applyWord);
     tickSticky('sp-08', REV_COUNT, applyRev);
   }
 
@@ -1053,8 +959,8 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
     var html = '';
     if (asking) {
       var f = flow[step];
-      html += '<div><h2 class="fx-focus" style="' + H2 + '">' + esc(f.q) + '</h2>';
-      html += '<ul style="margin: clamp(30px, 5vh, 58px) 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; background: rgba(228,219,255,0.12); border-top: 1px solid rgba(228,219,255,0.12); border-bottom: 1px solid rgba(228,219,255,0.12);">';
+      html += '<div><h2 style="' + H2 + '">' + esc(f.q) + '</h2>';
+      html += '<ul style="margin: clamp(30px, 5vh, 58px) 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; background: rgba(242,240,236,0.12); border-top: 1px solid rgba(242,240,236,0.12); border-bottom: 1px solid rgba(242,240,236,0.12);">';
       f.opts.forEach(function (o, n) {
         html += '<li style="background: var(--surface);"><button type="button" class="brief-opt" data-pick="' + n + '" data-cursor="ВЫБРАТЬ">' + esc(o) + '<span class="num">' + pad(n + 1) + '</span></button></li>';
       });
@@ -1062,10 +968,10 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
       if (step > 0) html += '<button type="button" class="brief-ghost" data-back style="margin-top: 24px;">← НАЗАД</button>';
       html += '</div>';
     } else if (contacts) {
-      html += '<div><h2 class="fx-focus" style="' + H2 + '">Куда отправить расчёт</h2>';
+      html += '<div><h2 style="' + H2 + '">Куда отправить расчёт</h2>';
       html += '<div style="display: flex; flex-wrap: wrap; gap: clamp(14px, 2vw, 28px); margin-top: clamp(30px, 5vh, 54px);">';
-      html += '<label style="flex: 1 1 220px; display: block;"><span style="display: block; font-family: \'JetBrains Mono\', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">ИМЯ</span><input class="brief-input" type="text" name="brief-name" autocomplete="name"></label>';
-      html += '<label style="flex: 1 1 220px; display: block;"><span style="display: block; font-family: \'JetBrains Mono\', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(228,219,255,0.5);">ТЕЛЕФОН ИЛИ E-MAIL</span><input class="brief-input" type="text" name="brief-contact" autocomplete="tel"></label>';
+      html += '<label style="flex: 1 1 220px; display: block;"><span style="display: block; font-family: \'JetBrains Mono\', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">ИМЯ</span><input class="brief-input" type="text" name="brief-name" autocomplete="name"></label>';
+      html += '<label style="flex: 1 1 220px; display: block;"><span style="display: block; font-family: \'JetBrains Mono\', monospace; font-size: 10px; letter-spacing: 0.16em; color: rgba(242,240,236,0.5);">ТЕЛЕФОН ИЛИ E-MAIL</span><input class="brief-input" type="text" name="brief-contact" autocomplete="tel"></label>';
       html += '</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: clamp(30px, 5vh, 54px);">';
       html += '<button type="button" class="btn-accent" data-submit data-cursor="ОТПРАВИТЬ">ОТПРАВИТЬ БРИФ →</button>';
       html += '<button type="button" class="brief-ghost" data-back>← НАЗАД</button></div></div>';
@@ -1077,9 +983,9 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
           ? ['Тариф «Комбо» — от 750 000 ₽', 'Самый насыщенный тариф: широкая география, командировки, много специалистов. Минимум компромиссов.']
           : ['Тариф «Стандарт» — от 350 000 ₽', 'Сценарий, раскадровка, съёмка, монтаж, цветокоррекция, саунд-дизайн, графика.'];
       html += '<div><div style="font-family: \'JetBrains Mono\', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--accent-hi);">ОРИЕНТИР ПО ВАШИМ ОТВЕТАМ</div>';
-      html += '<h2 class="fx-focus" style="margin: clamp(14px, 2vh, 22px) 0 0; font-weight: 800; font-size: clamp(30px, 4.6vw, 74px); line-height: 1; letter-spacing: -0.04em;">' + esc(tariff[0]) + '</h2>';
-      html += '<p style="margin: clamp(18px, 3vh, 30px) 0 0; max-width: 46ch; font-size: clamp(15px, 1.15vw, 19px); line-height: 1.55; color: var(--ink); text-wrap: pretty;">' + esc(tariff[1]) + ' Финальная стоимость индивидуальна, тарифы не фиксированные.</p>';
-      html += '<ul style="margin: clamp(22px, 3.4vh, 38px) 0 0; padding: 0; list-style: none; font-family: \'JetBrains Mono\', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.2; color: rgba(228,219,255,0.62);">';
+      html += '<h2 style="margin: clamp(14px, 2vh, 22px) 0 0; font-weight: 800; font-size: clamp(30px, 4.6vw, 74px); line-height: 1; letter-spacing: -0.04em;">' + esc(tariff[0]) + '</h2>';
+      html += '<p style="margin: clamp(18px, 3vh, 30px) 0 0; max-width: 46ch; font-size: clamp(15px, 1.15vw, 19px); line-height: 1.55; color: #C9C7C2; text-wrap: pretty;">' + esc(tariff[1]) + ' Финальная стоимость индивидуальна, тарифы не фиксированные.</p>';
+      html += '<ul style="margin: clamp(22px, 3.4vh, 38px) 0 0; padding: 0; list-style: none; font-family: \'JetBrains Mono\', monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 2.2; color: rgba(242,240,236,0.62);">';
       brief.answers.filter(Boolean).forEach(function (v, n) { html += '<li>' + pad(n + 1) + ' · ' + esc(v) + '</li>'; });
       html += '</ul><div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(26px, 4vh, 44px);">';
       html += '<a href="tel:89053771278" class="btn-accent" data-cursor="ПОЗВОНИТЬ">8 905 377 12 78</a>';
@@ -1128,12 +1034,6 @@ details[open] > summary > span[data-faq-sign] { transform: rotate(45deg); color:
     if (reduced) {
       applyStatic();
       S.scenes.forEach(function (el) { el.style.setProperty('--e', 0); });
-      var first = document.querySelector('[data-proc]');
-      if (first) first.classList.add('on');
-      var w = document.querySelector('.roll-word');
-      if (w) w.classList.add('on');
-      var r0 = document.querySelector('[data-rev]');
-      if (r0) r0.classList.add('on');
       safeTick();
     } else {
       requestAnimationFrame(frame);
