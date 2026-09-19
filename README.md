@@ -41,7 +41,7 @@ src/
 ├── components/
 │   ├── layout/   Navbar (таймкод, индексы), MobileMenu, Footer, Cursor (визир), LoadingScreen, Page (SEO + переход)
 │   ├── ui/       Button, ArrowLink, SectionHeader, Slate, VideoFrame, SmartImage, TestPattern, Marquee, Reveal, SplitLines, Counter, Field, BriefForm
-│   ├── home/     Hero, Ticker, FeaturedWork, ServicesIndex, Clients, ProcessTimeline, Numbers, TariffsTeaser, Voices
+│   ├── home/     Hero, Ticker, FeaturedWork, ServicesIndex, Clients, ProcessTimeline, Numbers, Crew, TariffsTeaser, Voices
 │   ├── work/     ProjectCard, ProjectHero, ProjectGallery, WorkFilters
 │   └── services/ ServiceHero
 ├── pages/        Home, Work, Project, Services, Service, Pricing, Process, About, Contact, Reviews, Faq, Privacy, NotFound

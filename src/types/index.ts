@@ -150,6 +150,17 @@ export interface TeamMember {
   role: string
 }
 
+/** A studio crew member from the «ПРОДАКШН» group portrait on the original homepage. */
+export interface CrewMember {
+  slug: string
+  name: string
+  role: string
+  /** What they hold in the studio portrait — goes into the alt text. */
+  holding: string
+  /** Base path of the cut-out portrait; `-400.webp` and `-800.webp` variants exist. */
+  photo: string
+}
+
 export interface Address {
   city: string
   address: string

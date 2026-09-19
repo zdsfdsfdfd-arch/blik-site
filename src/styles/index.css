@@ -487,6 +487,28 @@
   animation: blink 1.4s steps(1) infinite;
 }
 
+/* Crew block: the word is sized by script to span its container (--word);
+   the cut-outs scale from that size so heads always overlap the letters. */
+.crew-word {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.crew-figures {
+  --figure: clamp(8.5rem, 42vw, 12rem);
+  padding-top: calc(var(--word, 6rem) * 0.3);
+}
+
+@media (min-width: 768px) {
+  .crew-figures {
+    --figure: calc(var(--word, 6rem) * 1.85);
+  }
+}
+
 /* Custom cursor hides the native one only on fine pointers. */
 html.custom-cursor,
 html.custom-cursor a,

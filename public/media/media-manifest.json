@@ -5,7 +5,7 @@
   "totals": {
     "imagesFoundOnSite": 2452,
     "imagesDownloaded": 2445,
-    "imagesUsed": 202,
+    "imagesUsed": 210,
     "videosFoundOnSite": 72,
     "videosUsed": 181
   },
@@ -2039,6 +2039,86 @@
       "downloaded": true,
       "variant": "original (converted to WebP/PNG)",
       "title": "Роман Лузянин"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild3862-6166-4031-b330-613635666433/_1.png",
+      "localPath": "/media/images/team/bulat-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Булат — художник по свету"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild6634-3731-4366-a561-383766616663/photo_6.png",
+      "localPath": "/media/images/team/aleksey-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Алексей — пилот квадрокоптера"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild6634-3933-4536-a338-626438393036/photo_1.png",
+      "localPath": "/media/images/team/nikolay-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Николай — видеооператор"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild3939-3530-4164-b537-376537363263/photo_2.png",
+      "localPath": "/media/images/team/semen-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Семён — кинооператор"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild6261-3264-4536-b931-663164623762/photo_3.png",
+      "localPath": "/media/images/team/roman-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Роман Лузянин — режиссёр"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild3534-3233-4539-a638-326139336664/VPH02450-_2.png",
+      "localPath": "/media/images/team/irina-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Ирина — режиссёр монтажа"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild3862-3061-4138-a665-643932336339/photo_4.png",
+      "localPath": "/media/images/team/anisa-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Аниса — гримёр"
+    },
+    {
+      "originalUrl": "https://static.tildacdn.com/tild3364-3166-4530-b735-353864383137/photo_5.png",
+      "localPath": "/media/images/team/iskhak-800.webp",
+      "page": "https://xn--80adgaeqsyfakm2i.xn--p1ai/",
+      "project": null,
+      "type": "team-photo",
+      "downloaded": true,
+      "variant": "PNG cut-out with alpha → WebP 400 px and 800 px (block «ПРОДАКШН», rec408151355)",
+      "title": "Исхак — звукорежиссёр"
     }
   ],
   "videos": [

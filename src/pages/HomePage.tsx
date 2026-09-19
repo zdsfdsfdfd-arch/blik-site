@@ -1,5 +1,6 @@
 import { Page } from '../components/layout/Page'
 import { Clients } from '../components/home/Clients'
+import { Crew } from '../components/home/Crew'
 import { FeaturedWork } from '../components/home/FeaturedWork'
 import { Hero } from '../components/home/Hero'
 import { Numbers } from '../components/home/Numbers'
@@ -34,6 +35,7 @@ export function HomePage() {
       <Clients />
       <ProcessTimeline />
       <Numbers />
+      <Crew index="05" />
       <TariffsTeaser />
       <Voices />
     </Page>

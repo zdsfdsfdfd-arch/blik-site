@@ -1,4 +1,5 @@
 import { Page } from '../components/layout/Page'
+import { Crew } from '../components/home/Crew'
 import { Counter } from '../components/ui/Counter'
 import { Button } from '../components/ui/Button'
 import { Marquee } from '../components/ui/Marquee'
@@ -109,6 +110,10 @@ export function AboutPage() {
           ))}
         </dl>
       </section>
+
+      <div className="mt-20 md:mt-28">
+        <Crew />
+      </div>
 
       <section className="container-x mt-20 md:mt-28">
         <div className="flex items-center justify-between border-t border-line pt-3">
