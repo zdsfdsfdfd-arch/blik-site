@@ -1,6 +1,8 @@
 import type { ImageRef, VideoRef } from '../types'
 import { localMedia } from '../generated/local-media'
 
+export { withBase } from './base'
+
 /** Ordered candidate URLs for a poster: local copy first, then remote, then YouTube fallbacks. */
 export function posterSources(image: ImageRef, video?: VideoRef): string[] {
   const sources: string[] = []

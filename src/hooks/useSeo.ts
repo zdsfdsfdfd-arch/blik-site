@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { site } from '../data/company'
+import { stripBase } from '../lib/base'
 
 export interface SeoOptions {
   title?: string
@@ -41,7 +42,7 @@ export function useSeo({ title, description, path, image, type = 'website', json
   useEffect(() => {
     const fullTitle = title ? `${title} — ${site.shortName}` : site.defaultTitle
     const text = description ?? site.defaultDescription
-    const pathname = path ?? window.location.pathname
+    const pathname = path ?? stripBase(window.location.pathname)
     const url = pathname.startsWith('http') ? pathname : `${site.url}${pathname}`
     const ogImage = image ?? `${site.url}${site.ogImage}`
 

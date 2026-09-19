@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { clientLogos, clients } from '../../data/clients'
 import { Marquee } from '../ui/Marquee'
+import { withBase } from '../../lib/base'
 
 /**
  * «Нам доверяют»: the logo row from the original homepage, then a two-lane
@@ -21,7 +22,7 @@ export function Clients() {
         {clientLogos.map((logo) => (
           <li key={logo.name} className="flex aspect-[5/3] items-center justify-center bg-bg p-4 md:p-5">
             <Link to={logo.href ?? '/work'} title={logo.name} className="flex h-full w-full items-center justify-center opacity-80 transition-opacity hover:opacity-100">
-              <img src={logo.src} alt={logo.name} loading="lazy" className="max-h-10 w-auto max-w-full object-contain" />
+              <img src={withBase(logo.src)} alt={logo.name} loading="lazy" className="max-h-10 w-auto max-w-full object-contain" />
             </Link>
           </li>
         ))}

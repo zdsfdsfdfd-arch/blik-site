@@ -3,6 +3,7 @@ import type { RefObject } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { crew, crewWord } from '../../data/crew'
 import { site } from '../../data/company'
+import { withBase } from '../../lib/base'
 import { revealTransition, viewportOnce } from '../../lib/motion'
 import { Marquee } from '../ui/Marquee'
 import { Reveal } from '../ui/Reveal'
@@ -101,6 +102,7 @@ export function Crew({ index }: CrewProps) {
           <ul className="crew-figures relative grid grid-cols-4 items-end border-b border-line md:grid-cols-8" aria-label="Съёмочная команда студии">
             {crew.map((member, i) => {
               const lifted = active === member.slug
+              const photo = withBase(member.photo)
               return (
                 <motion.li
                   key={member.slug}
@@ -114,8 +116,8 @@ export function Crew({ index }: CrewProps) {
                   onMouseLeave={() => setActive((current) => (current === member.slug ? null : current))}
                 >
                   <motion.img
-                    src={`${member.photo}-800.webp`}
-                    srcSet={`${member.photo}-400.webp 400w, ${member.photo}-800.webp 800w`}
+                    src={`${photo}-800.webp`}
+                    srcSet={`${photo}-400.webp 400w, ${photo}-800.webp 800w`}
                     sizes="(min-width: 768px) 14vw, 30vw"
                     alt={`${member.name}, ${member.role.toLowerCase()} — ${member.holding}`}
                     loading="lazy"

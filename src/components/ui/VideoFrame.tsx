@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Play } from 'lucide-react'
 import type { ImageRef, VideoRef } from '../../types'
-import { embedUrl, posterSources } from '../../lib/media'
+import { embedUrl, posterSources, withBase } from '../../lib/media'
 import { EASE_OUT_EXPO } from '../../lib/motion'
 import { SmartImage } from './SmartImage'
 
@@ -35,8 +35,8 @@ export function VideoFrame({ video, poster, title, aspect = 'aspect-video', clas
       <div className={`relative overflow-hidden bg-chassis-2 ${aspect} ${className}`}>
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src={video.id}
-          poster={sources[0]}
+          src={withBase(video.id)}
+          poster={withBase(sources[0])}
           muted
           playsInline
           loop

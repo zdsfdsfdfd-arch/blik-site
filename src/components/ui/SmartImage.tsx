@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { withBase } from '../../lib/media'
 import { TestPattern } from './TestPattern'
 
 interface SmartImageProps {
@@ -19,8 +20,9 @@ interface SmartImageProps {
  * thumbnail fallbacks) and finally renders a test-pattern placeholder, so a
  * missing asset never shows as a broken image or shifts the layout.
  */
-export function SmartImage({ sources, alt, className = '', imgClassName = '', sizes, priority = false, fallbackLabel, onFail }: SmartImageProps) {
+export function SmartImage({ sources: rawSources, alt, className = '', imgClassName = '', sizes, priority = false, fallbackLabel, onFail }: SmartImageProps) {
   const ref = useRef<HTMLImageElement>(null)
+  const sources = useMemo(() => rawSources.map(withBase), [rawSources])
   const key = useMemo(() => sources.join('|'), [sources])
   const [state, setState] = useState({ key, index: 0, loaded: false, failed: sources.length === 0 })
 

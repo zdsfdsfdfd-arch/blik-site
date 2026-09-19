@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'motion/react'
 import { Layout } from './components/layout/Layout'
+import { BASE_PATH } from './lib/base'
 import { HomePage } from './pages/HomePage'
 
 // Inner pages are code-split so the home experience stays light.
@@ -50,7 +51,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={BASE_PATH || '/'}>
       <Layout>
         <AnimatedRoutes />
       </Layout>

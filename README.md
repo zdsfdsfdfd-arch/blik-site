@@ -65,3 +65,26 @@ scripts/          sitemap.ts (плагин Vite), download-media.mjs, check-medi
 ## Форма
 
 `BriefForm` валидирует поля и эмулирует отправку. Подключите реальный endpoint/CRM в `handleSubmit` (`src/components/ui/BriefForm.tsx`).
+
+## Публикация на GitHub Pages
+
+В репозитории есть workflow `.github/workflows/deploy-pages.yml`: он собирает сайт и публикует папку `dist` в GitHub Pages при каждом пуше в `main` или `claude/laughing-pascal-y37ell` (и вручную через «Run workflow»).
+
+1. **Один раз включить Pages:** Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+2. Запушить в ветку из списка выше или запустить workflow вручную (Actions → Deploy to GitHub Pages → Run workflow).
+3. Через 1–2 минуты сайт откроется по адресу `https://<аккаунт>.github.io/<репозиторий>/` — для этого репозитория `https://zdsfdsfdfd-arch.github.io/blik-site/`.
+
+Если деплой падает с ошибкой «Branch … is not allowed to deploy to github-pages due to environment protection rules», разрешите ветку: Settings → Environments → github-pages → Deployment branches and tags → добавьте нужную ветку (или сделайте её веткой по умолчанию в Settings → Branches).
+
+**Как это устроено.** Workflow читает адрес Pages через `actions/configure-pages` и передаёт его в сборку переменными `VITE_BASE_PATH` (`/blik-site/`) и `VITE_SITE_URL`. Все пути к медиа, шрифтам, роутам, canonical/OG-ссылкам и sitemap учитывают этот префикс. Плагин `scripts/static-site.ts` дополнительно кладёт в `dist` файлы `404.html` (копия `index.html` — так GitHub Pages отдаёт глубокие ссылки вроде `/work/<slug>` клиентскому роутеру), `.nojekyll`, `robots.txt` и `sitemap.xml`.
+
+**Свой домен.** Settings → Pages → Custom domain → указать домен (кириллический — в punycode, `xn--80adgaeqsyfakm2i.xn--p1ai`), у регистратора добавить записи: для корневого домена четыре A-записи `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; для `www` — CNAME на `<аккаунт>.github.io`. После этого перезапустить workflow: `configure-pages` вернёт новый адрес, и сайт соберётся уже с корневым путём `/`.
+
+**Локальная сборка под подпуть:**
+
+```bash
+VITE_BASE_PATH=/blik-site/ VITE_SITE_URL=https://zdsfdsfdfd-arch.github.io/blik-site npm run build
+VITE_BASE_PATH=/blik-site/ npm run preview   # откроется на http://localhost:4173/blik-site/
+```
+
+Ограничение GitHub Pages: это статический хостинг, поэтому прямой заход на внутреннюю страницу отдаётся через `404.html` (страница рендерится, но с HTTP-статусом 404). Для домена студии с полноценной индексацией лучше подойдёт хостинг с SPA-редиректами (Cloudflare Pages, Netlify, Vercel) или пререндер страниц.

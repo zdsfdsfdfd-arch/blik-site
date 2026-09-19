@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Check } from 'lucide-react'
 import { services } from '../../data/services'
@@ -136,9 +137,9 @@ export function BriefForm({ defaultFormat = '', id = 'brief' }: BriefFormProps) 
                 />
                 <span>
                   Согласен с{' '}
-                  <a href="/privacy" className="link-underline text-fg">
+                  <Link to="/privacy" className="link-underline text-fg">
                     политикой обработки персональных данных
-                  </a>
+                  </Link>
                   {touched.consent && errors.consent && (
                     <span role="alert" className="mt-1 block text-signal-text">
                       {errors.consent}

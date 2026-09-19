@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /privacy
-
-Sitemap: https://xn--80adgaeqsyfakm2i.xn--p1ai/sitemap.xml

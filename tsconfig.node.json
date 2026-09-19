@@ -21,5 +21,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "scripts/sitemap.ts", "src/data/**/*.ts", "src/types/**/*.ts"]
+  "include": ["vite.config.ts", "scripts/static-site.ts", "src/data/**/*.ts", "src/lib/base.ts", "src/types/**/*.ts"]
 }

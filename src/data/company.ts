@@ -1,11 +1,12 @@
+import { SITE_URL } from '../lib/base.ts'
 import type { Address, SocialLink, TeamMember } from '../types/index.ts'
 
 /** Site-level metadata used by the SEO hook and the static index.html. */
 export const site = {
   name: 'Видеопродакшн.РФ',
   shortName: 'Видеопродакшн.РФ',
-  /** Canonical origin — the punycode form of видеопродакшн.рф. */
-  url: 'https://xn--80adgaeqsyfakm2i.xn--p1ai',
+  /** Public URL of the site root: the punycode form of видеопродакшн.рф, or VITE_SITE_URL when deployed elsewhere. */
+  url: SITE_URL,
   domain: 'видеопродакшн.рф',
   defaultTitle: 'Профессиональная видеосъемка для вашего бизнеса | Видеопродакшн.РФ',
   defaultDescription:
