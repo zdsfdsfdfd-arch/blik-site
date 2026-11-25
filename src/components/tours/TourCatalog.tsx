@@ -18,6 +18,7 @@ interface TourCatalogProps {
     eyebrow: string
     title: ReactNode
     subtitle?: string
+    as?: 'h1' | 'h2'
   }
   /** Keep the URL query string in sync with the filters (used on the catalogue page). */
   syncUrl?: boolean
@@ -46,6 +47,7 @@ export function TourCatalog({ tours, heading, syncUrl = false, limit, id = 'tour
           eyebrow={heading.eyebrow}
           title={heading.title}
           subtitle={heading.subtitle}
+          as={heading.as}
         />
 
         <Reveal className="mt-12" delay={0.1}>

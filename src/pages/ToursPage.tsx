@@ -15,6 +15,7 @@ export function ToursPage() {
         syncUrl
         id="catalogue"
         heading={{
+          as: 'h1',
           index: `${tours.length}`,
           eyebrow: 'Каталог',
           title: (

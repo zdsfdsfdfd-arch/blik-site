@@ -33,7 +33,7 @@ export function keywordUrl(keywords: string, lock: number, width = 1600, height 
 }
 
 export function localUrl(photo: string, width: number): string {
-  return `/images/${photo}-${width}.${localImages[photo]}`
+  return `${import.meta.env.BASE_URL}images/${photo}-${width}.${localImages[photo]}`
 }
 
 /**

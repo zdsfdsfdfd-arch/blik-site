@@ -9,6 +9,8 @@ interface SectionHeadingProps {
   /** Optional element rendered on the right on wide screens (e.g. a link). */
   aside?: ReactNode
   tone?: 'light' | 'dark'
+  /** Heading level: pages whose first heading this is should render an h1. */
+  as?: 'h1' | 'h2'
   className?: string
 }
 
@@ -20,6 +22,7 @@ export function SectionHeading({
   subtitle,
   aside,
   tone = 'light',
+  as: Heading = 'h2',
   className = '',
 }: SectionHeadingProps) {
   const dark = tone === 'dark'
@@ -34,7 +37,7 @@ export function SectionHeading({
           </p>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className={`text-display-lg mt-5 ${dark ? 'text-paper' : 'text-ink'}`}>{title}</h2>
+          <Heading className={`text-display-lg mt-5 ${dark ? 'text-paper' : 'text-ink'}`}>{title}</Heading>
         </Reveal>
         {subtitle && (
           <Reveal delay={0.16}>

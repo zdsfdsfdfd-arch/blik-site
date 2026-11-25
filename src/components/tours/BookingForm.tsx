@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Check } from 'lucide-react'
 import { regions } from '../../data/destinations'
@@ -165,9 +166,9 @@ export function BookingForm({ defaultDestination = '', id = 'booking-form' }: Bo
               </Button>
               <p className="max-w-xs text-xs text-muted">
                 Нажимая кнопку, вы соглашаетесь с{' '}
-                <a href="/privacy" className="link-underline text-ink">
+                <Link to="/privacy" className="link-underline text-ink">
                   политикой конфиденциальности
-                </a>
+                </Link>
                 .
               </p>
             </div>
